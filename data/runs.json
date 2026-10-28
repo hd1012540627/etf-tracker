@@ -96,5 +96,14 @@
    "找不到股價：TW:2382"
   ],
   "end": "2026-10-29T00:07:09+08:00"
+ },
+ {
+  "start": "2026-10-29T00:09:22+08:00",
+  "mode": "prices",
+  "browser": false,
+  "trigger": "workflow_dispatch",
+  "price_errors": [],
+  "price_diag": [],
+  "end": "2026-10-29T00:09:39+08:00"
  }
 ]
