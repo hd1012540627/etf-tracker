@@ -197,10 +197,14 @@ class PriceStore:
 
     def _yf_batch(self, cands: dict[str, list[str]], extra: list[str], rng: str) -> dict[str, str]:
         import yfinance as yf  # lazy: optional dependency for local use
-        period = {"1mo": "1mo", "3mo": "3mo"}.get(rng, "1mo")
+        days = {"1mo": 35, "3mo": 100}.get(rng, 35)
         tickers = sorted({t for cs in cands.values() for t in cs} | set(extra))
-        df = yf.download(tickers, period=period, interval="1d", group_by="ticker", auto_adjust=False,
-                         threads=True, progress=False)
+        # explicit start/end: with period= yfinance drops today's bar for Asian markets when run
+        # around midnight Taipei time (UTC date still "yesterday").
+        today = dt.datetime.now(TPE).date()
+        df = yf.download(tickers, start=(today - dt.timedelta(days=days)).isoformat(),
+                         end=(today + dt.timedelta(days=2)).isoformat(), interval="1d", group_by="ticker",
+                         auto_adjust=False, threads=True, progress=False)
         ok: dict[str, str] = {}
         now = dt.datetime.now(TPE).isoformat(timespec="seconds")
         for t in tickers:
