@@ -1,0 +1,82 @@
+{
+ "generated_at": "2026-10-28T23:43:01+08:00",
+ "last_trading_day": "2026-10-28",
+ "price_errors": [],
+ "etfs": {
+  "00412A": {
+   "name": "主動安聯亞洲半導體",
+   "issuer": "安聯投信",
+   "source": "https://etf.allianzgi.com.tw/etf-info/E0004?tab=4",
+   "last_attempt": "2026-10-28T23:30:00+08:00",
+   "last_success": "2026-10-28T23:30:00+08:00",
+   "last_error": null,
+   "fetch_mode": "開發時擷取",
+   "position_date": "2026-10-28",
+   "pcf_date": "2026-10-29",
+   "nav_date": "2026-10-27",
+   "stale_days": 0,
+   "n_snapshots": 2,
+   "n_rows": 58,
+   "weight_sum": 85.65,
+   "stock_pct": 85.65,
+   "weight_gap": 0.0,
+   "missing_price": [],
+   "unclassified": [],
+   "notes": []
+  },
+  "00981A": {
+   "name": "主動統一台股增長",
+   "issuer": "統一投信",
+   "source": "https://www.ezmoney.com.tw/ETF/Fund/Info?fundCode=49YTW",
+   "last_attempt": "2026-10-28T23:30:00+08:00",
+   "last_success": "2026-10-28T23:30:00+08:00",
+   "last_error": null,
+   "fetch_mode": "開發時擷取",
+   "position_date": "2026-10-28",
+   "pcf_date": null,
+   "nav_date": "2026-10-28",
+   "stale_days": 0,
+   "n_snapshots": 1,
+   "n_rows": 50,
+   "weight_sum": 96.11,
+   "stock_pct": 96.0978,
+   "weight_gap": 0.01,
+   "missing_price": [],
+   "unclassified": [],
+   "notes": []
+  },
+  "00997A": {
+   "name": "主動群益美國增長",
+   "issuer": "群益投信",
+   "source": "https://www.capitalfund.com.tw/etf/product/detail/502/portfolio",
+   "last_attempt": "2026-10-28T23:30:00+08:00",
+   "last_success": "2026-10-28T23:30:00+08:00",
+   "last_error": null,
+   "fetch_mode": "開發時擷取",
+   "position_date": "2026-10-28",
+   "pcf_date": "2026-10-29",
+   "nav_date": "2026-10-27",
+   "stale_days": 0,
+   "n_snapshots": 1,
+   "n_rows": 48,
+   "weight_sum": 92.3,
+   "stock_pct": 92.3039,
+   "weight_gap": 0.0,
+   "missing_price": [],
+   "unclassified": [],
+   "notes": []
+  }
+ },
+ "runs": [
+  {
+   "start": "2026-10-28T23:43:01+08:00",
+   "end": "2026-10-28T23:43:01+08:00",
+   "mode": "full",
+   "trigger": "local",
+   "browser": false,
+   "ok": 3,
+   "fail": [],
+   "price_errors": 0
+  }
+ ]
+}

@@ -1,0 +1,210 @@
+{
+ "week": [
+  {
+   "period": "2026-W44",
+   "etfs": {
+    "00412A": {
+     "start": {
+      "date": "2026-10-28",
+      "cash_other_pct": 14.35,
+      "stock_pct": 85.65
+     },
+     "end": {
+      "date": "2026-10-28",
+      "cash_other_pct": 14.35,
+      "stock_pct": 85.65
+     },
+     "net_active_twd": 663618837.0,
+     "top_buys": [
+      {
+       "name": "景碩科技",
+       "twd": 83835000.0
+      },
+      {
+       "name": "南電",
+       "twd": 71500000.0
+      },
+      {
+       "name": "南亞",
+       "twd": 69223000.0
+      },
+      {
+       "name": "Advanced Micro Devices Inc",
+       "twd": 66195837.0
+      },
+      {
+       "name": "聯發科",
+       "twd": 59290000.0
+      }
+     ],
+     "top_sells": [],
+     "new": [
+      "南亞",
+      "南電",
+      "景碩科技"
+     ],
+     "exit": [],
+     "cash_other_change_pp": 0.0
+    },
+    "00981A": {
+     "start": {
+      "date": "2026-10-28",
+      "cash_other_pct": 3.9022,
+      "stock_pct": 96.0978
+     },
+     "end": {
+      "date": "2026-10-28",
+      "cash_other_pct": 3.9022,
+      "stock_pct": 96.0978
+     },
+     "net_active_twd": 0.0,
+     "top_buys": [],
+     "top_sells": [],
+     "new": [],
+     "exit": [],
+     "cash_other_change_pp": 0.0
+    },
+    "00997A": {
+     "start": {
+      "date": "2026-10-28",
+      "cash_other_pct": 7.6961,
+      "stock_pct": 92.3039
+     },
+     "end": {
+      "date": "2026-10-28",
+      "cash_other_pct": 7.6961,
+      "stock_pct": 92.3039
+     },
+     "net_active_twd": 0.0,
+     "top_buys": [],
+     "top_sells": [],
+     "new": [],
+     "exit": [],
+     "cash_other_change_pp": 0.0
+    }
+   },
+   "summary": [
+    "00412A：主動淨買 6.64 億，現金及其他 14.35%（+0.00 個百分點）；加碼最多：景碩科技、南電、南亞；新增：南亞、南電、景碩科技",
+    "00981A：主動淨買 0.00 億，現金及其他 3.90%（+0.00 個百分點）",
+    "00997A：主動淨買 0.00 億，現金及其他 7.70%（+0.00 個百分點）"
+   ]
+  },
+  {
+   "period": "2026-W42",
+   "etfs": {
+    "00412A": {
+     "start": {
+      "date": "2026-10-15",
+      "cash_other_pct": 9.43,
+      "stock_pct": 90.57
+     },
+     "end": {
+      "date": "2026-10-15",
+      "cash_other_pct": 9.43,
+      "stock_pct": 90.57
+     },
+     "net_active_twd": 0.0,
+     "top_buys": [],
+     "top_sells": [],
+     "new": [],
+     "exit": [],
+     "cash_other_change_pp": 0.0
+    }
+   },
+   "summary": [
+    "00412A：主動淨買 0.00 億，現金及其他 9.43%（+0.00 個百分點）"
+   ]
+  }
+ ],
+ "month": [
+  {
+   "period": "2026-10",
+   "etfs": {
+    "00412A": {
+     "start": {
+      "date": "2026-10-15",
+      "cash_other_pct": 9.43,
+      "stock_pct": 90.57
+     },
+     "end": {
+      "date": "2026-10-28",
+      "cash_other_pct": 14.35,
+      "stock_pct": 85.65
+     },
+     "net_active_twd": 663618837.0,
+     "top_buys": [
+      {
+       "name": "景碩科技",
+       "twd": 83835000.0
+      },
+      {
+       "name": "南電",
+       "twd": 71500000.0
+      },
+      {
+       "name": "南亞",
+       "twd": 69223000.0
+      },
+      {
+       "name": "Advanced Micro Devices Inc",
+       "twd": 66195837.0
+      },
+      {
+       "name": "聯發科",
+       "twd": 59290000.0
+      }
+     ],
+     "top_sells": [],
+     "new": [
+      "南亞",
+      "南電",
+      "景碩科技"
+     ],
+     "exit": [],
+     "cash_other_change_pp": 4.92
+    },
+    "00981A": {
+     "start": {
+      "date": "2026-10-28",
+      "cash_other_pct": 3.9022,
+      "stock_pct": 96.0978
+     },
+     "end": {
+      "date": "2026-10-28",
+      "cash_other_pct": 3.9022,
+      "stock_pct": 96.0978
+     },
+     "net_active_twd": 0.0,
+     "top_buys": [],
+     "top_sells": [],
+     "new": [],
+     "exit": [],
+     "cash_other_change_pp": 0.0
+    },
+    "00997A": {
+     "start": {
+      "date": "2026-10-28",
+      "cash_other_pct": 7.6961,
+      "stock_pct": 92.3039
+     },
+     "end": {
+      "date": "2026-10-28",
+      "cash_other_pct": 7.6961,
+      "stock_pct": 92.3039
+     },
+     "net_active_twd": 0.0,
+     "top_buys": [],
+     "top_sells": [],
+     "new": [],
+     "exit": [],
+     "cash_other_change_pp": 0.0
+    }
+   },
+   "summary": [
+    "00412A：主動淨買 6.64 億，現金及其他 14.35%（+4.92 個百分點）；加碼最多：景碩科技、南電、南亞；新增：南亞、南電、景碩科技",
+    "00981A：主動淨買 0.00 億，現金及其他 3.90%（+0.00 個百分點）",
+    "00997A：主動淨買 0.00 億，現金及其他 7.70%（+0.00 個百分點）"
+   ]
+  }
+ ]
+}

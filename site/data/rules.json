@@ -1,0 +1,405 @@
+{
+ "00412A": {
+  "checks": [
+   {
+    "id": "equity_min",
+    "label": "股票＋存託憑證 ≥ 淨資產 70%",
+    "metric": "stock_pct",
+    "op": ">=",
+    "limit": 70,
+    "value": 85.65,
+    "status": "符合",
+    "margin": 15.65,
+    "note": null
+   },
+   {
+    "id": "single_max",
+    "label": "單一個股 ≤ 淨資產 10%",
+    "metric": "max_weight",
+    "op": "<=",
+    "limit": 10,
+    "value": 7.58,
+    "status": "接近邊界",
+    "margin": 2.42,
+    "note": null
+   },
+   {
+    "id": "asia_min",
+    "label": "亞洲半導體 ≥ 60%（近似：只算亞洲市場掛牌股票，不判斷是否屬半導體業）",
+    "metric": "asia_pct",
+    "op": ">=",
+    "limit": 60,
+    "approx": true,
+    "value": 73.84,
+    "status": "符合",
+    "margin": 13.84,
+    "note": null
+   }
+  ],
+  "rules": [
+   {
+    "key": "min_equity_pct",
+    "label_zh": "股票類最低比例",
+    "value": "70",
+    "detail": "自上市日起，股票(含承銷股)及存託憑證總金額不低於淨資產70%(含)；其中亞洲半導體相關產業股票不低於60%(含)。公開說明書 p8 基金概況壹、九(一)1；信託契約 p165 第十六條。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00036&filename=202607_A00036_E43_1.pdf",
+    "confidence": "high"
+   },
+   {
+    "key": "ramp_up_months",
+    "label_zh": "建倉緩衝期",
+    "value": "0",
+    "detail": "無『成立後N個月』條款；比例自『上市日起』適用，成立日至上市日不接受申購買回(p13)。掛牌前持股可低於70%(二手：10/8股票合計60.64%)。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00036&filename=202607_A00036_E43_1.pdf",
+    "confidence": "high"
+   },
+   {
+    "key": "max_cash_pct",
+    "label_zh": "現金/存款/附買回/短期票券上限",
+    "value": "無數字上限",
+    "detail": "得以現金、存放金融機構、債券附買回、短期票券保持資產；交易對象信評須達金管會認可等級。p9 九(二)。法定隱含上限=100%-70%=30%(僅在70%下限成立時)。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00036&filename=202607_A00036_E43_1.pdf",
+    "confidence": "high"
+   },
+   {
+    "key": "derivatives_rule",
+    "label_zh": "期貨/衍生品規則",
+    "value": "僅避險或增加投資效率",
+    "detail": "得從事衍生自股價指數、股票、存託憑證或ETF之期貨、選擇權、期貨選擇權，須符合金管會『證券投資信託事業運用證券投資信託基金從事證券相關商品交易應行注意事項』(數字上限本文未列)；匯率避險價值與期間不得超過外幣計價資產。p10 九(六)(七)。認購售權證/認股權憑證不超過淨值5%(p25 第16款)；反向槓桿商品ETF及期貨信託基金不超過10%、加其他基金不超過20%(p25 第15款)。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00036&filename=202607_A00036_E43_1.pdf",
+    "confidence": "high"
+   },
+   {
+    "key": "region_rule",
+    "label_zh": "地區/市場規則",
+    "value": "亞洲半導體>=60%；可投資國家清單",
+    "detail": "可投資：中華民國、韓國、日本、新加坡、香港、中國大陸(含滬深港通)、美國、加拿大、歐洲。亞洲半導體定義：亞洲市場交易或亞洲註冊企業，且業務為半導體設計/製造/封測/設備/材料/技術服務。未見各地區占比上限或A股上限(取不到)。特殊情形門檻：單一國家/地區占比>=20%。p8-9。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00036&filename=202607_A00036_E43_1.pdf",
+    "confidence": "high"
+   },
+   {
+    "key": "single_stock_cap",
+    "label_zh": "單一個股上限",
+    "value": "10% 淨資產",
+    "detail": "任一上市櫃公司股票(含承銷)、存託憑證及公司債/金融債券總金額不超過淨資產10%；持股不超過公司已發行股份10%(含經理公司全部基金合計)。p25 基金運用之限制五(一)8,9。興櫃單一1%/合計5%(p26)。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00036&filename=202607_A00036_E43_1.pdf",
+    "confidence": "high"
+   },
+   {
+    "key": "tsmc_exception",
+    "label_zh": "台積電條款",
+    "value": "未見",
+    "detail": "全文檢索『台積電』『臺灣積體』皆0筆，未見任何個股例外；單一個股10%適用於台積電。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00036&filename=202607_A00036_E43_1.pdf",
+    "confidence": "high"
+   },
+   {
+    "key": "disclosure_rule",
+    "label_zh": "持股揭露規定",
+    "value": "公開說明書僅列週/月/季；每日完整持股取不到",
+    "detail": "每營業日公告前一營業日淨值與次一營業日申購買回清單；每週公布投資產業別持股比例；每月公布前十大；每季公布占淨值1%以上標的；上市日後提供盤中估計淨值。p62 壹拾、一(二)。『每日公布完整持股』本文未載。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00036&filename=202607_A00036_E43_1.pdf",
+    "confidence": "medium"
+   },
+   {
+    "key": "creation_redemption_unit",
+    "label_zh": "申購買回單位",
+    "value": "500,000單位/基數；現金申購買回",
+    "detail": "現金申購買回清單(上市日前一營業日起每日公告)；申購預收申購總價金，T+1計算差額多退少補；買回須基數或整倍數；申購手續費加事務處理費合計最高4%。成立日前最低1,000單位(1萬元)。p12-13、p49、p53。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00036&filename=202607_A00036_E43_1.pdf",
+    "confidence": "high"
+   },
+   {
+    "key": "fees",
+    "label_zh": "費用",
+    "value": "經理費1.2%/1.0%；保管費0.15%",
+    "detail": "經理費：淨資產低於200億元(含)時1.2%/年，超過200億元時1.0%/年；保管費0.15%/年；收益不分配。p15-16 二十三~二十五。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00036&filename=202607_A00036_E43_1.pdf",
+    "confidence": "high"
+   },
+   {
+    "key": "other",
+    "label_zh": "其他",
+    "value": "特殊情形與基金概況",
+    "detail": "特殊情形(信託契約終止前一個月；占比>=20%之國家/地區重大政經事件、外匯管制、匯率單日5%；指數6日10%/30日20%)不受比例限制，事由結束後30個營業日內調整(p9)。無申購/買回失敗3日調整條款。首次募集最高200億/最低2億，每單位10元，銷售開始日2026-09-16。FSC生效函：115/7/28 金管證投字第1150347247號(p16)。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00036&filename=202607_A00036_E43_1.pdf",
+    "confidence": "high"
+   }
+  ],
+  "name": "安聯亞洲半導體主動式ETF證券投資信託基金（簡稱 主動安聯亞半導體）",
+  "listing_date": "2026-10-13（二手：聯合新聞網；公開說明書本文未列）",
+  "benchmark": "無（未追蹤指數；公開說明書 p32：未設定績效指標）"
+ },
+ "00981A": {
+  "checks": [
+   {
+    "id": "equity_min",
+    "label": "股票（含興櫃、創新板）＋存託憑證 ≥ 淨資產 70%",
+    "metric": "stock_pct",
+    "op": ">=",
+    "limit": 70,
+    "value": 96.1,
+    "status": "符合",
+    "margin": 26.1,
+    "note": null
+   },
+   {
+    "id": "single_max",
+    "label": "單一個股 ≤ 淨資產 10%",
+    "metric": "max_weight",
+    "op": "<=",
+    "limit": 10,
+    "value": 11.31,
+    "status": "超過",
+    "margin": -1.31,
+    "note": "單一個股上限通常以買進時點計算，股價上漲造成的被動超過不一定違規；主管機關 2025 年起對部分 ETF 放寬權值股上限。請以投信公告為準。"
+   },
+   {
+    "id": "tw_only",
+    "label": "只投資中華民國（台股占股票部位 100%）",
+    "metric": "tw_share_of_stock",
+    "op": ">=",
+    "limit": 99.9,
+    "warn_margin": 0,
+    "value": 100.0,
+    "status": "符合",
+    "margin": 0.1,
+    "note": null
+   },
+   {
+    "id": "top300_min",
+    "label": "市值前 300 大股票 ≥ 60%（需市值排名資料，未自動檢查）",
+    "metric": null,
+    "op": null,
+    "limit": 60,
+    "value": null,
+    "status": "未檢查",
+    "margin": null
+   }
+  ],
+  "rules": [
+   {
+    "key": "min_equity_pct",
+    "label_zh": "股票類最低比例",
+    "value": "70",
+    "detail": "自上市日起，股票(含承銷)、興櫃、創新板股票及存託憑證總金額不低於淨資產70%(含)；且投資於全體上市櫃市值前300大企業之股票不低於60%(含)。公開說明書 p7-8 基金概況壹、九1。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00009&filename=202607_A00009_E45_3.pdf",
+    "confidence": "high"
+   },
+   {
+    "key": "ramp_up_months",
+    "label_zh": "建倉緩衝期",
+    "value": "0",
+    "detail": "無『成立後N個月』條款；自上市日起適用；成立日至上市日前一營業日不接受申購買回(p9)。申購失敗/買回失敗造成不符，次日起3個營業日內調整(p8 九3)。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00009&filename=202607_A00009_E45_3.pdf",
+    "confidence": "high"
+   },
+   {
+    "key": "max_cash_pct",
+    "label_zh": "現金/存款/附買回/短期票券上限",
+    "value": "無數字上限",
+    "detail": "得以現金、存放金融機構、債券附買回、短期票券保持資產(p8 九6)。申購預收申購價金上限為每基數約當淨值110%(封面注意事項(七))。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00009&filename=202607_A00009_E45_3.pdf",
+    "confidence": "high"
+   },
+   {
+    "key": "derivatives_rule",
+    "label_zh": "期貨/衍生品規則",
+    "value": "僅避險或增加投資效率",
+    "detail": "得運用衍生自股價指數、股票、ETF之期貨、選擇權、期貨選擇權，須符合金管會應行注意事項(數字上限取不到)。p8 九10。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00009&filename=202607_A00009_E45_3.pdf",
+    "confidence": "high"
+   },
+   {
+    "key": "region_rule",
+    "label_zh": "地區/市場規則",
+    "value": "僅投資中華民國；市值前300大>=60%",
+    "detail": "投資地區僅中華民國；市值依每年6月及12月最後一個營業日為基準日排序，掉出前300大者基準日次一營業日起一個月內仍併入60%計算。p1、p7-8。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00009&filename=202607_A00009_E45_3.pdf",
+    "confidence": "high"
+   },
+   {
+    "key": "single_stock_cap",
+    "label_zh": "單一個股上限",
+    "value": "10% 淨資產",
+    "detail": "任一上市櫃公司股票(含承銷)、存託憑證及公司債/金融債券總金額不超過資產淨值10%；持股不超過公司已發行股份10%。p16 運用限制(8)(9)。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00009&filename=202607_A00009_E45_3.pdf",
+    "confidence": "high"
+   },
+   {
+    "key": "tsmc_exception",
+    "label_zh": "台積電條款",
+    "value": "未見",
+    "detail": "全文『台積』僅出現在持股明細表(p40)，無個股例外條款。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00009&filename=202607_A00009_E45_3.pdf",
+    "confidence": "high"
+   },
+   {
+    "key": "disclosure_rule",
+    "label_zh": "持股揭露規定",
+    "value": "公開說明書僅列週/月/季；每日完整持股取不到",
+    "detail": "每營業日公告前一營業日淨值及次一營業日現金申購買回清單；每週公布產業別持股比例(p39另載每週公布基金投資組合內容及比例)；每月前十大；每季占淨值1%以上標的。p37-39；網站ezmoney.com.tw。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00009&filename=202607_A00009_E45_3.pdf",
+    "confidence": "medium"
+   },
+   {
+    "key": "creation_redemption_unit",
+    "label_zh": "申購買回單位",
+    "value": "500,000單位/基數；現金申購",
+    "detail": "上市日起以現金申購；預收總價金依清單每基數約當淨值乘一定比例(上限110%)。p27-28、封面p1。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00009&filename=202607_A00009_E45_3.pdf",
+    "confidence": "high"
+   },
+   {
+    "key": "fees",
+    "label_zh": "費用",
+    "value": "經理費1.20%/1.00%；保管費0.12%/0.10%",
+    "detail": "經理費淨資產200億(含)以下1.20%，逾200億之部分1.00%；保管費200億(含)以下0.12%，逾200億之部分0.10%(分級累進)。p12 二十三、二十四。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00009&filename=202607_A00009_E45_3.pdf",
+    "confidence": "high"
+   },
+   {
+    "key": "other",
+    "label_zh": "其他",
+    "value": "基準與特殊情形",
+    "detail": "特殊情形：信託契約終止前一個月或加權指數6日10%/30日20%漲跌，不受比例限制，結束後30個營業日內調整(p8)。上市日僅有二手資料。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00009&filename=202607_A00009_E45_3.pdf",
+    "confidence": "medium"
+   }
+  ],
+  "name": "統一台股增長主動式ETF證券投資信託基金（簡稱 主動統一台股增長）",
+  "listing_date": "2025-05-27（二手：wantgoo；募集日114/5/7-5/9見公開說明書p8）",
+  "benchmark": "無追蹤指數；績效指標=臺灣證券交易所發行量加權股價報酬指數（僅比較，不追蹤）"
+ },
+ "00997A": {
+  "checks": [
+   {
+    "id": "equity_min",
+    "label": "國內外股票＋存託憑證 ≥ 淨資產 70%",
+    "metric": "stock_pct",
+    "op": ">=",
+    "limit": 70,
+    "value": 92.3,
+    "status": "符合",
+    "margin": 22.3,
+    "note": null
+   },
+   {
+    "id": "single_max",
+    "label": "單一個股 ≤ 淨資產 10%",
+    "metric": "max_weight",
+    "op": "<=",
+    "limit": 10,
+    "value": 4.89,
+    "status": "符合",
+    "margin": 5.11,
+    "note": null
+   },
+   {
+    "id": "us_min",
+    "label": "美國有價證券 ≥ 60%（以美國掛牌股票計，未含美國企業海外掛牌）",
+    "metric": "us_pct",
+    "op": ">=",
+    "limit": 60,
+    "approx": true,
+    "value": 79.53,
+    "status": "符合",
+    "margin": 19.53,
+    "note": null
+   }
+  ],
+  "rules": [
+   {
+    "key": "min_equity_pct",
+    "label_zh": "股票類最低比例",
+    "value": "70",
+    "detail": "自上市日起，國內及外國股票(含承銷股、特別股)、存託憑證(含NVDR)總金額不低於淨資產70%(含)；美國有價證券不低於60%(含)。公開說明書 p9 基金概況壹、一(九)1。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00016&filename=202606_A00016_E87_4.pdf",
+    "confidence": "high"
+   },
+   {
+    "key": "ramp_up_months",
+    "label_zh": "建倉緩衝期",
+    "value": "0",
+    "detail": "無『成立後N個月』條款；自上市日起適用；成立日至上市日前一營業日不接受申購(p11-12)。申購失敗/買回失敗或信託契約第十九條第三項情事，次日起3個營業日內調整(p9 九2)。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00016&filename=202606_A00016_E87_4.pdf",
+    "confidence": "high"
+   },
+   {
+    "key": "max_cash_pct",
+    "label_zh": "現金/存款/附買回/短期票券上限",
+    "value": "無數字上限",
+    "detail": "得以現金、存放金融機構、債券附買回、短期票券等保持資產，交易對象信評須達標。p10 九5。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00016&filename=202606_A00016_E87_4.pdf",
+    "confidence": "high"
+   },
+   {
+    "key": "derivatives_rule",
+    "label_zh": "期貨/衍生品規則",
+    "value": "僅避險或增加投資效率",
+    "detail": "得以交易人身分交易衍生自有價證券、股價指數、ETF或主動式ETF之期貨、選擇權、期貨選擇權，須符合金管會應行注意事項(數字上限取不到)。p9 八3。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00016&filename=202606_A00016_E87_4.pdf",
+    "confidence": "high"
+   },
+   {
+    "key": "region_rule",
+    "label_zh": "地區/市場規則",
+    "value": "美國有價證券>=60%",
+    "detail": "『美國有價證券』=於美國證券交易市場交易者，或美國註冊企業所發行而於外國市場或經金管會核准店頭市場交易者。其他地區清單、中國A股本次未見。p9。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00016&filename=202606_A00016_E87_4.pdf",
+    "confidence": "high"
+   },
+   {
+    "key": "single_stock_cap",
+    "label_zh": "單一個股上限",
+    "value": "10% 淨資產",
+    "detail": "任一上市櫃公司股票(含承銷、特別股)、存託憑證(含NVDR)及公司債/金融債券總金額不超過淨資產10%；持股不超過公司已發行股份10%；承銷股單次上限1%。p26 運用限制(8)(9)(11)。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00016&filename=202606_A00016_E87_4.pdf",
+    "confidence": "high"
+   },
+   {
+    "key": "tsmc_exception",
+    "label_zh": "台積電條款",
+    "value": "不適用/未見",
+    "detail": "美股基金，未見個股例外。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00016&filename=202606_A00016_E87_4.pdf",
+    "confidence": "medium"
+   },
+   {
+    "key": "disclosure_rule",
+    "label_zh": "持股揭露規定",
+    "value": "公開說明書僅列週/月/季；每日完整持股取不到",
+    "detail": "每營業日公告前一營業日淨值及次一營業日現金申購買回清單；每週公布產業別持股比例；每月前十大；每季占淨值1%以上標的。p48-49。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00016&filename=202606_A00016_E87_4.pdf",
+    "confidence": "medium"
+   },
+   {
+    "key": "creation_redemption_unit",
+    "label_zh": "申購買回單位",
+    "value": "500,000單位/基數；現金申購買回",
+    "detail": "每現金申購/買回基數500,000單位；申購手續費最高2%(每基數約當市值)；申購/買回交易費目前0.1%。p12、p46。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00016&filename=202606_A00016_E87_4.pdf",
+    "confidence": "high"
+   },
+   {
+    "key": "fees",
+    "label_zh": "費用",
+    "value": "經理費1.2%/1.0%；保管費0.12%/0.10%",
+    "detail": "經理費淨資產200億(含)以下1.2%，超過1.0%；保管費100億(含)以下0.12%，超過0.10%；每季配息。p15。二手Stockfeel誤寫保管費1.2%，以本文為準。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00016&filename=202606_A00016_E87_4.pdf",
+    "confidence": "high"
+   },
+   {
+    "key": "other",
+    "label_zh": "其他",
+    "value": "成立與特殊情形",
+    "detail": "成立日2026-03-30；特殊情形含占比>=20%之地區匯率單日5%或連續3日8%、指數6日10%/30日20%等，結束後30個營業日內調整(p9-10)。公開說明書為2026Q2版。",
+    "source_url": "https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=E&co_id=A00016&filename=202606_A00016_E87_4.pdf",
+    "confidence": "high"
+   }
+  ],
+  "name": "群益美國增長主動式ETF證券投資信託基金（本基金之配息來源可能為收益平準金）（簡稱 主動群益美國增長）",
+  "listing_date": "約2026-04-14（二手：Stockfeel；成立日2026-03-30見公開說明書p8）",
+  "benchmark": "無（未追蹤指數；TWSE標的指數『無』）"
+ }
+}

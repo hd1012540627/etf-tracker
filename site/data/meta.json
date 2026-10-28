@@ -1,0 +1,26 @@
+{
+ "generated_at": "2026-10-28T23:43:01+08:00",
+ "etfs": [
+  {
+   "code": "00412A",
+   "name": "主動安聯亞洲半導體",
+   "issuer": "安聯投信",
+   "url": "https://etf.allianzgi.com.tw/etf-info/E0004?tab=4"
+  },
+  {
+   "code": "00981A",
+   "name": "主動統一台股增長",
+   "issuer": "統一投信",
+   "url": "https://www.ezmoney.com.tw/ETF/Fund/Info?fundCode=49YTW"
+  },
+  {
+   "code": "00997A",
+   "name": "主動群益美國增長",
+   "issuer": "群益投信",
+   "url": "https://www.capitalfund.com.tw/etf/product/detail/502/portfolio"
+  }
+ ],
+ "repo": null,
+ "workflow": "daily.yml",
+ "demo": true
+}

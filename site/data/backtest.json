@@ -1,0 +1,14 @@
+{
+ "n_obs": 1,
+ "min_obs": 60,
+ "status": "樣本不足",
+ "observations": [
+  {
+   "date": "2026-10-28",
+   "cash_other_pct": 4.3066,
+   "active_net_twd": 663618837.0,
+   "breadth": 100.0
+  }
+ ],
+ "correlations": {}
+}

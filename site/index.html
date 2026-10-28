@@ -1,0 +1,697 @@
+<title>主動 ETF 持股雷達</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+/* Layout: sticky ledger header + tab rail; each view is a stack of panels on a cool paper ground.
+   Taiwan market convention: 紅 = 漲／買進，綠 = 跌／賣出. */
+:root{
+  --bg:#f3f4f2; --panel:#ffffff; --panel-2:#f7f8f6; --line:#dcdfda; --ink:#1c2523; --ink-2:#56605d; --ink-3:#8a928f;
+  --accent:#1f5f63; --accent-soft:#e2eeed; --brass:#a3741f;
+  --up:#c8322c; --up-soft:#fbe9e7; --down:#13804f; --down-soft:#e3f3eb; --warn:#b7791f; --warn-soft:#fbf1df;
+  --seg1:#1f5f63; --seg2:#7fa7a2; --seg3:#c9b27c; --seg4:#b9c2bf; --seg5:#8b6f9e; --seg6:#d98c5f;
+  --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --f-display:"Noto Serif TC","Songti TC",serif;
+  --f-num:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --r:8px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121716; --panel:#1a2120; --panel-2:#202927; --line:#2f3a38; --ink:#e6ebe9; --ink-2:#a9b4b1; --ink-3:#77837f;
+  --accent:#6fb6b2; --accent-soft:#1f3433; --brass:#d3a656;
+  --up:#ff6b5f; --up-soft:#3a1f1d; --down:#3fc285; --down-soft:#173326; --warn:#e5ac4c; --warn-soft:#3a2f19;
+  --seg1:#6fb6b2; --seg2:#3f7b77; --seg3:#b39c62; --seg4:#55625f; --seg5:#a58bb8; --seg6:#d98c5f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121716; --panel:#1a2120; --panel-2:#202927; --line:#2f3a38; --ink:#e6ebe9; --ink-2:#a9b4b1; --ink-3:#77837f;
+  --accent:#6fb6b2; --accent-soft:#1f3433; --brass:#d3a656;
+  --up:#ff6b5f; --up-soft:#3a1f1d; --down:#3fc285; --down-soft:#173326; --warn:#e5ac4c; --warn-soft:#3a2f19;
+  --seg1:#6fb6b2; --seg2:#3f7b77; --seg3:#b39c62; --seg4:#55625f; --seg5:#a58bb8; --seg6:#d98c5f; color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:14px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--panel)}
+a{color:var(--accent)}
+.num,.mono{font-family:var(--f-num);font-variant-numeric:tabular-nums}
+.wrap{max-width:1280px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--panel);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding-block:10px}
+.brand{display:flex;flex-direction:column;min-width:0;margin-right:auto}
+.brand h1{font-family:var(--f-display);font-size:20px;margin:0;letter-spacing:.02em;text-wrap:balance}
+.brand small{color:var(--ink-2);font-size:12px}
+.stamp{font-size:12px;color:var(--ink-2);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{white-space:nowrap;font:inherit;font-size:13px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:6px;padding:6px 12px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--panel)}
+.btn:focus-visible,.tab:focus-visible,.chip:focus-visible,input:focus-visible,select:focus-visible,.tip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+nav.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;margin-bottom:-1px}
+nav.tabs::-webkit-scrollbar{display:none}
+.tab{font:inherit;font-size:13.5px;background:none;border:0;border-bottom:2px solid transparent;color:var(--ink-2);padding:8px 12px;cursor:pointer;white-space:nowrap}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent);font-weight:700}
+main{padding-block:18px 48px}
+.view{display:flex;flex-direction:column;gap:16px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px;min-width:0}
+.panel h2{font-size:15px;margin:0;display:flex;align-items:center;gap:6px}
+.panel h3{font-size:13px;margin:0 0 8px;color:var(--ink-2);font-weight:500}
+.ph{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.sub{color:var(--ink-2);font-size:12.5px}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.tip{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;border:1px solid var(--line);color:var(--ink-3);font-size:11px;font-family:var(--f-num);cursor:help;background:var(--panel-2);padding:0;flex:none}
+.tip:hover{color:var(--accent);border-color:var(--accent)}
+#tipbox{position:fixed;z-index:50;max-width:min(340px,calc(100vw - 32px));background:var(--ink);color:var(--panel);padding:10px 12px;border-radius:6px;font-size:12.5px;line-height:1.55;box-shadow:0 6px 24px rgba(0,0,0,.18)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:10px}
+.kpi{background:var(--panel-2);border-radius:6px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.kpi .k{font-size:12px;color:var(--ink-2);display:flex;gap:4px;align-items:center}
+.kpi .v{font-family:var(--f-num);font-size:19px;font-variant-numeric:tabular-nums}
+.kpi .d{font-size:12px;font-family:var(--f-num)}
+.up{color:var(--up)} .down{color:var(--down)} .muted{color:var(--ink-3)}
+.etfcard{display:flex;flex-direction:column;gap:12px}
+.etfhead{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.code{font-family:var(--f-num);font-weight:500;font-size:13px;color:var(--accent);letter-spacing:.04em}
+.etfname{font-weight:700;font-size:16px}
+.stack{display:flex;height:14px;border-radius:3px;overflow:hidden;background:var(--panel-2)}
+.stack span{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:12px;color:var(--ink-2)}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.pill{display:inline-flex;align-items:center;gap:4px;font-size:12px;padding:1px 8px;border-radius:999px;white-space:nowrap;border:1px solid transparent}
+.pill.ok{background:var(--accent-soft);color:var(--accent)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pill.bad{background:var(--up-soft);color:var(--up)}
+.pill.na{background:var(--panel-2);color:var(--ink-3);border-color:var(--line)}
+.st{font-size:12px;padding:1px 7px;border-radius:4px;white-space:nowrap}
+.st.新增,.st.加碼{background:var(--up-soft);color:var(--up)}
+.st.剔除,.st.減碼{background:var(--down-soft);color:var(--down)}
+.st.公司行動{background:var(--warn-soft);color:var(--warn)}
+.st.不變,.st.隨申贖等比例變動{background:var(--panel-2);color:var(--ink-3)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{padding:7px 10px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+th{position:sticky;top:0;background:var(--panel-2);font-weight:500;color:var(--ink-2);font-size:12px;cursor:pointer;user-select:none}
+th.r,td.r{text-align:right}
+tbody tr:hover td{background:var(--panel-2)}
+tbody tr:last-child td{border-bottom:0}
+td.name{white-space:normal;min-width:120px}
+.sel{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--panel);color:var(--ink-2);border-radius:999px;padding:4px 12px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--panel)}
+input[type=search],input[type=text],input[type=number],input[type=password],select{font:inherit;font-size:13px;padding:6px 10px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--ink);min-width:0}
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.chartbox{position:relative;height:260px}
+.chartbox.sm{height:200px}
+.hbars{display:flex;flex-direction:column;gap:6px}
+.hb{display:grid;grid-template-columns:minmax(80px,140px) 1fr 76px;gap:8px;align-items:center;font-size:12.5px}
+.hb .t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hb .track{height:10px;background:var(--panel-2);border-radius:2px;position:relative}
+.hb .fill{position:absolute;top:0;bottom:0;border-radius:2px;background:var(--seg2)}
+.hb .val{text-align:right;font-family:var(--f-num);font-variant-numeric:tabular-nums}
+.div .track::after{content:"";position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--ink-3)}
+.alert{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;padding:10px 12px;border-left:3px solid var(--line);background:var(--panel-2);border-radius:4px}
+.alert.高{border-left-color:var(--up)} .alert.中{border-left-color:var(--warn)} .alert.低{border-left-color:var(--ink-3)}
+.alert .meta{font-size:12px;color:var(--ink-2)}
+.list{display:flex;flex-direction:column;gap:8px}
+.empty{padding:20px;text-align:center;color:var(--ink-2);background:var(--panel-2);border-radius:6px}
+.note{font-size:12.5px;color:var(--ink-2);background:var(--panel-2);border-radius:6px;padding:10px 12px}
+.note b{color:var(--ink)}
+.gauge{height:8px;background:var(--panel-2);border-radius:4px;position:relative;margin-top:6px}
+.gauge .g{position:absolute;top:0;bottom:0;left:0;border-radius:4px;background:var(--accent)}
+.gauge .lim{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink)}
+dialog{border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);padding:0;width:min(520px,calc(100vw - 32px))}
+dialog::backdrop{background:rgba(0,0,0,.35)}
+.dlg{padding:18px;display:flex;flex-direction:column;gap:12px}
+.dlg label{display:flex;flex-direction:column;gap:4px;font-size:13px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.spark{width:120px;height:28px}
+.prose{max-width:72ch}
+.prose h3{color:var(--ink);font-size:14px;margin:18px 0 6px}
+.prose p,.prose li{color:var(--ink-2)}
+.demo-banner{background:var(--warn-soft);color:var(--warn);font-size:12.5px;padding:6px 0}
+@media (max-width:640px){.chartbox{height:220px}.brand h1{font-size:18px}.hb{grid-template-columns:90px 1fr 64px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="top">
+  <div id="demoBanner" class="demo-banner" hidden><div class="wrap">示範資料：持股為 2026-10-28 晚間從三家投信網站實際擷取，股價為當晚 Yahoo Finance 報價。部署到 GitHub 後每天 09:00 自動更新。</div></div>
+  <div class="wrap">
+    <div class="bar">
+      <div class="brand"><h1>主動 ETF 持股雷達</h1><small id="subtitle">追蹤經理人每天的持股、現金與期貨部位</small></div>
+      <div class="stamp"><span>資料更新 <b id="genAt" class="mono">—</b></span><span id="nextRun" class="muted"></span></div>
+      <button class="btn primary" id="updBtn" type="button" aria-haspopup="dialog">一鍵更新</button>
+      <button class="tip" type="button" data-tip="一鍵更新：觸發 GitHub 上的更新程序。選「只更新股價」約 1–2 分鐘，「完整更新」會重新抓三家投信的持股，約 3–5 分鐘。持股一天只公布一次，盤中按完整更新不會有新持股。第一次使用要在設定裡貼上 GitHub 權杖。">i</button>
+    </div>
+    <nav class="tabs" role="tablist" id="tabs"></nav>
+  </div>
+</header>
+
+<main class="wrap"><div id="view" class="view"><div class="empty">載入資料中…</div></div></main>
+<div id="tipbox" role="tooltip" hidden></div>
+
+<dialog id="updDlg">
+  <form class="dlg" method="dialog" id="updForm">
+    <h2 style="margin:0;font-size:16px">一鍵更新</h2>
+    <p class="sub" style="margin:0">更新會在 GitHub Actions 上執行，完成後這個頁面會自動重新載入資料。</p>
+    <div class="row">
+      <label style="flex-direction:row;gap:6px;align-items:center"><input type="radio" name="mode" value="prices" id="modePrices" checked> 只更新股價（快）</label>
+      <label style="flex-direction:row;gap:6px;align-items:center"><input type="radio" name="mode" value="full" id="modeFull"> 完整更新（持股＋股價）</label>
+    </div>
+    <details id="ghSettings">
+      <summary class="sub" style="cursor:pointer">GitHub 設定（只存在這台裝置的瀏覽器）</summary>
+      <div class="dlg" style="padding:10px 0 0">
+        <label for="ghRepo">儲存庫（帳號/名稱）<input type="text" id="ghRepo" placeholder="howleo/etf-tracker" autocomplete="off"></label>
+        <label for="ghToken">Fine-grained 權杖（只需勾 Actions: Read and write）<input type="password" id="ghToken" placeholder="github_pat_…" autocomplete="off"></label>
+        <p class="sub" style="margin:0">權杖只存在你這台裝置的瀏覽器（localStorage），不會寫進儲存庫。建立方式見「說明」分頁。</p>
+      </div>
+    </details>
+    <div id="updStatus" class="note" hidden></div>
+    <div class="row" style="justify-content:flex-end">
+      <a class="btn" id="actionsLink" target="_blank" rel="noopener" href="#">到 GitHub 手動執行</a>
+      <button class="btn" value="close" type="submit">關閉</button>
+      <button class="btn primary" type="button" id="runBtn">開始更新</button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+"use strict";
+// ---------------------------------------------------------------- state & helpers
+const S={meta:null,etf:{},stocks:null,agg:null,rules:null,alerts:null,health:null,reports:null,bt:null,market:null,
+  curEtf:null,charts:[],sort:{},showTiny:false};
+const $=(s,r=document)=>r.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const fmt={
+  n(x,d=0){return x==null||isNaN(x)?"—":Number(x).toLocaleString("zh-TW",{minimumFractionDigits:d,maximumFractionDigits:d})},
+  p(x,d=2){return x==null||isNaN(x)?"—":Number(x).toFixed(d)+"%"},
+  pp(x,d=2){return x==null||isNaN(x)?"—":(x>0?"+":"")+Number(x).toFixed(d)},
+  yi(x,d=2){if(x==null||isNaN(x))return"—";const a=Math.abs(x);if(a>=1e8)return(x/1e8).toFixed(d)+" 億";if(a>=1e4)return(x/1e4).toFixed(0)+" 萬";return fmt.n(x)},
+  syi(x,d=2){return x==null||isNaN(x)?"—":(x>0?"+":x<0?"−":"")+fmt.yi(Math.abs(x),d)},
+  px(x){if(x==null)return"—";const a=Math.abs(x);return fmt.n(x,a>=1000?0:a>=100?1:2)},
+  qty(h){if(h.shares==null)return"—";return h.market==="TW"?fmt.n(h.shares/1000,h.shares%1000?3:0)+" 張":fmt.n(h.shares)+" 股"},
+  qtyRaw(sh,m){if(sh==null)return"—";return m==="台灣"||m==="TW"?fmt.n(sh/1000,sh%1000?3:0)+" 張":fmt.n(sh)+" 股"},
+  d(s){return s?String(s).slice(0,10):"—"},
+  t(s){return s?String(s).replace("T"," ").slice(0,16):"—"},
+};
+const cls=x=>x>0?"up":x<0?"down":"muted";
+const tip=t=>`<button class="tip" type="button" data-tip="${esc(t)}" aria-label="說明">i</button>`;
+
+// Feature descriptions (shown in the ⓘ tooltips)
+const TIPS={
+  overview:"總覽：每檔 ETF 最新一天的規模、資產配置與異動摘要。先看這裡判斷今天哪一檔有大動作。",
+  aggSum:"全部追蹤 ETF 合計：以規模加權的現金及其他比例與有效股票曝險，是用經理人部位判斷多空氣氛的核心指標。",
+  stack:"資產配置條：股票、附買回債券、現金、期貨保證金、應收付等占淨值的比例。安聯只揭露股票與附買回，其餘以差額推算。",
+  cash:"現金及其他 = 100% − 股票% − 債券%，包含現金、附買回債券、期貨保證金、應收付款。比例上升可能是經理人轉保守，也可能只是新申購資金還沒買完，請搭配「申購贖回」一起看。",
+  eff:"有效股票曝險 = 股票% ＋ 期貨多單名目% − 期貨空單名目%。經理人常用台指期貨快速調整曝險，這個數字比單看股票%更接近真實部位。",
+  fut:"期貨名目本金占淨值比例（不是資產，是曝險）。例如 00981A 持有台指期多單時，有效曝險會高於股票%。",
+  flows:"申購贖回：用流通單位數的變化 × 每單位淨值估算淨申購金額。正值代表有新資金流入，經理人被動需要買股。",
+  active:"主動調整：剔除申購贖回造成的等比例增減後，經理人真正加碼或減碼的股數與金額（金額以持股日收盤價估算）。",
+  holdings:"持股明細：股數、權重、持股日收盤價、目前股價與市值。台股以「張」顯示（1 張 = 1,000 股），外國股票以「股」顯示並換算台幣。",
+  cost:"推算平均成本：投信不公布成本。這裡用每天增加的股數 × 當天典型價（(最高+最低+收盤)/3）累積，減碼時按比例扣除。追蹤第一天的部位以當天價格作為起始基準，所以只代表「追蹤期間」的成本，不是基金真實成本。",
+  rules:"公開說明書規則：每檔 ETF 的投資比例限制（股票下限、單一個股上限、地區規定等），並用最新持股自動檢查是否符合。標示「近似」的項目只能用掛牌市場推估。",
+  changes:"持股變化：比較兩個持股日，列出新增、剔除、加碼、減碼。狀態以剔除申購贖回後的「主動調整」判定。",
+  stocks:"個股查詢：輸入代號或名稱，看哪些追蹤中的 ETF 持有它、持有多少、最近一次是加碼還是減碼。",
+  crowd:"擁擠持股：同時被兩檔以上追蹤 ETF 持有的股票。被越多經理人同時持有，賣壓出現時越容易一起出場。",
+  theme:"主題淨買超：把每檔 ETF 的主動調整金額按產業主題加總。紅色代表經理人淨加碼，綠色代表淨減碼。主題分類可在 config/themes.json 修改。",
+  breadth:"買賣廣度：(加碼＋新增 − 減碼 − 剔除) ÷ 總異動筆數。+100 代表全部都在買，−100 代表全部都在賣。",
+  consensus:"共識買賣：同一天有兩檔以上 ETF 同方向調整的股票。",
+  alerts:"提醒：新增或剔除持股、大額主動買賣、現金比例大幅變動、接近或違反公開說明書規則、資料過期或抓取失敗。門檻在 config/alerts.json；要推播到 Email 或 LINE 請見說明。",
+  mine:"我的持股：輸入你自己的部位（只存在這台裝置的瀏覽器，不會上傳），看哪些經理人也持有、最近在加碼還是減碼；如果你持有追蹤中的 ETF，還能看到穿透後的個股曝險。",
+  reports:"週報與月報：每週（月）各 ETF 的主動淨買賣、現金比例變化、加減碼最多的個股、新增與剔除名單，自動彙整。",
+  health:"資料健康度：每檔 ETF 最後成功抓取的時間、持股日是否落後、權重加總是否與股票比例一致、缺少股價或分類的個股。資料出問題時先看這裡。",
+  backtest:"訊號回測：累積足夠天數後，計算「規模加權現金比例」「買賣廣度」與未來 5 日、20 日加權指數報酬的相關性。主動 ETF 歷史很短，樣本不足前不下結論。",
+  guide:"說明：名詞定義、資料來源、更新時間、如何新增 ETF、如何設定一鍵更新與推播。",
+  series:"時間序列：股票比例、現金及其他比例、有效曝險與單位數的變化。單位數上升代表有資金申購。",
+  market:"國家分布：各掛牌市場占淨值比例。",
+  themeMix:"主題分布：依產業主題分類的持股比例。",
+  assets:"資產明細：附買回債券、現金、期貨部位與應收付款的逐項金額（依投信揭露的項目）。",
+  taiex:"規模加權現金及其他比例與加權指數的對照。經理人持續提高現金時指數的表現，是這個工具想觀察的關係。",
+};
+
+// ---------------------------------------------------------------- data loading
+async function j(path){const r=await fetch(path+"?v="+Date.now());if(!r.ok)throw new Error(path+" "+r.status);return r.json()}
+async function loadAll(){
+  S.meta=await j("data/meta.json");
+  const codes=S.meta.etfs.map(e=>e.code);
+  const res=await Promise.allSettled(codes.map(c=>j(`data/etf_${c}.json`)));
+  res.forEach((r,i)=>{if(r.status==="fulfilled")S.etf[codes[i]]=r.value});
+  const names=["stocks","aggregate","rules","alerts","health","reports","backtest","market"];
+  const keys=["stocks","agg","rules","alerts","health","reports","bt","market"];
+  const more=await Promise.allSettled(names.map(n=>j(`data/${n}.json`)));
+  more.forEach((r,i)=>{S[keys[i]]=r.status==="fulfilled"?r.value:null});
+  if(!S.curEtf)S.curEtf=store.get("curEtf",codes.find(c=>S.etf[c])||codes[0]);
+  if(!S.etf[S.curEtf])S.curEtf=codes.find(c=>S.etf[c]);
+  $("#genAt").textContent=fmt.t(S.meta.generated_at);
+  $("#demoBanner").hidden=!S.meta.demo;
+  $("#nextRun").textContent="排程：週一至週五 09:00";
+}
+
+// ---------------------------------------------------------------- routing
+const VIEWS=[["overview","總覽"],["etf","ETF 明細"],["changes","持股變化"],["stocks","個股查詢"],["aggregate","跨基金彙總"],
+  ["rules","規則檢查"],["alerts","提醒"],["mine","我的持股"],["reports","週報月報"],["health","資料健康"],["backtest","訊號回測"],["guide","說明"]];
+function renderTabs(cur){
+  $("#tabs").innerHTML=VIEWS.map(([id,l])=>`<button class="tab" role="tab" type="button" data-v="${id}" aria-selected="${id===cur}">${l}${id==="alerts"&&S.alerts?` <span class="pill ${S.alerts.current.some(a=>a.level==="高")?"bad":"na"}" style="padding:0 6px">${S.alerts.current.length}</span>`:""}</button>`).join("");
+}
+function route(){
+  const v=(location.hash||"#overview").slice(1);
+  const cur=VIEWS.some(x=>x[0]===v)?v:"overview";
+  renderTabs(cur);
+  S.charts.forEach(c=>c.destroy());S.charts=[];
+  const el=$("#view");
+  try{el.innerHTML=R[cur]();(A[cur]||(()=>{}))()}catch(e){console.error(e);el.innerHTML=`<div class="empty">這個分頁載入失敗：${esc(e.message)}</div>`}
+  window.scrollTo({top:0});
+}
+document.addEventListener("click",e=>{
+  const t=e.target.closest(".tab");if(t){location.hash=t.dataset.v;return}
+  const c=e.target.closest("[data-etf]");if(c){e.preventDefault();S.curEtf=c.dataset.etf;store.set("curEtf",S.curEtf);if(c.dataset.go&&location.hash!=="#"+c.dataset.go)location.hash=c.dataset.go;else route();return}
+  const s=e.target.closest("[data-stock]");if(s){e.preventDefault();S.stockKey=s.dataset.stock;if(location.hash!=="#stocks")location.hash="stocks";else route();return}
+  const th=e.target.closest("th[data-k]");if(th){const id=th.closest("table").id;const o=S.sort[id]||{};S.sort[id]={k:th.dataset.k,dir:o.k===th.dataset.k?-o.dir:-1};route();return}
+});
+window.addEventListener("hashchange",route);
+
+// tooltips
+const tipbox=$("#tipbox");
+function showTip(b){tipbox.textContent=b.dataset.tip;tipbox.hidden=false;const r=b.getBoundingClientRect();const w=tipbox.offsetWidth,h=tipbox.offsetHeight;
+  let x=Math.min(Math.max(8,r.left+r.width/2-w/2),innerWidth-w-8);let y=r.bottom+8;if(y+h>innerHeight-8)y=r.top-h-8;tipbox.style.left=x+"px";tipbox.style.top=y+"px"}
+document.addEventListener("mouseover",e=>{const b=e.target.closest(".tip");if(b)showTip(b)});
+document.addEventListener("mouseout",e=>{if(e.target.closest(".tip"))tipbox.hidden=true});
+document.addEventListener("focusin",e=>{const b=e.target.closest(".tip");if(b)showTip(b)});
+document.addEventListener("focusout",e=>{if(e.target.closest(".tip"))tipbox.hidden=true});
+document.addEventListener("click",e=>{const b=e.target.closest(".tip");if(b){e.stopPropagation();tipbox.hidden?showTip(b):tipbox.hidden=true}else if(!tipbox.hidden)tipbox.hidden=true},true);
+
+// ---------------------------------------------------------------- shared components
+const SEG={"股票":"--seg1","附買回債券":"--seg2","現金":"--seg3","現金及其他（推算）":"--seg3","期貨保證金":"--seg5","應收付證券款":"--seg4","應付贖回款":"--seg6","債券":"--seg5","其他":"--seg4","未分項差額":"--seg4"};
+function stackBar(bd){
+  const pos=Object.entries(bd||{}).filter(([k,v])=>v>0);
+  const neg=Object.entries(bd||{}).filter(([k,v])=>v<0);
+  return `<div class="stack" role="img" aria-label="資產配置">${pos.map(([k,v])=>`<span style="width:${Math.min(100,v)}%;background:var(${SEG[k]||"--seg4"})" title="${esc(k)} ${v.toFixed(2)}%"></span>`).join("")}</div>
+  <div class="legend">${pos.map(([k,v])=>`<span><i style="background:var(${SEG[k]||"--seg4"})"></i>${esc(k)} <span class="mono">${v.toFixed(2)}%</span></span>`).join("")}${neg.map(([k,v])=>`<span class="muted">${esc(k)} <span class="mono">${v.toFixed(2)}%</span></span>`).join("")}</div>`;
+}
+function hbars(obj,{diverging=false,unit="%",max=null,limit=12,yi=false}={}){
+  const ent=Object.entries(obj||{}).filter(([k,v])=>v!=null&&v!==0).slice(0,limit);
+  if(!ent.length)return `<div class="empty">沒有資料</div>`;
+  const m=max||Math.max(...ent.map(([k,v])=>Math.abs(v)))||1;
+  return `<div class="hbars ${diverging?"div":""}">${ent.map(([k,v])=>{
+    const w=Math.abs(v)/m*(diverging?50:100);
+    const left=diverging?(v>=0?50:50-w):0;
+    const col=diverging?(v>=0?"var(--up)":"var(--down)"):"var(--seg2)";
+    return `<div class="hb"><span class="t" title="${esc(k)}">${esc(k)}</span><span class="track"><span class="fill" style="left:${left}%;width:${w}%;background:${col}"></span></span><span class="val ${diverging?cls(v):""}">${yi?fmt.syi(v):fmt.n(v,2)+unit}</span></div>`}).join("")}</div>`;
+}
+function sortRows(id,rows,def){
+  const o=S.sort[id]||def;if(!o)return rows;
+  return [...rows].sort((a,b)=>{const x=a[o.k],y=b[o.k];if(x==null)return 1;if(y==null)return -1;return (x>y?1:x<y?-1:0)*o.dir});
+}
+function thead(id,cols){const o=S.sort[id]||{};return `<thead><tr>${cols.map(([k,l,r])=>`<th data-k="${k}" class="${r?"r":""}" scope="col">${l}${o.k===k?(o.dir>0?" ▲":" ▼"):""}</th>`).join("")}</tr></thead>`}
+function etfChips(go){return `<div class="sel" role="group" aria-label="選擇 ETF">${S.meta.etfs.map(e=>`<button type="button" class="chip" data-etf="${e.code}" ${go?`data-go="${go}"`:""} aria-pressed="${e.code===S.curEtf}">${e.code} ${esc(e.name.replace("主動",""))}</button>`).join("")}</div>`}
+function chart(id,cfg){const el=document.getElementById(id);if(!el||!window.Chart)return;const ink=css("--ink-2"),line=css("--line");
+  Chart.defaults.font.family=css("--f-body");Chart.defaults.color=ink;
+  cfg.options=Object.assign({responsive:true,maintainAspectRatio:false,interaction:{mode:"index",intersect:false},
+    plugins:{legend:{labels:{boxWidth:10,boxHeight:10}}},scales:{}},cfg.options||{});
+  for(const s of Object.values(cfg.options.scales)){s.grid=Object.assign({color:line},s.grid||{});s.ticks=Object.assign({color:ink},s.ticks||{})}
+  S.charts.push(new Chart(el,cfg))}
+function ruleSummary(code){const r=S.rules&&S.rules[code];if(!r||!r.checks.length)return `<span class="pill na">規則未建立</span>`;
+  const bad=r.checks.filter(c=>c.status==="未達"||c.status==="超過").length, warn=r.checks.filter(c=>c.status==="接近邊界").length;
+  return bad?`<span class="pill bad">${bad} 項未符合</span>`:warn?`<span class="pill warn">${warn} 項接近邊界</span>`:`<span class="pill ok">規則皆符合</span>`}
+function lastChange(code){const c=S.etf[code]&&S.etf[code].changes[0];return c&&c.prev_date?c:null}
+
+// ---------------------------------------------------------------- views
+const R={},A={};
+R.overview=()=>{
+  const days=(S.agg&&S.agg.days)||[];const last=days[days.length-1];
+  const pv=days.length>1?days[days.length-2]:null;
+  const prev=pv&&last&&pv.cash_other_pct!=null&&pv.etfs.join()===last.etfs.join()?pv:null;
+  const cards=S.meta.etfs.map(e=>{const d=S.etf[e.code];if(!d)return `<div class="panel"><div class="code">${e.code}</div><div class="empty">尚無資料</div></div>`;
+    const m=d.latest.metrics, ch=lastChange(e.code), s=ch&&ch.summary;
+    const nAl=(S.alerts?S.alerts.current:[]).filter(a=>a.etf===e.code).length;
+    return `<article class="panel etfcard">
+      <div class="etfhead"><div><div class="code">${e.code} · ${esc(e.issuer)}</div><div class="etfname">${esc(e.name)}</div>
+        <div class="sub">持股日 <span class="mono">${fmt.d(d.latest.position_date)}</span>${d.latest.pcf_date?` · 申購買回清單 ${fmt.d(d.latest.pcf_date)}`:""}</div></div>
+        <button class="btn" type="button" data-etf="${e.code}" data-go="etf">明細</button></div>
+      <div class="kpis">
+        <div class="kpi"><span class="k">規模</span><span class="v">${fmt.yi(m.nav_twd,1)}</span><span class="d muted">${m.units?fmt.n(m.units/1e8,2)+" 億單位":""}</span></div>
+        <div class="kpi"><span class="k">現金及其他 ${tip(TIPS.cash)}</span><span class="v">${fmt.p(m.cash_other_pct)}</span><span class="d ${s?cls(-s.cash_other_change_pp):"muted"}">${s?fmt.pp(s.cash_other_change_pp)+" 個百分點":"首次追蹤"}</span></div>
+        <div class="kpi"><span class="k">有效股票曝險 ${tip(TIPS.eff)}</span><span class="v">${fmt.p(m.effective_equity_pct)}</span><span class="d muted">${m.futures_long_pct?"含期貨 "+fmt.p(m.futures_long_pct):"無期貨部位"}</span></div>
+        <div class="kpi"><span class="k">主動淨買賣 ${tip(TIPS.active)}</span><span class="v ${s?cls(s.active_net_twd):""}">${s?fmt.syi(s.active_net_twd):"—"}</span><span class="d muted">${s?`vs ${fmt.d(ch.prev_date)}`:"需兩天以上資料"}</span></div>
+      </div>
+      <div><h3>資產配置 ${tip(TIPS.stack)}</h3>${stackBar(m.breakdown)}</div>
+      <div class="row" style="justify-content:space-between">
+        <span class="row">${ruleSummary(e.code)}${nAl?`<a class="pill ${S.alerts.current.some(a=>a.etf===e.code&&a.level==="高")?"bad":"warn"}" href="#alerts">${nAl} 則提醒</a>`:""}</span>
+        <span class="sub">${s?`新增 ${s.n_new}・剔除 ${s.n_exit}・加碼 ${s.n_add}・減碼 ${s.n_trim}`:`${m.n_holdings} 檔持股`}</span>
+      </div>
+    </article>`}).join("");
+  return `
+  <section class="panel">
+    <div class="ph"><h2>全部追蹤 ETF ${tip(TIPS.aggSum)}</h2><span class="sub">${last?`最新持股日 ${fmt.d(last.date)}，${last.n_etfs} 檔`:""}</span></div>
+    <div class="kpis">
+      <div class="kpi"><span class="k">合計規模</span><span class="v">${last?fmt.yi(last.aum_twd,0):"—"}</span></div>
+      <div class="kpi"><span class="k">規模加權現金及其他 ${tip(TIPS.cash)}</span><span class="v">${last?fmt.p(last.cash_other_pct):"—"}</span><span class="d ${prev&&last?cls(-(last.cash_other_pct-prev.cash_other_pct)):"muted"}">${prev&&last?fmt.pp(last.cash_other_pct-prev.cash_other_pct)+" 個百分點":"累積中"}</span></div>
+      <div class="kpi"><span class="k">規模加權有效曝險 ${tip(TIPS.eff)}</span><span class="v">${last?fmt.p(last.effective_equity_pct):"—"}</span></div>
+      <div class="kpi"><span class="k">主動淨買賣 ${tip(TIPS.active)}</span><span class="v ${last&&last.active_net_twd!=null?cls(last.active_net_twd):""}">${last&&last.active_net_twd!=null?fmt.syi(last.active_net_twd):"—"}</span><span class="d muted">${last&&last.has_changes?`${last.funds_net_buy} 檔淨買・${last.funds_net_sell} 檔淨賣`:"需兩天以上資料"}</span></div>
+      <div class="kpi"><span class="k">買賣廣度 ${tip(TIPS.breadth)}</span><span class="v ${last&&last.breadth!=null?cls(last.breadth):""}">${last&&last.breadth!=null?fmt.n(last.breadth,0):"—"}</span></div>
+    </div>
+  </section>
+  <section class="grid g3">${cards}</section>
+  <section class="panel"><div class="ph"><h2>現金比例與加權指數 ${tip(TIPS.taiex)}</h2><span class="sub">左軸：規模加權現金及其他％；右軸：加權指數</span></div>
+    <div class="chartbox"><canvas id="cOverview" aria-label="現金比例與加權指數走勢" role="img"></canvas></div>
+    ${days.length<5?`<p class="note" style="margin:10px 0 0">目前只有 ${days.length} 個持股日，每天 09:00 會新增一筆，累積一段時間後這張圖才有意義。</p>`:""}</section>`;
+};
+A.overview=()=>{
+  const days=(S.agg&&S.agg.days)||[];const tx=(S.market&&S.market.taiex)||[];
+  const first=days.length?days[0].date:null;const txs=tx.filter(p=>!first||p[0]>=first);
+  const labels=[...new Set([...txs.map(p=>p[0]),...days.map(d=>d.date)])].sort();
+  const cm=Object.fromEntries(days.map(d=>[d.date,d.cash_other_pct]));const tm=Object.fromEntries(txs);
+  chart("cOverview",{type:"line",data:{labels,datasets:[
+    {label:"現金及其他（規模加權）",data:labels.map(l=>cm[l]??null),borderColor:css("--brass"),backgroundColor:css("--brass"),spanGaps:true,pointRadius:4,yAxisID:"y"},
+    {label:"加權指數",data:labels.map(l=>tm[l]??null),borderColor:css("--seg2"),backgroundColor:css("--seg2"),pointRadius:0,borderWidth:1.5,spanGaps:true,yAxisID:"y1"}]},
+    options:{scales:{y:{position:"left",ticks:{callback:v=>v+"%"}},y1:{position:"right",grid:{drawOnChartArea:false}}}}});
+};
+
+R.etf=()=>{
+  const d=S.etf[S.curEtf];if(!d)return `${etfChips()}<div class="empty">這檔 ETF 還沒有資料</div>`;
+  const L=d.latest,m=L.metrics,a=L.assets;
+  const rows=L.holdings.filter(h=>S.showTiny||!h.tiny).map(h=>({...h,mv:h.latest_amount_twd??h.amount_twd,qty:h.shares}));
+  const q=(S.q||"").trim().toLowerCase();
+  const fr=q?rows.filter(h=>(h.key+h.name+(h.theme||"")).toLowerCase().includes(q)):rows;
+  const sr=sortRows("tH",fr,{k:"weight",dir:-1});
+  const ch=lastChange(S.curEtf);const crow=ch?Object.fromEntries(ch.rows.map(r=>[r.key,r])):{};
+  const futs=a.futures||[];
+  return `${etfChips()}
+  <section class="panel">
+    <div class="ph"><div><div class="code">${L.etf} · ${esc(L.issuer)}</div><h2 style="font-size:18px">${esc(L.name)}</h2>
+      <div class="sub">持股日 ${fmt.d(L.position_date)}${L.pcf_date?`（申購買回清單 ${fmt.d(L.pcf_date)}）`:""} · 淨值日 ${fmt.d(L.nav_date)} · <a href="${esc(L.source_url)}" target="_blank" rel="noopener">投信原始頁面</a></div></div>
+      ${ruleSummary(L.etf)}</div>
+    <div class="kpis">
+      <div class="kpi"><span class="k">規模</span><span class="v">${fmt.yi(m.nav_twd,1)}</span></div>
+      <div class="kpi"><span class="k">每單位淨值</span><span class="v">${fmt.n(m.nav_per_unit,2)}</span></div>
+      <div class="kpi"><span class="k">流通單位數 ${tip(TIPS.flows)}</span><span class="v">${m.units?fmt.n(m.units/1e8,3)+" 億":"—"}</span><span class="d ${ch?cls(ch.summary.unit_change):"muted"}">${ch&&ch.summary.net_creation_twd!=null?"淨申購 "+fmt.syi(ch.summary.net_creation_twd):""}</span></div>
+      <div class="kpi"><span class="k">股票</span><span class="v">${fmt.p(m.stock_pct)}</span></div>
+      <div class="kpi"><span class="k">現金及其他 ${tip(TIPS.cash)}</span><span class="v">${fmt.p(m.cash_other_pct)}</span></div>
+      <div class="kpi"><span class="k">期貨多單名目 ${tip(TIPS.fut)}</span><span class="v">${fmt.p(m.futures_long_pct)}</span></div>
+      <div class="kpi"><span class="k">有效股票曝險 ${tip(TIPS.eff)}</span><span class="v">${fmt.p(m.effective_equity_pct)}</span></div>
+      <div class="kpi"><span class="k">持股檔數</span><span class="v">${m.n_holdings}</span><span class="d muted">${m.n_tiny?`另 ${m.n_tiny} 檔象徵性持股`:""} · 前十大 ${fmt.p(m.top10_pct,1)}</span></div>
+    </div>
+  </section>
+  <section class="grid g3">
+    <div class="panel"><h3>資產配置 ${tip(TIPS.stack)}</h3>${stackBar(m.breakdown)}</div>
+    <div class="panel"><h3>國家分布 ${tip(TIPS.market)}</h3>${hbars(m.by_market)}</div>
+    <div class="panel"><h3>主題分布 ${tip(TIPS.themeMix)}</h3>${hbars(m.by_theme,{limit:10})}</div>
+  </section>
+  <section class="panel">
+    <div class="ph"><h2>持股明細 ${tip(TIPS.holdings)}</h2>
+      <div class="tools"><input type="search" id="hq" placeholder="搜尋代號、名稱或主題" value="${esc(S.q||"")}" aria-label="搜尋持股">
+      <label class="sub" style="display:flex;gap:4px;align-items:center"><input type="checkbox" id="tinyToggle" ${S.showTiny?"checked":""}> 顯示象徵性持股</label></div></div>
+    <div class="tablewrap"><table id="tH">${thead("tH",[["key","代號"],["name","名稱"],["market_name","市場"],["theme","主題"],["qty","持有量",1],["weight","權重",1],["dw","變化",1],["close","持股日收盤",1],["latest","現價",1],["mv","市值(台幣)",1],["avg_cost_local","推算均價",1],["est_unrealized_pct","推算報酬",1]])}
+    <tbody>${sr.map(h=>{const r=crow[h.key];return `<tr>
+      <td class="mono"><a href="#stocks" data-stock="${esc(h.key)}">${esc(h.code_raw||h.key)}</a></td><td class="name">${esc(h.name)}</td><td>${esc(h.market_name)}</td><td>${esc(h.theme)}</td>
+      <td class="r num">${fmt.qty(h)}</td><td class="r num">${fmt.p(h.weight)}</td>
+      <td class="r">${r?`<span class="st ${r.status}">${r.status}</span>`:""}</td>
+      <td class="r num">${fmt.px(h.close)}${h.currency!=="TWD"?` <span class="muted">${h.currency}</span>`:""}</td>
+      <td class="r num ${h.latest!=null&&h.close?cls(h.latest-h.close):""}" title="${esc(fmt.t(h.latest_time))}">${fmt.px(h.latest)}</td>
+      <td class="r num">${fmt.yi(h.mv)}</td>
+      <td class="r num" title="${esc((h.basis||"")+"，自 "+(h.first_date||"")+" 起追蹤")}">${fmt.px(h.avg_cost_local)}<span class="muted" style="font-size:11px"> 推算</span></td>
+      <td class="r num ${cls(h.est_unrealized_pct)}">${h.est_unrealized_pct==null?"—":fmt.pp(h.est_unrealized_pct)+"%"}</td></tr>`}).join("")}</tbody></table></div>
+    <p class="sub" style="margin:8px 0 0">推算均價 ${tip(TIPS.cost)} 以持股的掛牌幣別計。現價為最近一次更新時的報價（盤中約延遲 15–20 分鐘），持股日收盤為投信持股基準日的收盤價。</p>
+  </section>
+  <section class="grid g2">
+    <div class="panel"><h3>資產明細 ${tip(TIPS.assets)}</h3>
+      <div class="tablewrap"><table><thead><tr><th>項目</th><th class="r">金額(台幣)</th><th class="r">占淨值</th></tr></thead><tbody>
+      ${(a.rp_items||[]).map(x=>`<tr><td>附買回：${esc(x.name)}</td><td class="r num">${fmt.yi(x.amount_twd)}</td><td class="r num">${fmt.p(x.amount_twd/m.nav_twd*100)}</td></tr>`).join("")}
+      ${a.cash_twd?`<tr><td>現金</td><td class="r num">${fmt.yi(a.cash_twd)}</td><td class="r num">${fmt.p(a.cash_twd/m.nav_twd*100)}</td></tr>`:""}
+      ${a.futures_margin_twd?`<tr><td>期貨保證金</td><td class="r num">${fmt.yi(a.futures_margin_twd)}</td><td class="r num">${fmt.p(a.futures_margin_twd/m.nav_twd*100)}</td></tr>`:""}
+      ${a.receivable_payable_twd?`<tr><td>應收付證券款</td><td class="r num ${cls(a.receivable_payable_twd)}">${fmt.yi(a.receivable_payable_twd)}</td><td class="r num">${fmt.p(a.receivable_payable_twd/m.nav_twd*100)}</td></tr>`:""}
+      ${a.redemption_payable_twd?`<tr><td>應付贖回款</td><td class="r num ${cls(a.redemption_payable_twd)}">${fmt.yi(a.redemption_payable_twd)}</td><td class="r num">${fmt.p(a.redemption_payable_twd/m.nav_twd*100)}</td></tr>`:""}
+      ${(a.other_items||[]).map(x=>`<tr><td>${esc(x.name)}</td><td class="r num">${fmt.yi(x.amount_twd)}</td><td class="r num">${fmt.p(x.amount_twd/m.nav_twd*100)}</td></tr>`).join("")}
+      ${a.cash_is_residual?`<tr><td>現金及其他（以差額推算）</td><td class="r num">${fmt.yi(m.nav_twd*(m.cash_other_pct-m.rp_pct)/100)}</td><td class="r num">${fmt.p(m.cash_other_pct-m.rp_pct)}</td></tr>`:""}
+      </tbody></table></div></div>
+    <div class="panel"><h3>期貨部位 ${tip(TIPS.fut)}</h3>${futs.length?`<div class="tablewrap"><table><thead><tr><th>契約</th><th>方向</th><th class="r">口數</th><th>月份</th><th class="r">名目本金</th><th class="r">占淨值</th></tr></thead><tbody>
+      ${futs.map(f=>`<tr><td>${esc(f.name||f.code)}</td><td class="${f.side==="short"?"down":"up"}">${f.side==="short"?"空單":"多單"}</td><td class="r num">${fmt.n(f.contracts)}</td><td class="mono">${esc(f.month||"")}</td><td class="r num">${fmt.yi(f.notional_twd)}</td><td class="r num">${fmt.p(f.notional_twd/m.nav_twd*100)}</td></tr>`).join("")}
+      </tbody></table></div>`:`<div class="empty">目前沒有期貨部位</div>`}</div>
+  </section>
+  <section class="panel"><div class="ph"><h2>部位變化 ${tip(TIPS.series)}</h2></div><div class="chartbox"><canvas id="cSeries" role="img" aria-label="股票與現金比例走勢"></canvas></div></section>`;
+};
+A.etf=()=>{
+  const d=S.etf[S.curEtf];if(!d)return;
+  const q=$("#hq");if(q)q.addEventListener("input",()=>{S.q=q.value;const pos=q.selectionStart;route();const n=$("#hq");n.focus();n.setSelectionRange(pos,pos)});
+  const t=$("#tinyToggle");if(t)t.addEventListener("change",()=>{S.showTiny=t.checked;route()});
+  const sr=d.series;
+  chart("cSeries",{type:"line",data:{labels:sr.map(x=>x.date),datasets:[
+    {label:"股票%",data:sr.map(x=>x.stock_pct),borderColor:css("--seg1"),backgroundColor:css("--seg1"),yAxisID:"y",pointRadius:3},
+    {label:"現金及其他%",data:sr.map(x=>x.cash_other_pct),borderColor:css("--brass"),backgroundColor:css("--brass"),yAxisID:"y",pointRadius:3},
+    {label:"有效曝險%",data:sr.map(x=>x.effective_equity_pct),borderColor:css("--seg5"),backgroundColor:css("--seg5"),borderDash:[4,3],yAxisID:"y",pointRadius:3},
+    {label:"單位數(億)",data:sr.map(x=>x.units?x.units/1e8:null),borderColor:css("--ink-3"),backgroundColor:css("--ink-3"),yAxisID:"y1",pointRadius:2}]},
+    options:{scales:{y:{ticks:{callback:v=>v+"%"}},y1:{position:"right",grid:{drawOnChartArea:false}}}}});
+};
+
+R.changes=()=>{
+  const d=S.etf[S.curEtf];if(!d)return `${etfChips()}<div class="empty">沒有資料</div>`;
+  const list=d.changes.filter(c=>c.prev_date);
+  if(!list.length)return `${etfChips()}<section class="panel"><h2>持股變化 ${tip(TIPS.changes)}</h2><div class="empty" style="margin-top:12px">${S.curEtf} 目前只有一個持股日（${fmt.d(d.latest.position_date)}）。明天 09:00 更新後就能看到第一筆變化。</div></section>`;
+  const idx=Math.min(S.chIdx||0,list.length-1);const c=list[idx],s=c.summary;
+  const rows=c.rows.filter(r=>S.showAll||!["不變","隨申贖等比例變動"].includes(r.status));
+  return `${etfChips()}
+  <section class="panel"><div class="ph"><h2>持股變化 ${tip(TIPS.changes)}</h2>
+    <label class="sub" style="display:flex;gap:6px;align-items:center">比較區間 <select id="chSel">${list.map((x,i)=>`<option value="${i}" ${i===idx?"selected":""}>${x.prev_date} → ${x.date}</option>`).join("")}</select></label></div>
+    <div class="kpis">
+      <div class="kpi"><span class="k">新增 / 剔除</span><span class="v"><span class="up">${s.n_new}</span> / <span class="down">${s.n_exit}</span></span></div>
+      <div class="kpi"><span class="k">加碼 / 減碼</span><span class="v"><span class="up">${s.n_add}</span> / <span class="down">${s.n_trim}</span></span></div>
+      <div class="kpi"><span class="k">主動買進 ${tip(TIPS.active)}</span><span class="v up">${fmt.yi(s.active_buy_twd)}</span></div>
+      <div class="kpi"><span class="k">主動賣出</span><span class="v down">${fmt.yi(Math.abs(s.active_sell_twd||0))}</span></div>
+      <div class="kpi"><span class="k">淨申購 ${tip(TIPS.flows)}</span><span class="v ${cls(s.net_creation_twd)}">${s.net_creation_twd==null?"—":fmt.syi(s.net_creation_twd)}</span></div>
+      <div class="kpi"><span class="k">現金及其他變化 ${tip(TIPS.cash)}</span><span class="v ${cls(-s.cash_other_change_pp)}">${fmt.pp(s.cash_other_change_pp)}</span><span class="d muted">個百分點</span></div>
+    </div>
+    ${c.flow_adjusted?`<p class="note" style="margin:12px 0 0">已剔除申購贖回：單位數變為前一日的 <b class="mono">${c.unit_ratio}</b> 倍，等比例增減的股數不算經理人主動操作。</p>`:`<p class="note" style="margin:12px 0 0">這段期間缺少單位數資料，<b>沒有剔除申購贖回</b>，加碼／減碼可能包含申購資金帶來的被動買進。</p>`}
+  </section>
+  <section class="grid g2">
+    <div class="panel"><h3>主題主動買賣 ${tip(TIPS.theme)}</h3>${hbars(s.active_by_theme,{diverging:true,yi:true})}</div>
+    <div class="panel"><h3>市場主動買賣</h3>${hbars(s.active_by_market,{diverging:true,yi:true})}</div>
+  </section>
+  <section class="panel"><div class="ph"><h2>逐檔異動</h2><label class="sub" style="display:flex;gap:4px;align-items:center"><input type="checkbox" id="allToggle" ${S.showAll?"checked":""}> 顯示未變動持股</label></div>
+    <div class="tablewrap"><table id="tC">${thead("tC",[["status","狀態"],["name","名稱"],["theme","主題"],["shares_prev","前一日",1],["shares_cur","最新",1],["active_shares","主動調整",1],["active_pct_of_pos","占原部位",1],["active_amount_twd","估計金額",1],["weight_cur","權重",1],["delta_weight","權重變化",1]])}
+    <tbody>${sortRows("tC",rows,null).map(r=>`<tr><td><span class="st ${r.status}">${r.status}</span></td><td class="name"><a href="#stocks" data-stock="${esc(r.key)}">${esc(r.name)}</a> <span class="muted mono">${esc(r.key)}</span></td><td>${esc(r.theme)}</td>
+      <td class="r num">${fmt.qtyRaw(r.shares_prev,r.market_name)}</td><td class="r num">${fmt.qtyRaw(r.shares_cur,r.market_name)}</td>
+      <td class="r num ${cls(r.active_shares)}">${r.active_shares?(r.active_shares>0?"+":"")+fmt.qtyRaw(r.active_shares,r.market_name):"0"}</td>
+      <td class="r num ${cls(r.active_pct_of_pos)}">${r.active_pct_of_pos==null?(r.status==="新增"?"新部位":"—"):fmt.pp(r.active_pct_of_pos,1)+"%"}</td>
+      <td class="r num ${cls(r.active_amount_twd)}">${fmt.syi(r.active_amount_twd)}</td>
+      <td class="r num">${fmt.p(r.weight_cur)}</td><td class="r num ${cls(r.delta_weight)}">${fmt.pp(r.delta_weight)}</td></tr>`).join("")}</tbody></table></div></section>`;
+};
+A.changes=()=>{const s=$("#chSel");if(s)s.addEventListener("change",()=>{S.chIdx=+s.value;route()});const t=$("#allToggle");if(t)t.addEventListener("change",()=>{S.showAll=t.checked;route()})};
+
+R.stocks=()=>{
+  const all=Object.values(S.stocks||{});
+  const q=(S.sq||"").trim().toLowerCase();
+  const hits=q?all.filter(s=>(s.key+s.name).toLowerCase().includes(q)).slice(0,40):[];
+  const sel=S.stockKey&&S.stocks?S.stocks[S.stockKey]:null;
+  const crowd=(S.agg&&S.agg.crowded)||[];
+  return `<section class="panel"><div class="ph"><h2>個股查詢 ${tip(TIPS.stocks)}</h2></div>
+    <input type="search" id="sq" placeholder="輸入代號或名稱，例如 2330、Advantest、台光電" value="${esc(S.sq||"")}" style="width:100%" aria-label="搜尋個股">
+    ${hits.length?`<div class="sel" style="margin-top:10px">${hits.map(s=>`<button class="chip" type="button" data-stock="${esc(s.key)}" aria-pressed="${sel&&sel.key===s.key}">${esc(s.name)} <span class="mono">${esc(s.key)}</span></button>`).join("")}</div>`:q?`<div class="empty" style="margin-top:10px">追蹤中的 ETF 沒有持有符合「${esc(q)}」的股票</div>`:""}
+  </section>
+  ${sel?stockDetail(sel):""}
+  <section class="panel"><div class="ph"><h2>擁擠持股 ${tip(TIPS.crowd)}</h2><span class="sub">被 2 檔以上追蹤 ETF 同時持有</span></div>
+    ${crowd.length?`<div class="tablewrap"><table><thead><tr><th>名稱</th><th>主題</th><th class="r">持有檔數</th>${S.meta.etfs.map(e=>`<th class="r">${e.code}</th>`).join("")}<th class="r">合計市值</th></tr></thead><tbody>
+    ${crowd.slice(0,40).map(c=>`<tr><td class="name"><a href="#stocks" data-stock="${esc(c.key)}">${esc(c.name)}</a> <span class="muted mono">${esc(c.key)}</span></td><td>${esc(c.theme)}</td><td class="r num">${Object.keys(c.etfs).length}</td>${S.meta.etfs.map(e=>`<td class="r num">${c.etfs[e.code]!=null?fmt.p(c.etfs[e.code]):"<span class='muted'>—</span>"}</td>`).join("")}<td class="r num">${fmt.yi(c.amount_twd)}</td></tr>`).join("")}</tbody></table></div>`:`<div class="empty">目前沒有共同持股</div>`}
+  </section>`;
+};
+function spark(hist){if(!hist||hist.length<2)return "";const v=hist.map(h=>h[1]);const mx=Math.max(...v)||1;const w=120,h=28;
+  const pts=v.map((x,i)=>`${(i/(v.length-1)*(w-4)+2).toFixed(1)},${(h-3-(x/mx)*(h-6)).toFixed(1)}`).join(" ");
+  const last=pts.split(" ").pop().split(",");
+  return `<svg class="spark" viewBox="0 0 ${w} ${h}" role="img" aria-label="股數走勢"><polyline points="${pts}" fill="none" stroke="var(--accent)" stroke-width="1.5"/><circle cx="${last[0]}" cy="${last[1]}" r="2.5" fill="var(--accent)"/></svg>`}
+function stockDetail(s){
+  const hs=Object.entries(s.holders||{});
+  return `<section class="panel"><div class="ph"><div><div class="code">${esc(s.key)} · ${esc(s.market_name||"")} · ${esc(s.theme||"")}</div><h2 style="font-size:18px">${esc(s.name)}</h2></div>
+    <div class="kpi" style="min-width:160px"><span class="k">現價</span><span class="v">${fmt.px(s.latest)} <span class="muted" style="font-size:12px">${esc(s.currency||"")}</span></span><span class="d muted">${fmt.t(s.latest_time)}</span></div></div>
+    ${hs.length?`<div class="tablewrap"><table><thead><tr><th>ETF</th><th class="r">持有量</th><th class="r">權重</th><th class="r">市值</th><th>最近一次</th><th class="r">推算均價</th><th>追蹤起始</th><th>股數走勢</th></tr></thead><tbody>
+    ${hs.map(([c,h])=>`<tr><td><a href="#etf" data-etf="${c}" data-go="etf">${c}</a></td><td class="r num">${fmt.qtyRaw(h.shares,s.market_name)}</td><td class="r num">${fmt.p(h.weight)}</td><td class="r num">${fmt.yi(h.amount_twd)}</td>
+      <td>${h.last_status?`<span class="st ${h.last_status}">${h.last_status}</span>`:"<span class='muted'>首次追蹤</span>"}</td><td class="r num">${fmt.px(h.avg_cost_local)} <span class="muted" style="font-size:11px">推算</span></td><td class="mono">${fmt.d(h.first_date)}</td><td>${spark(h.history)}</td></tr>`).join("")}</tbody></table></div>`:`<div class="empty">目前沒有追蹤中的 ETF 持有</div>`}
+    ${s.exited?`<p class="note" style="margin:10px 0 0">最近被剔除：${s.exited.join("、")}</p>`:""}
+  </section>`}
+A.stocks=()=>{const q=$("#sq");if(q){q.addEventListener("input",()=>{S.sq=q.value;const p=q.selectionStart;route();const n=$("#sq");n.focus();n.setSelectionRange(p,p)})}};
+
+R.aggregate=()=>{
+  const days=(S.agg&&S.agg.days)||[];const last=[...days].reverse().find(d=>d.has_changes)||days[days.length-1];
+  if(!last)return `<div class="empty">沒有資料</div>`;
+  return `<section class="panel"><div class="ph"><h2>跨基金彙總 ${tip(TIPS.aggSum)}</h2><span class="sub">${fmt.d(last.date)}・${last.etfs.join("、")}</span></div>
+    <div class="kpis">
+      <div class="kpi"><span class="k">合計規模</span><span class="v">${fmt.yi(last.aum_twd,0)}</span></div>
+      <div class="kpi"><span class="k">現金及其他（加權）${tip(TIPS.cash)}</span><span class="v">${fmt.p(last.cash_other_pct)}</span></div>
+      <div class="kpi"><span class="k">有效曝險（加權）${tip(TIPS.eff)}</span><span class="v">${fmt.p(last.effective_equity_pct)}</span></div>
+      <div class="kpi"><span class="k">期貨多單（加權）${tip(TIPS.fut)}</span><span class="v">${fmt.p(last.futures_long_pct)}</span></div>
+      <div class="kpi"><span class="k">買賣廣度 ${tip(TIPS.breadth)}</span><span class="v ${cls(last.breadth)}">${last.breadth==null?"—":fmt.n(last.breadth,0)}</span><span class="d muted">加碼 ${last.n_add}・新增 ${last.n_new}・減碼 ${last.n_trim}・剔除 ${last.n_exit}</span></div>
+    </div>${last.has_changes?"":`<p class="note" style="margin:12px 0 0">主動買賣、廣度與共識需要至少兩個持股日；目前只有 00412A 有前一次（10/15）的持股可以比較。</p>`}</section>
+  <section class="grid g2">
+    <div class="panel"><h3>主題主動淨買賣 ${tip(TIPS.theme)}</h3>${hbars(last.active_by_theme,{diverging:true,yi:true})}</div>
+    <div class="panel"><h3>市場主動淨買賣</h3>${hbars(last.active_by_market,{diverging:true,yi:true})}</div>
+  </section>
+  <section class="grid g2">
+    <div class="panel"><h3>共識加碼 ${tip(TIPS.consensus)}</h3>${last.consensus_buy.length?`<div class="list">${last.consensus_buy.map(c=>`<div><a href="#stocks" data-stock="${esc(c.key)}">${esc(c.name)}</a> <span class="sub">${c.etfs.join("、")}</span></div>`).join("")}</div>`:`<div class="empty">今天沒有兩檔以上同時加碼的股票</div>`}</div>
+    <div class="panel"><h3>共識減碼 ${tip(TIPS.consensus)}</h3>${last.consensus_sell.length?`<div class="list">${last.consensus_sell.map(c=>`<div><a href="#stocks" data-stock="${esc(c.key)}">${esc(c.name)}</a> <span class="sub">${c.etfs.join("、")}</span></div>`).join("")}</div>`:`<div class="empty">今天沒有兩檔以上同時減碼的股票</div>`}</div>
+  </section>
+  <section class="panel"><div class="ph"><h2>每日走勢</h2></div><div class="chartbox"><canvas id="cAgg" role="img" aria-label="規模加權現金比例與主動淨買賣"></canvas></div></section>`;
+};
+A.aggregate=()=>{const days=(S.agg&&S.agg.days)||[];
+  chart("cAgg",{data:{labels:days.map(d=>d.date),datasets:[
+    {type:"bar",label:"主動淨買賣(億)",data:days.map(d=>d.active_net_twd==null?null:d.active_net_twd/1e8),backgroundColor:days.map(d=>(d.active_net_twd||0)>=0?css("--up"):css("--down")),yAxisID:"y1"},
+    {type:"line",label:"現金及其他%",data:days.map(d=>d.cash_other_pct),borderColor:css("--brass"),backgroundColor:css("--brass"),yAxisID:"y",pointRadius:3},
+    {type:"line",label:"有效曝險%",data:days.map(d=>d.effective_equity_pct),borderColor:css("--seg1"),backgroundColor:css("--seg1"),yAxisID:"y",pointRadius:3}]},
+    options:{scales:{y:{ticks:{callback:v=>v+"%"}},y1:{position:"right",grid:{drawOnChartArea:false}}}}})};
+
+R.rules=()=>{
+  return `<section class="panel"><div class="ph"><h2>公開說明書規則檢查 ${tip(TIPS.rules)}</h2></div><p class="sub" style="margin:0">依各檔最新持股自動檢查。三份公開說明書都沒有「成立後 N 個月」的建倉緩衝，比例限制自上市日起適用；遇特殊情形（指數 6 日漲跌 10% 等）可不受限，30 個營業日內調整。</p></section>
+  ${S.meta.etfs.map(e=>{const r=S.rules&&S.rules[e.code];if(!r)return "";
+    return `<section class="panel"><div class="ph"><div><div class="code">${e.code}</div><h2>${esc(r.name||e.name)}</h2><div class="sub">上市日 ${esc(r.listing_date||"—")}・績效指標 ${esc(r.benchmark||"—")}</div></div>${ruleSummary(e.code)}</div>
+      <div class="grid g3">${r.checks.map(c=>{const st=c.status==="符合"?"ok":c.status==="接近邊界"?"warn":(c.status==="未達"||c.status==="超過")?"bad":"na";
+        const pctv=c.value==null?0:Math.min(100,c.value);
+        return `<div class="kpi" style="gap:6px"><span class="k" style="display:block">${esc(c.label)}</span>
+          <div class="row" style="justify-content:space-between"><span class="v">${c.value==null?"—":fmt.n(c.value,2)+"%"}</span><span class="pill ${st}">${esc(c.status)}</span></div>
+          ${c.value!=null?`<div class="gauge"><span class="g" style="width:${pctv}%;background:var(${st==="bad"?"--up":st==="warn"?"--warn":"--accent"})"></span><span class="lim" style="left:${c.limit}%" title="限制 ${c.limit}%"></span></div><span class="sub">限制 ${c.op==="<="?"≤":"≥"} ${c.limit}%${c.margin!=null?`，距離 ${fmt.n(Math.abs(c.margin),2)} 個百分點`:""}</span>`:""}
+          ${c.note?`<span class="sub">${esc(c.note)}</span>`:""}</div>`}).join("")}</div>
+      <details style="margin-top:12px"><summary class="sub" style="cursor:pointer">公開說明書原文整理（${r.rules.length} 項）</summary>
+      <div class="tablewrap" style="margin-top:8px"><table><thead><tr><th>項目</th><th>規定</th><th>說明與出處</th><th>信心</th></tr></thead><tbody>
+      ${r.rules.map(x=>`<tr><td>${esc(x.label_zh)}</td><td class="name">${esc(x.value)}</td><td class="name" style="min-width:320px">${esc(x.detail)} ${x.source_url?`<a href="${esc(x.source_url)}" target="_blank" rel="noopener">來源</a>`:""}</td><td>${esc(x.confidence)}</td></tr>`).join("")}
+      </tbody></table></div></details></section>`}).join("")}`;
+};
+
+R.alerts=()=>{
+  const cur=(S.alerts&&S.alerts.current)||[];const lv=["高","中","低"];
+  const hist=(S.alerts&&S.alerts.history)||[];
+  return `<section class="panel"><div class="ph"><h2>最新提醒 ${tip(TIPS.alerts)}</h2><span class="sub">${cur.length} 則</span></div>
+    ${cur.length?lv.map(l=>{const xs=cur.filter(a=>a.level===l);return xs.length?`<h3 style="margin-top:8px">${l}優先（${xs.length}）</h3><div class="list">${xs.map(a=>`<div class="alert ${a.level}"><span class="code">${a.etf}</span><span><b>${esc(a.kind)}</b>：${esc(a.msg)}</span><span></span><span class="meta">持股日 ${fmt.d(a.date)}</span></div>`).join("")}</div>`:""}).join(""):`<div class="empty">目前沒有提醒</div>`}
+  </section>
+  <section class="panel"><div class="ph"><h2>提醒紀錄</h2><span class="sub">最近 ${hist.length} 則（依第一次出現時間）</span></div>
+    <div class="tablewrap"><table><thead><tr><th>首次出現</th><th>ETF</th><th>等級</th><th>類型</th><th>內容</th></tr></thead><tbody>
+    ${hist.slice(0,120).map(a=>`<tr><td class="mono">${fmt.t(a.first_seen)}</td><td class="mono">${a.etf}</td><td>${a.level}</td><td>${esc(a.kind)}</td><td class="name">${esc(a.msg)}</td></tr>`).join("")}</tbody></table></div>
+    <p class="note" style="margin:10px 0 0">要把「高」等級提醒推播到 Email 或 LINE：在 GitHub 儲存庫的 Settings → Secrets 加入對應金鑰（見「說明」分頁），不設定就只顯示在這裡。</p></section>`;
+};
+
+// my holdings (browser-only)
+function myList(){return store.get("myHoldings",[])}
+R.mine=()=>{
+  const my=myList();
+  const look=lookThrough(my);
+  return `<section class="panel"><div class="ph"><h2>我的持股 ${tip(TIPS.mine)}</h2><span class="sub">只存在這台裝置的瀏覽器</span></div>
+    <form id="myForm" class="row" autocomplete="off"><input type="text" id="myCode" placeholder="代號，例如 2330、00412A、NVDA US" aria-label="代號" style="flex:1 1 200px">
+      <input type="number" id="myQty" placeholder="股數（1 張 = 1000）" min="0" step="1" aria-label="股數" style="flex:1 1 140px">
+      <button class="btn primary" type="submit">加入</button><button class="btn" type="button" id="myDemo">載入範例</button></form>
+    ${my.length?`<div class="tablewrap" style="margin-top:12px"><table><thead><tr><th>代號</th><th>名稱</th><th class="r">股數</th><th>持有的追蹤 ETF</th><th>經理人最近動作</th><th></th></tr></thead><tbody>
+    ${my.map((x,i)=>{const s=findStock(x.code);const isEtf=S.etf[x.code.toUpperCase()];
+      return `<tr><td class="mono">${esc(x.code)}${x.example?' <span class="pill na">範例</span>':""}</td><td>${s?`<a href="#stocks" data-stock="${esc(s.key)}">${esc(s.name)}</a>`:isEtf?esc(isEtf.latest.name)+"（追蹤中的 ETF）":"<span class='muted'>追蹤中的 ETF 沒有持有</span>"}</td><td class="r num">${fmt.n(x.qty)}</td>
+        <td>${s?Object.entries(s.holders).map(([c,h])=>`${c} ${fmt.p(h.weight)}`).join("、"):"—"}</td>
+        <td>${s?Object.entries(s.holders).map(([c,h])=>h.last_status?`<span class="st ${h.last_status}">${c} ${h.last_status}</span>`:"").join(" "):""}${s&&s.exited?`<span class="st 剔除">${s.exited.join("、")} 剔除</span>`:""}</td>
+        <td><button class="btn" type="button" data-del="${i}" aria-label="刪除">刪除</button></td></tr>`}).join("")}</tbody></table></div>`:`<div class="empty" style="margin-top:12px">還沒有輸入持股。加入代號與股數後，這裡會列出哪些經理人也持有、最近在加碼還是減碼。</div>`}
+  </section>
+  ${look.rows.length?`<section class="panel"><div class="ph"><h2>穿透後的個股曝險</h2><span class="sub">你持有的追蹤 ETF × 每單位淨值 × 成分股權重，加上直接持股</span></div>
+    <div class="kpis" style="margin-bottom:12px"><div class="kpi"><span class="k">穿透市值合計</span><span class="v">${fmt.yi(look.total)}</span></div><div class="kpi"><span class="k">其中現金及其他</span><span class="v">${fmt.yi(look.cash)}</span></div></div>
+    <div class="tablewrap"><table><thead><tr><th>名稱</th><th>主題</th><th class="r">穿透市值</th><th class="r">占組合</th><th>來源</th></tr></thead><tbody>
+    ${look.rows.slice(0,40).map(r=>`<tr><td class="name">${esc(r.name)} <span class="muted mono">${esc(r.key)}</span></td><td>${esc(r.theme||"")}</td><td class="r num">${fmt.yi(r.twd)}</td><td class="r num">${fmt.p(r.twd/look.total*100)}</td><td class="sub">${esc(r.src.join("、"))}</td></tr>`).join("")}</tbody></table></div></section>`:""}`;
+};
+function findStock(code){if(!S.stocks)return null;const c=code.trim().toUpperCase().replace(/\s+/g," ");
+  const cand=[c,"TW:"+c,"US:"+c.replace(/ US$/,""),"JP:"+c.replace(/ JP$/,""),"KR:"+c.replace(/ KS$/,"")];
+  for(const k of cand)if(S.stocks[k])return S.stocks[k];return Object.values(S.stocks).find(s=>s.name===code.trim())||null}
+function lookThrough(my){
+  const agg={};let total=0,cash=0;
+  for(const x of my){const code=x.code.trim().toUpperCase();const e=S.etf[code];
+    if(e){const val=x.qty*(e.latest.metrics.nav_per_unit||0);total+=val;cash+=val*(e.latest.metrics.cash_other_pct||0)/100;
+      for(const h of e.latest.holdings){const r=agg[h.key]||(agg[h.key]={key:h.key,name:h.name,theme:h.theme,twd:0,src:[]});r.twd+=val*(h.weight||0)/100;if(!r.src.includes(code))r.src.push(code)}}
+    else{const s=findStock(code);if(s&&s.latest!=null){
+      const any=Object.values(S.etf).flatMap(e=>e.latest.holdings).find(h=>h.key===s.key);const rate=s.currency==="TWD"?1:(any&&any.fx_latest)||null;
+      if(rate){const val=x.qty*s.latest*rate;total+=val;const r=agg[s.key]||(agg[s.key]={key:s.key,name:s.name,theme:s.theme,twd:0,src:[]});r.twd+=val;r.src.push("直接持有")}}}}
+  return {rows:Object.values(agg).sort((a,b)=>b.twd-a.twd),total,cash};
+}
+A.mine=()=>{
+  const f=$("#myForm");if(f)f.addEventListener("submit",e=>{e.preventDefault();const c=$("#myCode").value.trim(),q=+$("#myQty").value;if(!c||!(q>0))return;const my=myList().filter(x=>!x.example);my.push({code:c,qty:q});store.set("myHoldings",my);route()});
+  const d=$("#myDemo");if(d)d.addEventListener("click",()=>{store.set("myHoldings",[{code:"00412A",qty:1000,example:true},{code:"2330",qty:1000,example:true},{code:"NVDA US",qty:10,example:true}]);route()});
+  document.querySelectorAll("[data-del]").forEach(b=>b.addEventListener("click",()=>{const my=myList();my.splice(+b.dataset.del,1);store.set("myHoldings",my);route()}));
+};
+
+R.reports=()=>{
+  const kind=S.repKind||"week";const list=(S.reports&&S.reports[kind])||[];
+  return `<section class="panel"><div class="ph"><h2>週報與月報 ${tip(TIPS.reports)}</h2>
+    <div class="sel"><button type="button" class="chip" id="rk-week" aria-pressed="${kind==="week"}">週報</button><button type="button" class="chip" id="rk-month" aria-pressed="${kind==="month"}">月報</button></div></div>
+    ${list.length?list.map(p=>`<article style="border-top:1px solid var(--line);padding-top:12px;margin-top:12px"><h3 style="color:var(--ink);font-size:14px">${esc(p.period)}</h3>
+      <ul style="margin:0;padding-left:18px">${p.summary.map(l=>`<li>${esc(l)}</li>`).join("")}</ul>
+      <div class="grid g3" style="margin-top:10px">${Object.entries(p.etfs).map(([c,e])=>`<div class="kpi"><span class="k">${c}</span>
+        <span class="sub">加碼：${e.top_buys.map(b=>`${esc(b.name)} ${fmt.yi(b.twd)}`).join("、")||"—"}</span>
+        <span class="sub">減碼：${e.top_sells.map(b=>`${esc(b.name)} ${fmt.yi(Math.abs(b.twd))}`).join("、")||"—"}</span></div>`).join("")}</div></article>`).join(""):`<div class="empty">還沒有資料</div>`}
+  </section>`;
+};
+A.reports=()=>{["week","month"].forEach(k=>{const b=$("#rk-"+k);if(b)b.addEventListener("click",()=>{S.repKind=k;route()})})};
+
+R.health=()=>{
+  const h=S.health||{etfs:{},runs:[]};
+  return `<section class="panel"><div class="ph"><h2>資料健康度 ${tip(TIPS.health)}</h2><span class="sub">最近交易日 ${fmt.d(h.last_trading_day)}・產生於 ${fmt.t(h.generated_at)}</span></div>
+    <div class="tablewrap"><table><thead><tr><th>ETF</th><th>狀態</th><th>最後成功抓取</th><th>持股日</th><th class="r">落後交易日</th><th class="r">筆數</th><th class="r">權重加總</th><th class="r">股票比例</th><th>缺股價</th><th>未分類</th><th>方式</th></tr></thead><tbody>
+    ${Object.entries(h.etfs).map(([c,x])=>{const bad=x.last_error||(x.stale_days>=2);const warn=(x.missing_price||[]).length||Math.abs(x.weight_gap||0)>0.5;
+      return `<tr><td class="mono"><a href="${esc(x.source)}" target="_blank" rel="noopener">${c}</a></td><td>${bad?`<span class="pill bad">異常</span>`:warn?`<span class="pill warn">注意</span>`:`<span class="pill ok">正常</span>`}</td>
+      <td class="mono">${fmt.t(x.last_success)}</td><td class="mono">${fmt.d(x.position_date)}</td><td class="r num">${x.stale_days??"—"}</td><td class="r num">${x.n_rows??"—"}</td>
+      <td class="r num">${fmt.p(x.weight_sum)}</td><td class="r num">${fmt.p(x.stock_pct)}</td><td>${(x.missing_price||[]).join("、")||"—"}</td><td class="name">${(x.unclassified||[]).join("、")||"—"}</td><td>${esc(x.fetch_mode||"")}</td></tr>
+      ${x.last_error?`<tr><td></td><td colspan="10" class="name up">${esc(x.last_error)}</td></tr>`:""}${(x.notes||[]).length?`<tr><td></td><td colspan="10" class="name sub">${esc(x.notes.join("；"))}</td></tr>`:""}`}).join("")}
+    </tbody></table></div>
+    ${(h.price_errors||[]).length?`<p class="note" style="margin:10px 0 0">股價抓取失敗：${esc(h.price_errors.join("、"))}</p>`:""}</section>
+  <section class="panel"><div class="ph"><h2>執行紀錄</h2></div><div class="tablewrap"><table><thead><tr><th>開始</th><th>觸發</th><th>模式</th><th class="r">成功</th><th>失敗</th></tr></thead><tbody>
+    ${(h.runs||[]).map(r=>`<tr><td class="mono">${fmt.t(r.start)}</td><td>${esc({schedule:"排程",workflow_dispatch:"手動",local:"本機",push:"推送"}[r.trigger]||r.trigger)}</td><td>${esc(r.mode)}${r.browser?"（瀏覽器）":""}</td><td class="r num">${r.ok}</td><td class="name">${esc((r.fail||[]).join("；"))||"—"}</td></tr>`).join("")}
+  </tbody></table></div></section>`;
+};
+
+R.backtest=()=>{
+  const b=S.bt||{n_obs:0,min_obs:60,observations:[],correlations:{}};const p=Math.min(100,b.n_obs/b.min_obs*100);
+  return `<section class="panel"><div class="ph"><h2>訊號回測 ${tip(TIPS.backtest)}</h2><span class="pill ${b.status==="可計算"?"ok":"na"}">${esc(b.status||"樣本不足")}</span></div>
+    <p class="sub" style="margin:0 0 8px">已累積 <b class="mono">${b.n_obs}</b> 個持股日，需要 ${b.min_obs} 個才計算相關性。</p>
+    <div class="gauge"><span class="g" style="width:${p}%"></span></div>
+    ${Object.keys(b.correlations||{}).length?`<div class="tablewrap" style="margin-top:12px"><table><thead><tr><th>訊號 → 報酬</th><th class="r">樣本</th><th class="r">相關係數</th></tr></thead><tbody>${Object.entries(b.correlations).map(([k,v])=>`<tr><td>${esc(k)}</td><td class="r num">${v.n}</td><td class="r num ${cls(v.corr)}">${v.corr==null?"—":v.corr.toFixed(3)}</td></tr>`).join("")}</tbody></table></div>`:""}
+    <p class="note" style="margin:12px 0 0">相關不代表因果。主動 ETF 的現金比例也受申購贖回、配息前準備現金、基金建倉期影響，請把結果當成觀察，不當成交易訊號。</p></section>
+  <section class="panel"><div class="chartbox"><canvas id="cBt" role="img" aria-label="現金比例與未來報酬散佈圖"></canvas></div></section>`;
+};
+A.backtest=()=>{const o=((S.bt&&S.bt.observations)||[]).filter(x=>x.fwd20!=null);
+  chart("cBt",{type:"scatter",data:{datasets:[{label:"現金及其他% vs 未來 20 日加權指數報酬%",data:o.map(x=>({x:x.cash_other_pct,y:x.fwd20})),backgroundColor:css("--accent")}]},
+    options:{interaction:{mode:"nearest"},scales:{x:{title:{display:true,text:"現金及其他%"}},y:{title:{display:true,text:"未來 20 日報酬%"}}}}})};
+
+R.guide=()=>`<section class="panel prose"><h2>說明 ${tip(TIPS.guide)}</h2>
+  <h3>資料來源與更新時間</h3>
+  <p>持股直接取自各投信官網的公開資料：安聯（etf.allianzgi.com.tw，申購買回清單）、統一（ezmoney.com.tw，每日約 16:40 公布）、群益（capitalfund.com.tw，申購買回清單）。股價與匯率來自 Yahoo Finance 公開報價（開源套件 yfinance 使用的同一個來源）。每週一至週五台北時間 09:00 由 GitHub Actions 自動更新，12:00 再補抓一次。GitHub 的排程偶爾會延遲 10–30 分鐘。</p>
+  <h3>持股日與申購買回清單</h3>
+  <p>安聯與群益公布的是「次一營業日的申購買回清單」，代表前一個交易日收盤後的部位，這裡把它記在前一個交易日。統一公布的是當天收盤後的部位。</p>
+  <h3>顏色</h3><p>依台股習慣，紅色代表上漲或買進，綠色代表下跌或賣出。</p>
+  <h3>名詞</h3>
+  <ul><li><b>現金及其他</b>：${esc(TIPS.cash)}</li><li><b>有效股票曝險</b>：${esc(TIPS.eff)}</li><li><b>主動調整</b>：${esc(TIPS.active)}</li><li><b>推算平均成本</b>：${esc(TIPS.cost)}</li><li><b>買賣廣度</b>：${esc(TIPS.breadth)}</li></ul>
+  <h3>新增追蹤的 ETF</h3>
+  <p>安聯、統一、群益旗下的 ETF：編輯儲存庫的 <code>config/etfs.json</code>，複製一筆並改代號與參數（代號對照在 <code>config/registry.json</code>，例如 00993A 安聯 E0002、00403A 統一 63YTW、00992A 群益 500）。其他投信的網站格式不同，需要新增一個抓取程式。公開說明書規則在 <code>config/rules.json</code>，主題分類在 <code>config/themes.json</code>。</p>
+  <h3>設定一鍵更新</h3>
+  <ol><li>GitHub 右上角頭像 → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token。</li>
+  <li>Repository access 只選這個儲存庫；Permissions 的 Actions 設為 Read and write，其他不用給。</li>
+  <li>複製權杖，在這個頁面按「一鍵更新」→「GitHub 設定」貼上。權杖只存在這台裝置的瀏覽器。</li></ol>
+  <h3>推播提醒（選用）</h3>
+  <p>在儲存庫 Settings → Secrets and variables → Actions 新增：Email 用 SMTP_HOST、SMTP_PORT、SMTP_USER、SMTP_PASS、ALERT_EMAIL_TO（Gmail 需使用應用程式密碼）；LINE 用 LINE_CHANNEL_TOKEN、LINE_USER_ID（LINE Messaging API）。沒設定就不推播。</p>
+  <h3>限制</h3>
+  <p>投信不公布成本，均價一律為推算。安聯只揭露股票與附買回，現金以差額推算。主動 ETF 歷史短，現金比例與行情的關係需要累積資料後再判斷。本工具不構成投資建議。</p>
+</section>`;
+
+// ---------------------------------------------------------------- one-click update (GitHub Actions)
+function guessRepo(){const m=location.hostname.match(/^([^.]+)\.github\.io$/);if(m){const p=location.pathname.split("/").filter(Boolean)[0];return p?`${m[1]}/${p}`:`${m[1]}/${m[1]}.github.io`}return (S.meta&&S.meta.repo)||""}
+function setStatus(html){const s=$("#updStatus");s.hidden=!html;s.innerHTML=html||""}
+$("#updBtn").addEventListener("click",()=>{const repo=store.get("ghRepo","")||guessRepo();$("#ghRepo").value=repo;$("#ghToken").value=store.get("ghToken","");
+  $("#actionsLink").href=repo?`https://github.com/${repo}/actions/workflows/daily.yml`:"https://github.com";
+  $("#ghSettings").open=!store.get("ghToken","");setStatus("");$("#updDlg").showModal()});
+$("#runBtn").addEventListener("click",async()=>{
+  const repo=$("#ghRepo").value.trim(),tok=$("#ghToken").value.trim();store.set("ghRepo",repo);store.set("ghToken",tok);
+  $("#actionsLink").href=repo?`https://github.com/${repo}/actions/workflows/daily.yml`:"#";
+  if(!repo||!tok){setStatus("請先在「GitHub 設定」填入儲存庫與權杖，或按「到 GitHub 手動執行」。");$("#ghSettings").open=true;return}
+  const mode=$("#modeFull").checked?"full":"prices";const H={Authorization:`Bearer ${tok}`,Accept:"application/vnd.github+json"};
+  const before=S.meta.generated_at;
+  try{
+    setStatus("送出更新要求…");
+    const r=await fetch(`https://api.github.com/repos/${repo}/actions/workflows/daily.yml/dispatches`,{method:"POST",headers:H,body:JSON.stringify({ref:"main",inputs:{mode}})});
+    if(r.status!==204)throw new Error(r.status===404?"找不到儲存庫或權杖沒有 Actions 權限":r.status===401?"權杖無效或已過期":`GitHub 回應 ${r.status}`);
+    setStatus(`已開始${mode==="full"?"完整":"股價"}更新，正在等待 GitHub 執行完成（通常 2–5 分鐘）…`);
+    const t0=Date.now();
+    while(Date.now()-t0<15*60e3){await new Promise(z=>setTimeout(z,15000));
+      try{const m=await j("data/meta.json");if(m.generated_at!==before){await loadAll();route();setStatus(`更新完成：${fmt.t(m.generated_at)}`);return}}catch(e){}
+      try{const rr=await fetch(`https://api.github.com/repos/${repo}/actions/runs?event=workflow_dispatch&per_page=1`,{headers:H}).then(x=>x.json());
+        const run=rr.workflow_runs&&rr.workflow_runs[0];if(run){if(run.status==="completed"&&run.conclusion!=="success"){setStatus(`更新失敗（${esc(run.conclusion)}）。<a href="${run.html_url}" target="_blank" rel="noopener">查看執行紀錄</a>`);return}
+          setStatus(`GitHub 執行中：${esc(run.status==="completed"?"已完成，等待網站部署":run.status)}… <a href="${run.html_url}" target="_blank" rel="noopener">查看</a>`)}}catch(e){}}
+    setStatus("等候逾時，請稍後重新整理頁面。");
+  }catch(e){setStatus(`無法觸發更新：${esc(e.message)}。也可以按「到 GitHub 手動執行」。`)}
+});
+
+// ---------------------------------------------------------------- boot
+loadAll().then(route).catch(e=>{$("#view").innerHTML=`<div class="empty">找不到資料檔（${esc(e.message)}）。部署後第一次排程執行完才會有資料。</div>`});
+</script>

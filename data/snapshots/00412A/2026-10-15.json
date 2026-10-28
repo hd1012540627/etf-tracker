@@ -1,0 +1,585 @@
+{
+ "etf": "00412A",
+ "name": "主動安聯亞洲半導體",
+ "issuer": "安聯投信",
+ "source_url": "https://etf.allianzgi.com.tw/etf-info/E0004?tab=4",
+ "fetched_at": "2026-10-15T21:00:00+08:00",
+ "position_date": "2026-10-15",
+ "pcf_date": null,
+ "nav_date": null,
+ "nav_twd": null,
+ "units": null,
+ "nav_per_unit": null,
+ "holdings": [
+  {
+   "key": "TW:2330",
+   "code_raw": "2330",
+   "name": "台積電",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 235000.0,
+   "weight": 8.64,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:3008",
+   "code_raw": "3008",
+   "name": "大立光電",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 47000.0,
+   "weight": 4.7,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:3443",
+   "code_raw": "3443",
+   "name": "創意電子",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 34000.0,
+   "weight": 3.95,
+   "amount_twd": null
+  },
+  {
+   "key": "JP:6857",
+   "code_raw": "6857 JP",
+   "name": "Advantest",
+   "market": "JP",
+   "currency": "JPY",
+   "shares": 37100.0,
+   "weight": 3.94,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:3017",
+   "code_raw": "3017",
+   "name": "奇鋐",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 69000.0,
+   "weight": 3.22,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:2308",
+   "code_raw": "2308",
+   "name": "台達電",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 109000.0,
+   "weight": 2.69,
+   "amount_twd": null
+  },
+  {
+   "key": "CN:002463",
+   "code_raw": "002463 C2",
+   "name": "WUS Printed Circuit",
+   "market": "CN",
+   "currency": "CNY",
+   "shares": 287300.0,
+   "weight": 2.44,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:3406",
+   "code_raw": "3406",
+   "name": "玉晶光",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 144000.0,
+   "weight": 2.43,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:3653",
+   "code_raw": "3653",
+   "name": "健策",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 23000.0,
+   "weight": 2.35,
+   "amount_twd": null
+  },
+  {
+   "key": "CN:600183",
+   "code_raw": "600183 C1",
+   "name": "Shengyi Technology",
+   "market": "CN",
+   "currency": "CNY",
+   "shares": 261400.0,
+   "weight": 2.19,
+   "amount_twd": null
+  },
+  {
+   "key": "US:AVGO",
+   "code_raw": "AVGO US",
+   "name": "Broadcom",
+   "market": "US",
+   "currency": "USD",
+   "shares": 13000.0,
+   "weight": 2.19,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:5274",
+   "code_raw": "5274",
+   "name": "信驊",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 9000.0,
+   "weight": 2.17,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:2454",
+   "code_raw": "2454",
+   "name": "聯發科",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 31000.0,
+   "weight": 1.95,
+   "amount_twd": null
+  },
+  {
+   "key": "JP:4062",
+   "code_raw": "4062 JP",
+   "name": "Ibiden",
+   "market": "JP",
+   "currency": "JPY",
+   "shares": 67000.0,
+   "weight": 1.91,
+   "amount_twd": null
+  },
+  {
+   "key": "JP:6976",
+   "code_raw": "6976 JP",
+   "name": "Taiyo Yuden",
+   "market": "JP",
+   "currency": "JPY",
+   "shares": 59100.0,
+   "weight": 1.8,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:8996",
+   "code_raw": "8996",
+   "name": "高力",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 76000.0,
+   "weight": 1.75,
+   "amount_twd": null
+  },
+  {
+   "key": "US:NVDA",
+   "code_raw": "NVDA US",
+   "name": "NVIDIA",
+   "market": "US",
+   "currency": "USD",
+   "shares": 16300.0,
+   "weight": 1.73,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:4958",
+   "code_raw": "4958",
+   "name": "臻鼎-KY",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 215000.0,
+   "weight": 1.69,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:2303",
+   "code_raw": "2303",
+   "name": "聯電",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 822000.0,
+   "weight": 1.66,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:3711",
+   "code_raw": "3711",
+   "name": "日月光投控",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 150000.0,
+   "weight": 1.53,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:3081",
+   "code_raw": "3081",
+   "name": "聯亞",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 38000.0,
+   "weight": 1.52,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:6805",
+   "code_raw": "6805",
+   "name": "富世達",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 47000.0,
+   "weight": 1.5,
+   "amount_twd": null
+  },
+  {
+   "key": "JP:6981",
+   "code_raw": "6981 JP",
+   "name": "Murata",
+   "market": "JP",
+   "currency": "JPY",
+   "shares": 69600.0,
+   "weight": 1.45,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:6223",
+   "code_raw": "6223",
+   "name": "旺矽",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 18000.0,
+   "weight": 1.44,
+   "amount_twd": null
+  },
+  {
+   "key": "US:LITE",
+   "code_raw": "LITE US",
+   "name": "Lumentum",
+   "market": "US",
+   "currency": "USD",
+   "shares": 3400.0,
+   "weight": 1.44,
+   "amount_twd": null
+  },
+  {
+   "key": "JP:3436",
+   "code_raw": "3436 JP",
+   "name": "SUMCO",
+   "market": "JP",
+   "currency": "JPY",
+   "shares": 168100.0,
+   "weight": 1.38,
+   "amount_twd": null
+  },
+  {
+   "key": "KR:000660",
+   "code_raw": "000660 KS",
+   "name": "SK Hynix",
+   "market": "KR",
+   "currency": "KRW",
+   "shares": 2954.0,
+   "weight": 1.36,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:6415",
+   "code_raw": "6415",
+   "name": "矽力-KY",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 185000.0,
+   "weight": 1.31,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:3374",
+   "code_raw": "3374",
+   "name": "精材",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 179000.0,
+   "weight": 1.23,
+   "amount_twd": null
+  },
+  {
+   "key": "US:GLW",
+   "code_raw": "GLW US",
+   "name": "Corning",
+   "market": "US",
+   "currency": "USD",
+   "shares": 18200.0,
+   "weight": 1.23,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:2345",
+   "code_raw": "2345",
+   "name": "智邦",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 41000.0,
+   "weight": 1.21,
+   "amount_twd": null
+  },
+  {
+   "key": "JP:5802",
+   "code_raw": "5802 JP",
+   "name": "Sumitomo Electric",
+   "market": "JP",
+   "currency": "JPY",
+   "shares": 184200.0,
+   "weight": 1.2,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:6187",
+   "code_raw": "6187",
+   "name": "萬潤",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 56000.0,
+   "weight": 1.18,
+   "amount_twd": null
+  },
+  {
+   "key": "KR:005930",
+   "code_raw": "005930 KS",
+   "name": "Samsung Electronics",
+   "market": "KR",
+   "currency": "KRW",
+   "shares": 14362.0,
+   "weight": 1.1,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:3529",
+   "code_raw": "3529",
+   "name": "力旺",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 27000.0,
+   "weight": 1.08,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:2360",
+   "code_raw": "2360",
+   "name": "致茂",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 34000.0,
+   "weight": 1.04,
+   "amount_twd": null
+  },
+  {
+   "key": "US:SMTC",
+   "code_raw": "SMTC US",
+   "name": "Semtech",
+   "market": "US",
+   "currency": "USD",
+   "shares": 14700.0,
+   "weight": 1.03,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:6274",
+   "code_raw": "6274",
+   "name": "台燿",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 36000.0,
+   "weight": 0.89,
+   "amount_twd": null
+  },
+  {
+   "key": "JP:4004",
+   "code_raw": "4004 JP",
+   "name": "Resonac",
+   "market": "JP",
+   "currency": "JPY",
+   "shares": 19000.0,
+   "weight": 0.88,
+   "amount_twd": null
+  },
+  {
+   "key": "CN:300476",
+   "code_raw": "300476 C2",
+   "name": "Victory Giant",
+   "market": "CN",
+   "currency": "CNY",
+   "shares": 64000.0,
+   "weight": 0.87,
+   "amount_twd": null
+  },
+  {
+   "key": "US:TXN",
+   "code_raw": "TXN US",
+   "name": "Texas Instruments",
+   "market": "US",
+   "currency": "USD",
+   "shares": 6400.0,
+   "weight": 0.87,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:3264",
+   "code_raw": "3264",
+   "name": "欣銓",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 207000.0,
+   "weight": 0.84,
+   "amount_twd": null
+  },
+  {
+   "key": "JP:6146",
+   "code_raw": "6146 JP",
+   "name": "Disco",
+   "market": "JP",
+   "currency": "JPY",
+   "shares": 4900.0,
+   "weight": 0.81,
+   "amount_twd": null
+  },
+  {
+   "key": "US:AMD",
+   "code_raw": "AMD US",
+   "name": "AMD",
+   "market": "US",
+   "currency": "USD",
+   "shares": 2900.0,
+   "weight": 0.8,
+   "amount_twd": null
+  },
+  {
+   "key": "US:SITM",
+   "code_raw": "SITM US",
+   "name": "SiTime",
+   "market": "US",
+   "currency": "USD",
+   "shares": 3280.0,
+   "weight": 0.8,
+   "amount_twd": null
+  },
+  {
+   "key": "JP:5706",
+   "code_raw": "5706 JP",
+   "name": "Mitsui Mining & Smelting",
+   "market": "JP",
+   "currency": "JPY",
+   "shares": 113000.0,
+   "weight": 0.79,
+   "amount_twd": null
+  },
+  {
+   "key": "US:LSCC",
+   "code_raw": "LSCC US",
+   "name": "Lattice",
+   "market": "US",
+   "currency": "USD",
+   "shares": 15100.0,
+   "weight": 0.79,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:2059",
+   "code_raw": "2059",
+   "name": "川湖",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 5275.0,
+   "weight": 0.78,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:2383",
+   "code_raw": "2383",
+   "name": "台光電",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 10000.0,
+   "weight": 0.77,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:3324",
+   "code_raw": "3324",
+   "name": "雙鴻",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 36000.0,
+   "weight": 0.77,
+   "amount_twd": null
+  },
+  {
+   "key": "US:CRDO",
+   "code_raw": "CRDO US",
+   "name": "Credo",
+   "market": "US",
+   "currency": "USD",
+   "shares": 8700.0,
+   "weight": 0.76,
+   "amount_twd": null
+  },
+  {
+   "key": "US:MXL",
+   "code_raw": "MXL US",
+   "name": "MaxLinear",
+   "market": "US",
+   "currency": "USD",
+   "shares": 19800.0,
+   "weight": 0.76,
+   "amount_twd": null
+  },
+  {
+   "key": "JP:5801",
+   "code_raw": "5801 JP",
+   "name": "Furukawa Electric",
+   "market": "JP",
+   "currency": "JPY",
+   "shares": 67000.0,
+   "weight": 0.7,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:6669",
+   "code_raw": "6669",
+   "name": "緯穎",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 24000.0,
+   "weight": 0.69,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:7734",
+   "code_raw": "7734",
+   "name": "印能",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 10000.0,
+   "weight": 0.37,
+   "amount_twd": null
+  }
+ ],
+ "assets": {
+  "stock_twd": null,
+  "stock_pct_reported": 90.57,
+  "rp_twd": 0.0,
+  "rp_items": [],
+  "cash_twd": 0.0,
+  "futures_margin_twd": 0.0,
+  "receivable_payable_twd": 0.0,
+  "redemption_payable_twd": 0.0,
+  "bond_twd": 0.0,
+  "other_twd": 0.0,
+  "other_items": [],
+  "futures": [],
+  "fx": {},
+  "cash_is_residual": true
+ },
+ "notes": [
+  "開發期間（10/15）從安聯網站擷取的持股，只有股數與權重，沒有淨資產、單位數與附買回明細；持股日口徑可能差一日。"
+ ],
+ "digest": "f57025cb7d82"
+}

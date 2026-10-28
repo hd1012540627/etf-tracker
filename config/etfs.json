@@ -1,0 +1,11 @@
+{
+  "_說明": "要追蹤的 ETF 清單。新增同一家投信的 ETF 只要複製一筆、改 code/name/params（代號對照見 config/registry.json）。不同投信需要新的 adapter。",
+  "etfs": [
+    {"code": "00412A", "name": "主動安聯亞洲半導體", "issuer": "安聯投信", "adapter": "allianz",
+     "params": {"fund_id": "E0004"}, "url": "https://etf.allianzgi.com.tw/etf-info/E0004?tab=4"},
+    {"code": "00981A", "name": "主動統一台股增長", "issuer": "統一投信", "adapter": "ezmoney",
+     "params": {"fund_code": "49YTW"}, "url": "https://www.ezmoney.com.tw/ETF/Fund/Info?fundCode=49YTW"},
+    {"code": "00997A", "name": "主動群益美國增長", "issuer": "群益投信", "adapter": "capitalfund",
+     "params": {"fund_id": "502"}, "url": "https://www.capitalfund.com.tw/etf/product/detail/502/portfolio"}
+  ]
+}

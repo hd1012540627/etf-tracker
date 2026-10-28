@@ -1,0 +1,9 @@
+{
+  "_說明": "已知投信內部代號（2026-10-28 由各投信網站查得）。新增 ETF 時把對應的 params 填進 config/etfs.json。",
+  "allianz": {"adapter": "allianz", "param": "fund_id", "funds": {
+    "00984A": "E0001", "00993A": "E0002", "00402A": "E0003", "00412A": "E0004"}},
+  "ezmoney": {"adapter": "ezmoney", "param": "fund_code", "funds": {
+    "00981A": "49YTW", "00403A": "63YTW", "00411A": "64YTW", "00988A": "61YTW", "00987D": "65YTW"}},
+  "capitalfund": {"adapter": "capitalfund", "param": "fund_id", "funds": {
+    "00982A": "399", "00992A": "500", "00997A": "502", "00415A": "504"}}
+}

@@ -1,0 +1,87 @@
+name: daily
+
+on:
+  schedule:
+    - cron: "0 1 * * 1-5"   # 台北 09:00（週一至週五）
+    - cron: "0 4 * * 1-5"   # 台北 12:00 補抓（09:00 若失敗或投信晚公布）
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "full = 持股+股價；prices = 只更新股價"
+        required: false
+        default: "prices"
+        type: choice
+        options: [prices, full]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: daily
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      TZ: Asia/Taipei
+      TRACKER_NOTIFY: "1"
+      SMTP_HOST: ${{ secrets.SMTP_HOST }}
+      SMTP_PORT: ${{ secrets.SMTP_PORT }}
+      SMTP_USER: ${{ secrets.SMTP_USER }}
+      SMTP_PASS: ${{ secrets.SMTP_PASS }}
+      ALERT_EMAIL_TO: ${{ secrets.ALERT_EMAIL_TO }}
+      LINE_CHANNEL_TOKEN: ${{ secrets.LINE_CHANNEL_TOKEN }}
+      LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: 更新資料
+        id: run
+        run: |
+          MODE="${{ github.event.inputs.mode || 'full' }}"
+          export SITE_URL="https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}/"
+          set +e
+          python -m tracker.run --mode "$MODE"
+          code=$?
+          set -e
+          if [ "$code" = "3" ]; then
+            echo "部分投信網站擋下一般請求，改用無頭瀏覽器重抓"
+            python -m playwright install --with-deps chromium
+            python -m tracker.run --mode full --browser
+          elif [ "$code" != "0" ]; then
+            exit "$code"
+          fi
+
+      - name: 存回資料
+        run: |
+          git config user.name "etf-tracker-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data site/data
+          if git diff --cached --quiet; then echo "沒有變更"; exit 0; fi
+          git commit -m "data: $(date +'%Y-%m-%d %H:%M') ${{ github.event_name }}"
+          for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done
+
+      - name: 產生網站
+        run: python scripts/build_pages.py
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: update
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

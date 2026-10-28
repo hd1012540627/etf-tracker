@@ -1,0 +1,9 @@
+{
+  "_說明": "提醒門檻。notify_levels 決定哪些等級會推播到 Email / LINE（需在 GitHub Secrets 設定）。",
+  "active_trade_pct_nav": 0.3,
+  "weight_change_pp": 0.5,
+  "cash_change_pp": 2.0,
+  "rule_margin_pp": 3.0,
+  "stale_trading_days": 2,
+  "notify_levels": ["高"]
+}
