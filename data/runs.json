@@ -114,5 +114,51 @@
   "price_errors": [],
   "price_diag": [],
   "end": "2026-10-29T00:11:31+08:00"
+ },
+ {
+  "start": "2026-10-29T00:13:31+08:00",
+  "mode": "prices",
+  "browser": false,
+  "trigger": "workflow_dispatch",
+  "price_errors": [
+   "找不到股價：CN:002463",
+   "找不到股價：CN:300476",
+   "找不到股價：CN:600183",
+   "找不到股價：JP:3436",
+   "找不到股價：JP:4004",
+   "找不到股價：JP:4062",
+   "找不到股價：JP:5706",
+   "找不到股價：JP:5801",
+   "找不到股價：JP:5802",
+   "找不到股價：JP:6146",
+   "找不到股價：JP:6857",
+   "找不到股價：JP:6976",
+   "找不到股價：JP:6981",
+   "找不到股價：KR:000660",
+   "找不到股價：KR:005930",
+   "找不到股價：KR:009150",
+   "找不到股價：US:AAPL",
+   "找不到股價：US:ADI",
+   "找不到股價：US:AMAT",
+   "找不到股價：US:AMD",
+   "找不到股價：US:ANET",
+   "找不到股價：US:APH",
+   "找不到股價：US:ARM",
+   "找不到股價：US:AVGO",
+   "找不到股價：US:BE",
+   "找不到股價：US:CDNS",
+   "找不到股價：US:CRDO",
+   "找不到股價：US:CRL",
+   "找不到股價：US:CRWD",
+   "找不到股價：US:CSCO"
+  ],
+  "price_diag": [
+   "yfinance 失敗：TypeError: Addition/subtraction of integers and integer-arrays with Timestamp is no longer supported.  Instead of adding/subtracting `n`, use `n * obj.freq`",
+   "Yahoo chart 300476.SZ: HTTP 429",
+   "Yahoo chart 3436.T: HTTP 429",
+   "Yahoo chart 4004.T: HTTP 429",
+   "Yahoo chart 4062.T: HTTP 429"
+  ],
+  "end": "2026-10-29T00:13:50+08:00"
  }
 ]
