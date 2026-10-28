@@ -277,7 +277,7 @@ class PriceStore:
         if filled < len(tickers) // 2:
             self.diag.append(f"報價補值只成功 {filled}/{len(tickers)}")
 
-    def _tw_official, keys: list[str], only: set | None = None) -> dict[str, str]:
+    def _tw_official(self, keys: list[str], only: set | None = None) -> dict[str, str]:
         """TWSE STOCK_DAY_ALL + TPEx daily close quotes (latest trading day)."""
         sess = http.session()
         rows: dict[str, dict] = {}
