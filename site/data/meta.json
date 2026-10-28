@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-28T23:43:01+08:00",
+ "generated_at": "2026-10-29T00:07:09+08:00",
  "etfs": [
   {
    "code": "00412A",
@@ -20,7 +20,7 @@
    "url": "https://www.capitalfund.com.tw/etf/product/detail/502/portfolio"
   }
  ],
- "repo": null,
+ "repo": "hd1012540627/etf-tracker",
  "workflow": "daily.yml",
- "demo": true
+ "demo": false
 }
