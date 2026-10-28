@@ -105,5 +105,14 @@
   "price_errors": [],
   "price_diag": [],
   "end": "2026-10-29T00:09:39+08:00"
+ },
+ {
+  "start": "2026-10-29T00:11:25+08:00",
+  "mode": "prices",
+  "browser": false,
+  "trigger": "workflow_dispatch",
+  "price_errors": [],
+  "price_diag": [],
+  "end": "2026-10-29T00:11:31+08:00"
  }
 ]

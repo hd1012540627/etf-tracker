@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-29T00:09:39+08:00",
+ "generated_at": "2026-10-29T00:11:31+08:00",
  "last_trading_day": "2026-10-27",
  "price_errors": [],
  "price_diag": [],
@@ -69,6 +69,16 @@
   }
  },
  "runs": [
+  {
+   "start": "2026-10-29T00:11:25+08:00",
+   "end": "2026-10-29T00:11:31+08:00",
+   "mode": "prices",
+   "trigger": "workflow_dispatch",
+   "browser": false,
+   "ok": 0,
+   "fail": [],
+   "price_errors": 0
+  },
   {
    "start": "2026-10-29T00:09:22+08:00",
    "end": "2026-10-29T00:09:39+08:00",
