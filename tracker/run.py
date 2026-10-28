@@ -101,7 +101,7 @@ def health_report(bundles: dict, store: PriceStore, runs: list[dict], etfs: list
     days = store.trading_days()
     last_trading = days[-1] if days else None
     out = {"generated_at": now_tpe().isoformat(timespec="seconds"), "last_trading_day": last_trading,
-           "price_errors": store.errors[:50], "etfs": {},
+           "price_errors": store.errors[:50], "price_diag": getattr(store, "diag", [])[:20], "etfs": {},
            "runs": [{"start": r.get("start"), "end": r.get("end"), "mode": r.get("mode"), "trigger": r.get("trigger"),
                      "browser": r.get("browser"),
                      "ok": sum(1 for f in r.get("fetch", []) if f.get("ok")),
@@ -262,6 +262,7 @@ def main(argv=None) -> int:
             store.refresh(keys, rng="3mo" if not store.hist else "1mo")
             store.save()
             runlog["price_errors"] = store.errors[:30]
+            runlog["price_diag"] = store.diag[:20]
     runlog["end"] = now_tpe().isoformat(timespec="seconds")
     runs = (runs + [runlog])[-200:]
     write_json(DATA / "runs.json", runs)

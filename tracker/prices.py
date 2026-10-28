@@ -20,6 +20,7 @@ from typing import Iterable
 
 from . import http, symbols
 from .util import PRICE_DIR, TPE, read_json, write_json
+from .util import parse_date as util_parse_date
 
 log = logging.getLogger("tracker.prices")
 
@@ -34,6 +35,7 @@ class PriceStore:
         self.live: dict = read_json(PRICE_DIR / "live.json", {}) or {}
         self.symmap: dict = read_json(PRICE_DIR / "symbols.json", {}) or {}
         self.errors: list[str] = []
+        self.diag: list[str] = []
 
     # ----------------------------------------------------------------- lookups
     def ticker(self, key: str) -> str | None:
@@ -95,6 +97,8 @@ class PriceStore:
             try:
                 r = sess.get(f"{base}/v8/finance/chart/{ticker}", params={"range": rng, "interval": "1d"}, timeout=20)
                 if r.status_code != 200:
+                    if len(self.diag) < 5:
+                        self.diag.append(f"Yahoo chart {ticker}: HTTP {r.status_code}")
                     continue
                 res = (r.json().get("chart") or {}).get("result")
                 if not res:
@@ -130,39 +134,163 @@ class PriceStore:
             }
 
     def refresh(self, keys: Iterable[str], rng: str = "1mo") -> None:
+        """Three sources, in order:
+        1. yfinance (open-source package; handles Yahoo's cookie/crumb and browser impersonation,
+           which plain requests from GitHub's servers do not get past)
+        2. TWSE / TPEx official open data (Taiwan stocks, latest trading day)
+        3. direct Yahoo chart API (works from home networks)."""
         keys = sorted(set(keys))
-        sess = http.session()
-        tickers: dict[str, list[str]] = {}
+        cands: dict[str, list[str]] = {}
         for k in keys:
             if k in self.symmap:
-                tickers[k] = [self.symmap[k]]
+                cands[k] = [self.symmap[k]]
             elif k.startswith("TW:"):
                 c = k[3:]
-                tickers[k] = [f"{c}.TW", f"{c}.TWO"]
+                cands[k] = [f"{c}.TW", f"{c}.TWO"]
             else:
                 s = symbols.parse(self._raw_from_key(k))
-                tickers[k] = [s.yahoo] if s.yahoo else []
+                cands[k] = [s.yahoo] if s.yahoo else []
         extra = [INDEX] + list(symbols.FX_TICKERS.values())
+        got: dict[str, str] = {}
 
-        def work(item):
-            k, cands = item
-            for t in cands:
-                res = self._yahoo(sess, t, rng)
-                if res and res.get("timestamp"):
-                    return k, t, res
-            return k, None, None
+        # 1) yfinance batch
+        try:
+            got.update(self._yf_batch(cands, extra, rng))
+        except Exception as e:  # noqa: BLE001
+            self.diag.append(f"yfinance 失敗：{type(e).__name__}: {e}"[:300])
 
-        with cf.ThreadPoolExecutor(max_workers=6) as ex:
-            for k, t, res in ex.map(work, list(tickers.items()) + [(x, [x]) for x in extra]):
-                if t is None:
+        # 2) TWSE / TPEx official (latest day) for Taiwan keys still missing or stale
+        tw_missing = [k for k in keys if k.startswith("TW:") and k not in got]
+        if tw_missing or not got:
+            try:
+                got.update(self._tw_official([k for k in keys if k.startswith("TW:")], only=set(tw_missing) or None))
+            except Exception as e:  # noqa: BLE001
+                self.diag.append(f"證交所／櫃買開放資料失敗：{type(e).__name__}: {e}"[:300])
+
+        # 3) direct chart API for whatever is still missing
+        rest = {k: v for k, v in cands.items() if k not in got}
+        rest_extra = [x for x in extra if x not in self.hist or x not in got]
+        if rest or rest_extra:
+            sess = http.session()
+
+            def work(item):
+                k, cs = item
+                for t in cs:
+                    res = self._yahoo(sess, t, rng)
+                    if res and res.get("timestamp"):
+                        return k, t, res
+                return k, None, None
+
+            with cf.ThreadPoolExecutor(max_workers=6) as ex:
+                for k, t, res in ex.map(work, list(rest.items()) + [(x, [x]) for x in rest_extra]):
+                    if t is None:
+                        continue
                     if k not in extra:
-                        self.errors.append(f"找不到股價：{k}")
-                    continue
-                if k not in extra:
-                    self.symmap[k] = t
-                self._ingest(t, res)
+                        self.symmap[k] = t
+                    got[k] = t
+                    self._ingest(t, res)
+        for k in keys:
+            if k not in got:
+                self.errors.append(f"找不到股價：{k}")
         self._clean_tw_holidays()
         self._trim()
+
+    def _yf_batch(self, cands: dict[str, list[str]], extra: list[str], rng: str) -> dict[str, str]:
+        import yfinance as yf  # lazy: optional dependency for local use
+        period = {"1mo": "1mo", "3mo": "3mo"}.get(rng, "1mo")
+        tickers = sorted({t for cs in cands.values() for t in cs} | set(extra))
+        df = yf.download(tickers, period=period, interval="1d", group_by="ticker", auto_adjust=False,
+                         threads=True, progress=False)
+        ok: dict[str, str] = {}
+        now = dt.datetime.now(TPE).isoformat(timespec="seconds")
+        for t in tickers:
+            try:
+                sub = df[t] if t in df.columns.get_level_values(0) else None
+            except Exception:  # noqa: BLE001
+                sub = None
+            if sub is None:
+                continue
+            sub = sub.dropna(subset=["Close"])
+            if sub.empty:
+                continue
+            rec = self.hist.setdefault(t, {"ccy": None, "d": {}})
+            for idx, row in sub.iterrows():
+                day = idx.date().isoformat() if hasattr(idx, "date") else str(idx)[:10]
+                vol = row.get("Volume")
+                rec["d"][day] = [round(float(row["Close"]), 4),
+                                 None if row.get("High") != row.get("High") else round(float(row["High"]), 4),
+                                 None if row.get("Low") != row.get("Low") else round(float(row["Low"]), 4),
+                                 None if vol != vol else float(vol)]
+            last = sub.iloc[-1]
+            self.live[t] = {"price": round(float(last["Close"]), 4), "ccy": rec.get("ccy"), "time": now}
+            ok[t] = t
+        out: dict[str, str] = {}
+        for k, cs in cands.items():
+            for t in cs:
+                if t in ok:
+                    self.symmap[k] = t
+                    out[k] = t
+                    break
+        for x in extra:
+            if x in ok:
+                out[x] = x
+        if not out:
+            self.diag.append("yfinance 沒有回傳任何資料")
+        return out
+
+    def _tw_official(self, keys: list[str], only: set | None = None) -> dict[str, str]:
+        """TWSE STOCK_DAY_ALL + TPEx daily close quotes (latest trading day)."""
+        sess = http.session()
+        rows: dict[str, dict] = {}
+
+        def roc(s):
+            s = str(s or "").strip()
+            if len(s) == 7 and s.isdigit():
+                return dt.date(int(s[:3]) + 1911, int(s[3:5]), int(s[5:])).isoformat()
+            d = util_parse_date(s)
+            return d.isoformat() if d else None
+
+        def f(x):
+            try:
+                return float(str(x).replace(",", ""))
+            except (TypeError, ValueError):
+                return None
+
+        try:
+            r = sess.get("https://openapi.twse.com.tw/v1/exchangeReport/STOCK_DAY_ALL", timeout=30)
+            for it in r.json():
+                code = it.get("Code")
+                rows[code] = {"suffix": ".TW", "date": roc(it.get("Date")), "c": f(it.get("ClosingPrice")),
+                              "h": f(it.get("HighestPrice")), "l": f(it.get("LowestPrice"))}
+        except Exception as e:  # noqa: BLE001
+            self.diag.append(f"TWSE 開放資料：{type(e).__name__}"[:200])
+        try:
+            r = sess.get("https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes", timeout=30)
+            for it in r.json():
+                code = it.get("SecuritiesCompanyCode") or it.get("Code")
+                rows.setdefault(code, {"suffix": ".TWO", "date": roc(it.get("Date")), "c": f(it.get("Close")),
+                                       "h": f(it.get("High")), "l": f(it.get("Low"))})
+        except Exception as e:  # noqa: BLE001
+            self.diag.append(f"TPEx 開放資料：{type(e).__name__}"[:200])
+        fallback_day = max((v["date"] for v in rows.values() if v.get("date")), default=None) or \
+            dt.datetime.now(TPE).date().isoformat()
+        out = {}
+        for k in keys:
+            if only is not None and k not in only:
+                continue
+            c = k[3:]
+            row = rows.get(c)
+            if not row or row["c"] is None:
+                continue
+            t = self.symmap.get(k) or f"{c}{row['suffix']}"
+            day = row["date"] or fallback_day
+            rec = self.hist.setdefault(t, {"ccy": "TWD", "d": {}})
+            rec["ccy"] = "TWD"
+            rec["d"][day] = [row["c"], row["h"], row["l"], None]
+            self.live[t] = {"price": row["c"], "ccy": "TWD", "time": day + "T14:30:00+08:00"}
+            self.symmap[k] = t
+            out[k] = t
+        return out
 
     @staticmethod
     def _raw_from_key(key: str) -> str:

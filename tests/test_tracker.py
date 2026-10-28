@@ -62,7 +62,7 @@ def test_capitalfund_parse_fx():
 
 def _store():
     st = PriceStore.__new__(PriceStore)
-    st.hist, st.live, st.symmap, st.errors = {}, {}, {}, []
+    st.hist, st.live, st.symmap, st.errors, st.diag = {}, {}, {}, [], []
     load_fixture(st, FX / "yahoo_prices_20261028.txt")
     return st
 
