@@ -344,7 +344,9 @@ class PriceStore:
             rec = self.hist.setdefault(t, {"ccy": "TWD", "d": {}})
             rec["ccy"] = "TWD"
             rec["d"][day] = [row["c"], row["h"], row["l"], None]
-            self.live[t] = {"price": row["c"], "ccy": "TWD", "time": day + "T14:30:00+08:00"}
+            cur = self.live.get(t) or {}
+            if not cur.get("time") or str(cur["time"])[:10] <= day:  # never replace a newer quote
+                self.live[t] = {"price": row["c"], "ccy": "TWD", "time": day + "T14:30:00+08:00"}
             self.symmap[k] = t
             out[k] = t
         return out
