@@ -160,10 +160,10 @@ class PriceStore:
             self.diag.append(f"yfinance 失敗：{type(e).__name__}: {e}"[:300])
 
         # 2) TWSE / TPEx official (latest day) for Taiwan keys still missing or stale
-        tw_missing = [k for k in keys if k.startswith("TW:") and k not in got]
-        if tw_missing or not got:
-            try:
-                got.update(self._tw_official([k for k in keys if k.startswith("TW:")], only=set(tw_missing) or None))
+        tw_keys = [k for k in keys if k.startswith("TW:")]
+        if tw_keys:
+            try:  # official closes override Yahoo for the latest Taiwan trading day
+                got.update(self._tw_official(tw_keys))
             except Exception as e:  # noqa: BLE001
                 self.diag.append(f"證交所／櫃買開放資料失敗：{type(e).__name__}: {e}"[:300])
 
@@ -228,6 +228,7 @@ class PriceStore:
             last = sub.iloc[-1]
             self.live[t] = {"price": round(float(last["Close"]), 4), "ccy": rec.get("ccy"), "time": now}
             ok[t] = t
+        self._yf_fill_latest(sorted(ok))
         out: dict[str, str] = {}
         for k, cs in cands.items():
             for t in cs:
@@ -242,7 +243,41 @@ class PriceStore:
             self.diag.append("yfinance 沒有回傳任何資料")
         return out
 
-    def _tw_official(self, keys: list[str], only: set | None = None) -> dict[str, str]:
+    def _yf_fill_latest(self, tickers: list[str]) -> None:
+        """Yahoo sometimes leaves the latest daily bar of Asian markets with a null close for hours
+        (observed 2026-10-28 for .TW/.T/.KS/.SZ). The quote metadata still carries the official
+        close (regularMarketPrice), so write that into the bar for the quote's trading date."""
+        import yfinance as yf
+
+        def one(t):
+            try:
+                tk = yf.Ticker(t)
+                tk.history(period="5d", interval="1d", auto_adjust=False)
+                return t, tk.history_metadata or {}
+            except Exception:  # noqa: BLE001
+                return t, {}
+
+        filled = 0
+        with cf.ThreadPoolExecutor(max_workers=8) as ex:
+            for t, md in ex.map(one, tickers):
+                px, ts = md.get("regularMarketPrice"), md.get("regularMarketTime")
+                if px is None or not ts:
+                    continue
+                off = md.get("gmtoffset") or 0
+                day = dt.datetime.fromtimestamp(ts + off, dt.timezone.utc).date().isoformat()
+                rec = self.hist.setdefault(t, {"ccy": md.get("currency"), "d": {}})
+                rec["ccy"] = md.get("currency") or rec.get("ccy")
+                old = rec["d"].get(day)
+                hi, lo = md.get("regularMarketDayHigh"), md.get("regularMarketDayLow")
+                rec["d"][day] = [round(float(px), 4), None if hi is None else round(float(hi), 4),
+                                 None if lo is None else round(float(lo), 4), (old or [None] * 4)[3]]
+                self.live[t] = {"price": round(float(px), 4), "ccy": md.get("currency"),
+                                "time": dt.datetime.fromtimestamp(ts, TPE).isoformat()}
+                filled += 1
+        if filled < len(tickers) // 2:
+            self.diag.append(f"報價補值只成功 {filled}/{len(tickers)}")
+
+    def _tw_official, keys: list[str], only: set | None = None) -> dict[str, str]:
         """TWSE STOCK_DAY_ALL + TPEx daily close quotes (latest trading day)."""
         sess = http.session()
         rows: dict[str, dict] = {}
