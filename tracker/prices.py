@@ -228,7 +228,10 @@ class PriceStore:
             last = sub.iloc[-1]
             self.live[t] = {"price": round(float(last["Close"]), 4), "ccy": rec.get("ccy"), "time": now}
             ok[t] = t
-        self._yf_fill_latest(sorted(ok))
+        try:
+            self._yf_fill_latest(sorted(ok))
+        except Exception as e:  # noqa: BLE001
+            self.diag.append(f"報價補值失敗：{type(e).__name__}: {e}"[:300])
         out: dict[str, str] = {}
         for k, cs in cands.items():
             for t in cs:
@@ -261,10 +264,22 @@ class PriceStore:
         with cf.ThreadPoolExecutor(max_workers=8) as ex:
             for t, md in ex.map(one, tickers):
                 px, ts = md.get("regularMarketPrice"), md.get("regularMarketTime")
-                if px is None or not ts:
+                if px is None or ts is None:
                     continue
-                off = md.get("gmtoffset") or 0
-                day = dt.datetime.fromtimestamp(ts + off, dt.timezone.utc).date().isoformat()
+                try:
+                    if hasattr(ts, "timestamp"):      # yfinance may hand back a pandas Timestamp
+                        ts = int(ts.timestamp())
+                    ts = int(ts)
+                    off = md.get("gmtoffset") or 0
+                    off = int(off.total_seconds()) if hasattr(off, "total_seconds") else int(off)
+                    tz = md.get("exchangeTimezoneName")
+                    if tz:
+                        from zoneinfo import ZoneInfo
+                        day = dt.datetime.fromtimestamp(ts, ZoneInfo(tz)).date().isoformat()
+                    else:
+                        day = dt.datetime.fromtimestamp(ts + off, dt.timezone.utc).date().isoformat()
+                except Exception:  # noqa: BLE001
+                    continue
                 rec = self.hist.setdefault(t, {"ccy": md.get("currency"), "d": {}})
                 rec["ccy"] = md.get("currency") or rec.get("ccy")
                 old = rec["d"].get(day)
@@ -311,6 +326,9 @@ class PriceStore:
                                        "h": f(it.get("High")), "l": f(it.get("Low"))})
         except Exception as e:  # noqa: BLE001
             self.diag.append(f"TPEx 開放資料：{type(e).__name__}"[:200])
+        for suf in (".TW", ".TWO"):
+            ds = sorted({v["date"] for v in rows.values() if v["suffix"] == suf and v.get("date")})
+            self.diag.append(f"{'證交所' if suf == '.TW' else '櫃買'}開放資料：{len([v for v in rows.values() if v['suffix'] == suf])} 檔，資料日 {ds[-1] if ds else '未標示'}")
         fallback_day = max((v["date"] for v in rows.values() if v.get("date")), default=None) or \
             dt.datetime.now(TPE).date().isoformat()
         out = {}
