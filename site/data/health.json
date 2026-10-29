@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-29T18:32:50+08:00",
+ "generated_at": "2026-10-29T22:39:51+08:00",
  "last_trading_day": "2026-10-29",
  "price_errors": [],
  "price_diag": [
@@ -11,8 +11,8 @@
    "name": "主動安聯亞洲半導體",
    "issuer": "安聯投信",
    "source": "https://etf.allianzgi.com.tw/etf-info/E0004?tab=4",
-   "last_attempt": "2026-10-29T18:32:33+08:00",
-   "last_success": "2026-10-29T18:32:33+08:00",
+   "last_attempt": "2026-10-29T22:39:21+08:00",
+   "last_success": "2026-10-29T22:39:21+08:00",
    "last_error": null,
    "fetch_mode": "requests",
    "position_date": "2026-10-29",
@@ -32,8 +32,8 @@
    "name": "主動統一台股增長",
    "issuer": "統一投信",
    "source": "https://www.ezmoney.com.tw/ETF/Fund/Info?fundCode=49YTW",
-   "last_attempt": "2026-10-29T18:32:34+08:00",
-   "last_success": "2026-10-29T18:32:34+08:00",
+   "last_attempt": "2026-10-29T22:39:23+08:00",
+   "last_success": "2026-10-29T22:39:23+08:00",
    "last_error": null,
    "fetch_mode": "requests",
    "position_date": "2026-10-29",
@@ -53,8 +53,8 @@
    "name": "主動群益美國增長",
    "issuer": "群益投信",
    "source": "https://www.capitalfund.com.tw/etf/product/detail/502/portfolio",
-   "last_attempt": "2026-10-29T18:32:36+08:00",
-   "last_success": "2026-10-29T18:32:36+08:00",
+   "last_attempt": "2026-10-29T22:39:25+08:00",
+   "last_success": "2026-10-29T22:39:25+08:00",
    "last_error": null,
    "fetch_mode": "requests",
    "position_date": "2026-10-29",
@@ -72,6 +72,16 @@
   }
  },
  "runs": [
+  {
+   "start": "2026-10-29T22:39:21+08:00",
+   "end": "2026-10-29T22:39:51+08:00",
+   "mode": "full",
+   "trigger": "workflow_dispatch",
+   "browser": false,
+   "ok": 3,
+   "fail": [],
+   "price_errors": 0
+  },
   {
    "start": "2026-10-29T18:32:33+08:00",
    "end": "2026-10-29T18:32:50+08:00",
