@@ -1,23 +1,19 @@
 {
- "generated_at": "2026-10-29T13:03:49+08:00",
+ "generated_at": "2026-10-29T14:46:25+08:00",
  "last_trading_day": "2026-10-29",
- "price_errors": [
-  "找不到股價：US:AMD"
- ],
+ "price_errors": [],
  "price_diag": [
   "TPEx 開放資料：ChunkedEncodingError",
   "證交所開放資料：1386 檔，資料日 2026-10-28",
-  "櫃買開放資料：0 檔，資料日 未標示",
-  "Yahoo chart AMD: HTTP 429",
-  "Yahoo chart AMD: HTTP 429"
+  "櫃買開放資料：0 檔，資料日 未標示"
  ],
  "etfs": {
   "00412A": {
    "name": "主動安聯亞洲半導體",
    "issuer": "安聯投信",
    "source": "https://etf.allianzgi.com.tw/etf-info/E0004?tab=4",
-   "last_attempt": "2026-10-29T13:03:28+08:00",
-   "last_success": "2026-10-29T13:03:28+08:00",
+   "last_attempt": "2026-10-29T14:45:31+08:00",
+   "last_success": "2026-10-29T14:45:31+08:00",
    "last_error": null,
    "fetch_mode": "requests",
    "position_date": "2026-10-28",
@@ -37,8 +33,8 @@
    "name": "主動統一台股增長",
    "issuer": "統一投信",
    "source": "https://www.ezmoney.com.tw/ETF/Fund/Info?fundCode=49YTW",
-   "last_attempt": "2026-10-29T13:03:29+08:00",
-   "last_success": "2026-10-29T13:03:29+08:00",
+   "last_attempt": "2026-10-29T14:45:32+08:00",
+   "last_success": "2026-10-29T14:45:32+08:00",
    "last_error": null,
    "fetch_mode": "requests",
    "position_date": "2026-10-28",
@@ -58,8 +54,8 @@
    "name": "主動群益美國增長",
    "issuer": "群益投信",
    "source": "https://www.capitalfund.com.tw/etf/product/detail/502/portfolio",
-   "last_attempt": "2026-10-29T13:03:31+08:00",
-   "last_success": "2026-10-29T13:03:31+08:00",
+   "last_attempt": "2026-10-29T14:45:34+08:00",
+   "last_success": "2026-10-29T14:45:34+08:00",
    "last_error": null,
    "fetch_mode": "requests",
    "position_date": "2026-10-28",
@@ -77,6 +73,16 @@
   }
  },
  "runs": [
+  {
+   "start": "2026-10-29T14:45:31+08:00",
+   "end": "2026-10-29T14:46:25+08:00",
+   "mode": "full",
+   "trigger": "schedule",
+   "browser": false,
+   "ok": 3,
+   "fail": [],
+   "price_errors": 0
+  },
   {
    "start": "2026-10-29T13:03:28+08:00",
    "end": "2026-10-29T13:03:49+08:00",
