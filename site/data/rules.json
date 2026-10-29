@@ -7,9 +7,9 @@
     "metric": "stock_pct",
     "op": ">=",
     "limit": 70,
-    "value": 85.65,
+    "value": 85.25,
     "status": "符合",
-    "margin": 15.65,
+    "margin": 15.25,
     "note": null
    },
    {
@@ -18,9 +18,9 @@
     "metric": "max_weight",
     "op": "<=",
     "limit": 10,
-    "value": 7.58,
+    "value": 7.26,
     "status": "接近邊界",
-    "margin": 2.42,
+    "margin": 2.74,
     "note": null
    },
    {
@@ -30,9 +30,9 @@
     "op": ">=",
     "limit": 60,
     "approx": true,
-    "value": 73.84,
+    "value": 73.82,
     "status": "符合",
-    "margin": 13.84,
+    "margin": 13.82,
     "note": null
    }
   ],
@@ -138,9 +138,9 @@
     "metric": "stock_pct",
     "op": ">=",
     "limit": 70,
-    "value": 96.1,
+    "value": 95.82,
     "status": "符合",
-    "margin": 26.1,
+    "margin": 25.82,
     "note": null
    },
    {
@@ -149,9 +149,9 @@
     "metric": "max_weight",
     "op": "<=",
     "limit": 10,
-    "value": 11.31,
+    "value": 11.56,
     "status": "超過",
-    "margin": -1.31,
+    "margin": -1.56,
     "note": "單一個股上限通常以買進時點計算，股價上漲造成的被動超過不一定違規；主管機關 2025 年起對部分 ETF 放寬權值股上限。請以投信公告為準。"
    },
    {
@@ -279,9 +279,9 @@
     "metric": "stock_pct",
     "op": ">=",
     "limit": 70,
-    "value": 92.3,
+    "value": 92.52,
     "status": "符合",
-    "margin": 22.3,
+    "margin": 22.52,
     "note": null
    },
    {
@@ -290,9 +290,9 @@
     "metric": "max_weight",
     "op": "<=",
     "limit": 10,
-    "value": 4.89,
+    "value": 4.79,
     "status": "符合",
-    "margin": 5.11,
+    "margin": 5.21,
     "note": null
    },
    {
@@ -302,9 +302,9 @@
     "op": ">=",
     "limit": 60,
     "approx": true,
-    "value": 79.53,
+    "value": 79.36,
     "status": "符合",
-    "margin": 19.53,
+    "margin": 19.36,
     "note": null
    }
   ],

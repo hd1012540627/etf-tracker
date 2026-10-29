@@ -1,0 +1,548 @@
+{
+ "etf": "00981A",
+ "name": "主動統一台股增長",
+ "issuer": "統一投信",
+ "source_url": "https://www.ezmoney.com.tw/ETF/Fund/Info?fundCode=49YTW",
+ "fetched_at": "2026-10-29T18:32:34+08:00",
+ "position_date": "2026-10-29",
+ "pcf_date": null,
+ "nav_date": "2026-10-29",
+ "nav_twd": 272448274106.0,
+ "units": 9817209000.0,
+ "nav_per_unit": 27.75,
+ "holdings": [
+  {
+   "key": "TW:2330",
+   "code_raw": "2330",
+   "name": "台積電",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 13046000.0,
+   "weight": 11.56,
+   "amount_twd": 31506090000.0
+  },
+  {
+   "key": "TW:2383",
+   "code_raw": "2383",
+   "name": "台光電",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 4328000.0,
+   "weight": 7.96,
+   "amount_twd": 21683280000.0
+  },
+  {
+   "key": "TW:2454",
+   "code_raw": "2454",
+   "name": "聯發科",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 5306000.0,
+   "weight": 7.88,
+   "amount_twd": 21462770000.0
+  },
+  {
+   "key": "TW:3037",
+   "code_raw": "3037",
+   "name": "欣興",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 19739000.0,
+   "weight": 7.53,
+   "amount_twd": 20528560000.0
+  },
+  {
+   "key": "TW:3017",
+   "code_raw": "3017",
+   "name": "奇鋐",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 6537000.0,
+   "weight": 7.45,
+   "amount_twd": 20297385000.0
+  },
+  {
+   "key": "TW:3653",
+   "code_raw": "3653",
+   "name": "健策",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 2512000.0,
+   "weight": 5.91,
+   "amount_twd": 16089360000.0
+  },
+  {
+   "key": "TW:2327",
+   "code_raw": "2327",
+   "name": "國巨*",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 23519000.0,
+   "weight": 4.69,
+   "amount_twd": 12770817000.0
+  },
+  {
+   "key": "TW:6223",
+   "code_raw": "6223",
+   "name": "旺矽",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 2504000.0,
+   "weight": 4.45,
+   "amount_twd": 12119360000.0
+  },
+  {
+   "key": "TW:2308",
+   "code_raw": "2308",
+   "name": "台達電",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 7582000.0,
+   "weight": 4.12,
+   "amount_twd": 11221360000.0
+  },
+  {
+   "key": "TW:8046",
+   "code_raw": "8046",
+   "name": "南電",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 8987000.0,
+   "weight": 4.12,
+   "amount_twd": 11233750000.0
+  },
+  {
+   "key": "TW:2345",
+   "code_raw": "2345",
+   "name": "智邦",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 6331000.0,
+   "weight": 4.08,
+   "amount_twd": 11110905000.0
+  },
+  {
+   "key": "TW:6274",
+   "code_raw": "6274",
+   "name": "台燿",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 7262000.0,
+   "weight": 3.7,
+   "amount_twd": 10094180000.0
+  },
+  {
+   "key": "TW:2303",
+   "code_raw": "2303",
+   "name": "聯電",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 79618000.0,
+   "weight": 3.38,
+   "amount_twd": 9195879000.0
+  },
+  {
+   "key": "TW:2368",
+   "code_raw": "2368",
+   "name": "金像電",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 7636000.0,
+   "weight": 3.13,
+   "amount_twd": 8514140000.0
+  },
+  {
+   "key": "TW:3711",
+   "code_raw": "3711",
+   "name": "日月光投控",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 11944000.0,
+   "weight": 2.99,
+   "amount_twd": 8157752000.0
+  },
+  {
+   "key": "TW:3443",
+   "code_raw": "3443",
+   "name": "創意",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 923000.0,
+   "weight": 2.59,
+   "amount_twd": 7051720000.0
+  },
+  {
+   "key": "TW:6669",
+   "code_raw": "6669",
+   "name": "緯穎",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 3281561.0,
+   "weight": 2.27,
+   "amount_twd": 6185742485.0
+  },
+  {
+   "key": "TW:3665",
+   "code_raw": "3665",
+   "name": "貿聯-KY",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 2887848.0,
+   "weight": 1.81,
+   "amount_twd": 4923780840.0
+  },
+  {
+   "key": "TW:5274",
+   "code_raw": "5274",
+   "name": "信驊",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 238900.0,
+   "weight": 1.49,
+   "amount_twd": 4056522000.0
+  },
+  {
+   "key": "TW:6805",
+   "code_raw": "6805",
+   "name": "富世達",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 1206000.0,
+   "weight": 1.07,
+   "amount_twd": 2924550000.0
+  },
+  {
+   "key": "TW:2449",
+   "code_raw": "2449",
+   "name": "京元電子",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 7556450.0,
+   "weight": 0.75,
+   "amount_twd": 2036463275.0
+  },
+  {
+   "key": "TW:8996",
+   "code_raw": "8996",
+   "name": "高力",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 981000.0,
+   "weight": 0.56,
+   "amount_twd": 1515645000.0
+  },
+  {
+   "key": "TW:6510",
+   "code_raw": "6510",
+   "name": "精測",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 470000.0,
+   "weight": 0.5,
+   "amount_twd": 1353600000.0
+  },
+  {
+   "key": "TW:3264",
+   "code_raw": "3264",
+   "name": "欣銓",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 5027000.0,
+   "weight": 0.44,
+   "amount_twd": 1188885500.0
+  },
+  {
+   "key": "TW:3231",
+   "code_raw": "3231",
+   "name": "緯創",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 6003000.0,
+   "weight": 0.42,
+   "amount_twd": 1131565500.0
+  },
+  {
+   "key": "TW:6271",
+   "code_raw": "6271",
+   "name": "同欣電",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 2185000.0,
+   "weight": 0.17,
+   "amount_twd": 450110000.0
+  },
+  {
+   "key": "TW:4979",
+   "code_raw": "4979",
+   "name": "華星光",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 957000.0,
+   "weight": 0.17,
+   "amount_twd": 456489000.0
+  },
+  {
+   "key": "TW:6191",
+   "code_raw": "6191",
+   "name": "精成科",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 3921000.0,
+   "weight": 0.12,
+   "amount_twd": 330540300.0
+  },
+  {
+   "key": "TW:6515",
+   "code_raw": "6515",
+   "name": "穎崴",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 69000.0,
+   "weight": 0.12,
+   "amount_twd": 321195000.0
+  },
+  {
+   "key": "TW:8358",
+   "code_raw": "8358",
+   "name": "金居",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 654000.0,
+   "weight": 0.11,
+   "amount_twd": 286779000.0
+  },
+  {
+   "key": "TW:3376",
+   "code_raw": "3376",
+   "name": "新日興",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 1740000.0,
+   "weight": 0.1,
+   "amount_twd": 268830000.0
+  },
+  {
+   "key": "TW:8210",
+   "code_raw": "8210",
+   "name": "勤誠",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 302000.0,
+   "weight": 0.08,
+   "amount_twd": 228312000.0
+  },
+  {
+   "key": "TW:6187",
+   "code_raw": "6187",
+   "name": "萬潤",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 121000.0,
+   "weight": 0.06,
+   "amount_twd": 152460000.0
+  },
+  {
+   "key": "TW:2002",
+   "code_raw": "2002",
+   "name": "中鋼",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 5163000.0,
+   "weight": 0.04,
+   "amount_twd": 100420350.0
+  },
+  {
+   "key": "TW:2313",
+   "code_raw": "2313",
+   "name": "華通",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 501000.0,
+   "weight": 0.04,
+   "amount_twd": 106963500.0
+  },
+  {
+   "key": "TW:6278",
+   "code_raw": "6278",
+   "name": "台表科",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 1000.0,
+   "weight": 0.0,
+   "amount_twd": 275000.0
+  },
+  {
+   "key": "TW:3661",
+   "code_raw": "3661",
+   "name": "世芯-KY",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 1000.0,
+   "weight": 0.0,
+   "amount_twd": 3680000.0
+  },
+  {
+   "key": "TW:2439",
+   "code_raw": "2439",
+   "name": "美律",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 1000.0,
+   "weight": 0.0,
+   "amount_twd": 79300.0
+  },
+  {
+   "key": "TW:1590",
+   "code_raw": "1590",
+   "name": "亞德客-KY",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 1000.0,
+   "weight": 0.0,
+   "amount_twd": 1150000.0
+  },
+  {
+   "key": "TW:3008",
+   "code_raw": "3008",
+   "name": "大立光",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 1000.0,
+   "weight": 0.0,
+   "amount_twd": 5815000.0
+  },
+  {
+   "key": "TW:4958",
+   "code_raw": "4958",
+   "name": "臻鼎-KY",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 1000.0,
+   "weight": 0.0,
+   "amount_twd": 520000.0
+  },
+  {
+   "key": "TW:2382",
+   "code_raw": "2382",
+   "name": "廣達",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 1000.0,
+   "weight": 0.0,
+   "amount_twd": 318000.0
+  },
+  {
+   "key": "TW:2408",
+   "code_raw": "2408",
+   "name": "南亞科",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 1000.0,
+   "weight": 0.0,
+   "amount_twd": 477000.0
+  },
+  {
+   "key": "TW:2637",
+   "code_raw": "2637",
+   "name": "慧洋-KY",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 1000.0,
+   "weight": 0.0,
+   "amount_twd": 101500.0
+  },
+  {
+   "key": "TW:2360",
+   "code_raw": "2360",
+   "name": "致茂",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 1000.0,
+   "weight": 0.0,
+   "amount_twd": 1945000.0
+  },
+  {
+   "key": "TW:6488",
+   "code_raw": "6488",
+   "name": "環球晶",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 1000.0,
+   "weight": 0.0,
+   "amount_twd": 814000.0
+  },
+  {
+   "key": "TW:8150",
+   "code_raw": "8150",
+   "name": "南茂",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 1000.0,
+   "weight": 0.0,
+   "amount_twd": 97200.0
+  },
+  {
+   "key": "TW:2317",
+   "code_raw": "2317",
+   "name": "鴻海",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 1000.0,
+   "weight": 0.0,
+   "amount_twd": 248000.0
+  },
+  {
+   "key": "TW:5347",
+   "code_raw": "5347",
+   "name": "世界",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 1000.0,
+   "weight": 0.0,
+   "amount_twd": 156500.0
+  },
+  {
+   "key": "TW:2481",
+   "code_raw": "2481",
+   "name": "強茂",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 5000.0,
+   "weight": 0.0,
+   "amount_twd": 742500.0
+  }
+ ],
+ "assets": {
+  "stock_twd": 261072580750.0,
+  "stock_pct_reported": 95.8246,
+  "rp_twd": 2998251127.0,
+  "rp_items": [
+   {
+    "name": "附買回債券",
+    "amount_twd": 2998251127.0
+   }
+  ],
+  "cash_twd": 9345563874.0,
+  "futures_margin_twd": 1910660429.0,
+  "receivable_payable_twd": -4297668639.0,
+  "redemption_payable_twd": 0.0,
+  "bond_twd": 0.0,
+  "other_twd": 0.0,
+  "other_items": [],
+  "futures": [
+   {
+    "code": "TX",
+    "name": "台指期貨",
+    "side": "long",
+    "contracts": 679.0,
+    "notional_twd": 6324070200.0,
+    "month": "2026/11",
+    "weight": 2.32
+   }
+  ],
+  "fx": {},
+  "cash_is_residual": false
+ },
+ "notes": [],
+ "digest": "28a4b0ab1967"
+}
