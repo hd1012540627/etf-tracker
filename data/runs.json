@@ -184,5 +184,51 @@
    "櫃買開放資料：13127 檔，資料日 2026-10-28"
   ],
   "end": "2026-10-29T00:30:29+08:00"
+ },
+ {
+  "start": "2026-10-29T13:03:28+08:00",
+  "mode": "full",
+  "browser": false,
+  "trigger": "workflow_dispatch",
+  "fetch": [
+   {
+    "etf": "00412A",
+    "time": "2026-10-29T13:03:28+08:00",
+    "mode": "requests",
+    "result": "same",
+    "position_date": "2026-10-28",
+    "n_holdings": 58,
+    "ok": true
+   },
+   {
+    "etf": "00981A",
+    "time": "2026-10-29T13:03:29+08:00",
+    "mode": "requests",
+    "result": "same",
+    "position_date": "2026-10-28",
+    "n_holdings": 50,
+    "ok": true
+   },
+   {
+    "etf": "00997A",
+    "time": "2026-10-29T13:03:31+08:00",
+    "mode": "requests",
+    "result": "same",
+    "position_date": "2026-10-28",
+    "n_holdings": 48,
+    "ok": true
+   }
+  ],
+  "price_errors": [
+   "找不到股價：US:AMD"
+  ],
+  "price_diag": [
+   "TPEx 開放資料：ChunkedEncodingError",
+   "證交所開放資料：1386 檔，資料日 2026-10-28",
+   "櫃買開放資料：0 檔，資料日 未標示",
+   "Yahoo chart AMD: HTTP 429",
+   "Yahoo chart AMD: HTTP 429"
+  ],
+  "end": "2026-10-29T13:03:49+08:00"
  }
 ]
