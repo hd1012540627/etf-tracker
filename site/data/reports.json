@@ -14,7 +14,7 @@
       "cash_other_pct": 14.75,
       "stock_pct": 85.25
      },
-     "net_active_twd": 588565655.0,
+     "net_active_twd": 588559123.0,
      "top_buys": [
       {
        "name": "景碩科技",
@@ -30,7 +30,7 @@
       },
       {
        "name": "Advanced Micro Devices Inc",
-       "twd": 66112817.0
+       "twd": 66124612.0
       },
       {
        "name": "萬潤科技",
@@ -44,7 +44,7 @@
       },
       {
        "name": "Advantest Corp",
-       "twd": -3280770.0
+       "twd": -3306539.0
       },
       {
        "name": "大立光電",
@@ -138,27 +138,27 @@
       "cash_other_pct": 7.4788,
       "stock_pct": 92.5212
      },
-     "net_active_twd": 9960900.0,
+     "net_active_twd": 9940514.0,
      "top_buys": [
       {
        "name": "Crowdstrike控股公司",
-       "twd": 513405.0
+       "twd": 515319.0
       },
       {
        "name": "魯門特姆控股公司",
-       "twd": 464462.0
+       "twd": 457210.0
       },
       {
        "name": "蘋果公司",
-       "twd": 453813.0
+       "twd": 452503.0
       },
       {
        "name": "美光科技公司",
-       "twd": 397021.0
+       "twd": 389615.0
       },
       {
        "name": "輝達公司",
-       "twd": 389276.0
+       "twd": 388567.0
       }
      ],
      "top_sells": [],
@@ -215,7 +215,7 @@
       "cash_other_pct": 14.75,
       "stock_pct": 85.25
      },
-     "net_active_twd": 588565655.0,
+     "net_active_twd": 588559123.0,
      "top_buys": [
       {
        "name": "景碩科技",
@@ -231,7 +231,7 @@
       },
       {
        "name": "Advanced Micro Devices Inc",
-       "twd": 66112817.0
+       "twd": 66124612.0
       },
       {
        "name": "萬潤科技",
@@ -245,7 +245,7 @@
       },
       {
        "name": "Advantest Corp",
-       "twd": -3280770.0
+       "twd": -3306539.0
       },
       {
        "name": "大立光電",
@@ -339,27 +339,27 @@
       "cash_other_pct": 7.4788,
       "stock_pct": 92.5212
      },
-     "net_active_twd": 9960900.0,
+     "net_active_twd": 9940514.0,
      "top_buys": [
       {
        "name": "Crowdstrike控股公司",
-       "twd": 513405.0
+       "twd": 515319.0
       },
       {
        "name": "魯門特姆控股公司",
-       "twd": 464462.0
+       "twd": 457210.0
       },
       {
        "name": "蘋果公司",
-       "twd": 453813.0
+       "twd": 452503.0
       },
       {
        "name": "美光科技公司",
-       "twd": 397021.0
+       "twd": 389615.0
       },
       {
        "name": "輝達公司",
-       "twd": 389276.0
+       "twd": 388567.0
       }
      ],
      "top_sells": [],
