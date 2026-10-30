@@ -1,0 +1,646 @@
+{
+ "etf": "00412A",
+ "name": "主動安聯亞洲半導體",
+ "issuer": "安聯投信",
+ "source_url": "https://etf.allianzgi.com.tw/etf-info/E0004?tab=4",
+ "fetched_at": "2026-10-30T18:32:01+08:00",
+ "position_date": "2026-10-30",
+ "pcf_date": "2026-11-02",
+ "nav_date": "2026-10-29",
+ "nav_twd": 7759383466.0,
+ "units": 871988000.0,
+ "nav_per_unit": 8.9,
+ "holdings": [
+  {
+   "key": "TW:2330",
+   "code_raw": "2330",
+   "name": "台積電",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 235000.0,
+   "weight": 7.32,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:3443",
+   "code_raw": "3443",
+   "name": "創意電子",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 39000.0,
+   "weight": 3.84,
+   "amount_twd": null
+  },
+  {
+   "key": "JP:6857",
+   "code_raw": "6857 JP",
+   "name": "Advantest Corp",
+   "market": "JP",
+   "currency": "JPY",
+   "shares": 37100.0,
+   "weight": 3.65,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:3008",
+   "code_raw": "3008",
+   "name": "大立光電",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 47000.0,
+   "weight": 3.52,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:3017",
+   "code_raw": "3017",
+   "name": "奇鋐",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 69000.0,
+   "weight": 2.76,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:3653",
+   "code_raw": "3653",
+   "name": "健策",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 29000.0,
+   "weight": 2.39,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:2454",
+   "code_raw": "2454",
+   "name": "聯發科",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 45000.0,
+   "weight": 2.35,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:3406",
+   "code_raw": "3406",
+   "name": "玉晶光",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 144000.0,
+   "weight": 2.23,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:6805",
+   "code_raw": "6805",
+   "name": "富世達",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 68000.0,
+   "weight": 2.13,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:2308",
+   "code_raw": "2308",
+   "name": "台達電子",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 109000.0,
+   "weight": 2.08,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:5274",
+   "code_raw": "5274",
+   "name": "信驊科技",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 9000.0,
+   "weight": 1.97,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:8996",
+   "code_raw": "8996",
+   "name": "高力",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 97000.0,
+   "weight": 1.93,
+   "amount_twd": null
+  },
+  {
+   "key": "US:AVGO",
+   "code_raw": "AVGO US",
+   "name": "Broadcom Inc",
+   "market": "US",
+   "currency": "USD",
+   "shares": 13000.0,
+   "weight": 1.88,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:6187",
+   "code_raw": "6187",
+   "name": "萬潤科技",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 110000.0,
+   "weight": 1.79,
+   "amount_twd": null
+  },
+  {
+   "key": "JP:4062",
+   "code_raw": "4062 JP",
+   "name": "Ibiden Co Ltd",
+   "market": "JP",
+   "currency": "JPY",
+   "shares": 67000.0,
+   "weight": 1.75,
+   "amount_twd": null
+  },
+  {
+   "key": "CN:002463",
+   "code_raw": "002463 C2",
+   "name": "WUS Printed Circuit Kunshan Co Ltd",
+   "market": "CN",
+   "currency": "CNY",
+   "shares": 287300.0,
+   "weight": 1.7,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:4958",
+   "code_raw": "4958",
+   "name": "臻鼎-KY",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 250000.0,
+   "weight": 1.68,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:3374",
+   "code_raw": "3374",
+   "name": "精材",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 250000.0,
+   "weight": 1.57,
+   "amount_twd": null
+  },
+  {
+   "key": "CN:600183",
+   "code_raw": "600183 C1",
+   "name": "Shengyi Technology Co Ltd",
+   "market": "CN",
+   "currency": "CNY",
+   "shares": 261400.0,
+   "weight": 1.55,
+   "amount_twd": null
+  },
+  {
+   "key": "US:AMD",
+   "code_raw": "AMD US",
+   "name": "Advanced Micro Devices Inc",
+   "market": "US",
+   "currency": "USD",
+   "shares": 6500.0,
+   "weight": 1.54,
+   "amount_twd": null
+  },
+  {
+   "key": "US:NVDA",
+   "code_raw": "NVDA US",
+   "name": "NVIDIA Corp",
+   "market": "US",
+   "currency": "USD",
+   "shares": 16300.0,
+   "weight": 1.46,
+   "amount_twd": null
+  },
+  {
+   "key": "JP:6976",
+   "code_raw": "6976 JP",
+   "name": "Taiyo Yuden Co Ltd",
+   "market": "JP",
+   "currency": "JPY",
+   "shares": 59100.0,
+   "weight": 1.45,
+   "amount_twd": null
+  },
+  {
+   "key": "KR:000660",
+   "code_raw": "000660 KS",
+   "name": "SK Hynix Inc",
+   "market": "KR",
+   "currency": "KRW",
+   "shares": 2954.0,
+   "weight": 1.41,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:3189",
+   "code_raw": "3189",
+   "name": "景碩科技",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 108000.0,
+   "weight": 1.33,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:3711",
+   "code_raw": "3711",
+   "name": "日月光投控",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 150000.0,
+   "weight": 1.32,
+   "amount_twd": null
+  },
+  {
+   "key": "US:LITE",
+   "code_raw": "LITE US",
+   "name": "Lumentum Holdings Inc",
+   "market": "US",
+   "currency": "USD",
+   "shares": 3400.0,
+   "weight": 1.31,
+   "amount_twd": null
+  },
+  {
+   "key": "JP:6981",
+   "code_raw": "6981 JP",
+   "name": "Murata Manufacturing Co Ltd",
+   "market": "JP",
+   "currency": "JPY",
+   "shares": 69600.0,
+   "weight": 1.27,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:3081",
+   "code_raw": "3081",
+   "name": "聯亞光電",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 38000.0,
+   "weight": 1.26,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:6415",
+   "code_raw": "6415",
+   "name": "矽力*-KY",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 185000.0,
+   "weight": 1.25,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:8046",
+   "code_raw": "8046",
+   "name": "南電",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 76000.0,
+   "weight": 1.22,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:2383",
+   "code_raw": "2383",
+   "name": "台光電子",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 18000.0,
+   "weight": 1.16,
+   "amount_twd": null
+  },
+  {
+   "key": "JP:3436",
+   "code_raw": "3436 JP",
+   "name": "SUMCO Corp",
+   "market": "JP",
+   "currency": "JPY",
+   "shares": 168100.0,
+   "weight": 1.13,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:6223",
+   "code_raw": "6223",
+   "name": "旺矽",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 18000.0,
+   "weight": 1.12,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:2345",
+   "code_raw": "2345",
+   "name": "智邦",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 48000.0,
+   "weight": 1.09,
+   "amount_twd": null
+  },
+  {
+   "key": "KR:005930",
+   "code_raw": "005930 KS",
+   "name": "Samsung Electronics Co Ltd",
+   "market": "KR",
+   "currency": "KRW",
+   "shares": 14362.0,
+   "weight": 1.04,
+   "amount_twd": null
+  },
+  {
+   "key": "US:GLW",
+   "code_raw": "GLW US",
+   "name": "Corning Inc",
+   "market": "US",
+   "currency": "USD",
+   "shares": 18200.0,
+   "weight": 0.98,
+   "amount_twd": null
+  },
+  {
+   "key": "JP:5802",
+   "code_raw": "5802 JP",
+   "name": "Sumitomo Electric Industries Ltd",
+   "market": "JP",
+   "currency": "JPY",
+   "shares": 184200.0,
+   "weight": 0.91,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:3529",
+   "code_raw": "3529",
+   "name": "力旺",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 27000.0,
+   "weight": 0.88,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:1303",
+   "code_raw": "1303",
+   "name": "南亞",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 217000.0,
+   "weight": 0.87,
+   "amount_twd": null
+  },
+  {
+   "key": "US:SMTC",
+   "code_raw": "SMTC US",
+   "name": "Semtech Corp",
+   "market": "US",
+   "currency": "USD",
+   "shares": 14700.0,
+   "weight": 0.87,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:2360",
+   "code_raw": "2360",
+   "name": "致茂",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 34000.0,
+   "weight": 0.85,
+   "amount_twd": null
+  },
+  {
+   "key": "US:TXN",
+   "code_raw": "TXN US",
+   "name": "Texas Instruments Inc",
+   "market": "US",
+   "currency": "USD",
+   "shares": 6400.0,
+   "weight": 0.84,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:2303",
+   "code_raw": "2303",
+   "name": "聯電",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 483000.0,
+   "weight": 0.72,
+   "amount_twd": null
+  },
+  {
+   "key": "JP:4004",
+   "code_raw": "4004 JP",
+   "name": "Resonac Holdings Corp",
+   "market": "JP",
+   "currency": "JPY",
+   "shares": 19000.0,
+   "weight": 0.71,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:3324",
+   "code_raw": "3324",
+   "name": "雙鴻科技",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 36000.0,
+   "weight": 0.68,
+   "amount_twd": null
+  },
+  {
+   "key": "JP:6146",
+   "code_raw": "6146 JP",
+   "name": "Disco Corp",
+   "market": "JP",
+   "currency": "JPY",
+   "shares": 4900.0,
+   "weight": 0.68,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:2059",
+   "code_raw": "2059",
+   "name": "川湖",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 5275.0,
+   "weight": 0.67,
+   "amount_twd": null
+  },
+  {
+   "key": "US:SITM",
+   "code_raw": "SITM US",
+   "name": "SiTime Corp",
+   "market": "US",
+   "currency": "USD",
+   "shares": 3280.0,
+   "weight": 0.67,
+   "amount_twd": null
+  },
+  {
+   "key": "CN:300476",
+   "code_raw": "300476 C2",
+   "name": "Victory Giant Technology Huizhou Co Ltd",
+   "market": "CN",
+   "currency": "CNY",
+   "shares": 64000.0,
+   "weight": 0.65,
+   "amount_twd": null
+  },
+  {
+   "key": "US:LSCC",
+   "code_raw": "LSCC US",
+   "name": "Lattice Semiconductor Corp",
+   "market": "US",
+   "currency": "USD",
+   "shares": 15100.0,
+   "weight": 0.65,
+   "amount_twd": null
+  },
+  {
+   "key": "JP:5706",
+   "code_raw": "5706 JP",
+   "name": "Mitsui Mining & Smelting Co Ltd",
+   "market": "JP",
+   "currency": "JPY",
+   "shares": 113000.0,
+   "weight": 0.64,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:6274",
+   "code_raw": "6274",
+   "name": "台燿",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 36000.0,
+   "weight": 0.64,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:3264",
+   "code_raw": "3264",
+   "name": "欣銓",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 207000.0,
+   "weight": 0.63,
+   "amount_twd": null
+  },
+  {
+   "key": "US:CRDO",
+   "code_raw": "CRDO US",
+   "name": "Credo Technology Group Holding Ltd",
+   "market": "US",
+   "currency": "USD",
+   "shares": 8700.0,
+   "weight": 0.6,
+   "amount_twd": null
+  },
+  {
+   "key": "US:MXL",
+   "code_raw": "MXL US",
+   "name": "MaxLinear Inc",
+   "market": "US",
+   "currency": "USD",
+   "shares": 19800.0,
+   "weight": 0.59,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:6669",
+   "code_raw": "6669",
+   "name": "緯穎",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 24000.0,
+   "weight": 0.58,
+   "amount_twd": null
+  },
+  {
+   "key": "JP:5801",
+   "code_raw": "5801 JP",
+   "name": "Furukawa Electric Co Ltd",
+   "market": "JP",
+   "currency": "JPY",
+   "shares": 67000.0,
+   "weight": 0.55,
+   "amount_twd": null
+  },
+  {
+   "key": "TW:7734",
+   "code_raw": "7734",
+   "name": "印能科技",
+   "market": "TW",
+   "currency": "TWD",
+   "shares": 11000.0,
+   "weight": 0.32,
+   "amount_twd": null
+  }
+ ],
+ "assets": {
+  "stock_twd": 6567047047.0,
+  "stock_pct_reported": 84.63,
+  "rp_twd": 1120100000.0,
+  "rp_items": [
+   {
+    "name": "國巨",
+    "amount_twd": 330000000.0
+   },
+   {
+    "name": "P11台泥1A",
+    "amount_twd": 4300000.0
+   },
+   {
+    "name": "P14南亞1",
+    "amount_twd": 50000000.0
+   },
+   {
+    "name": "P13世界1",
+    "amount_twd": 106100000.0
+   },
+   {
+    "name": "P12中油3B",
+    "amount_twd": 100000000.0
+   },
+   {
+    "name": "P11台電5C",
+    "amount_twd": 100000000.0
+   },
+   {
+    "name": "P15元大債1A",
+    "amount_twd": 89600000.0
+   },
+   {
+    "name": "P09中控2B",
+    "amount_twd": 340100000.0
+   }
+  ],
+  "cash_twd": 0.0,
+  "futures_margin_twd": 0.0,
+  "receivable_payable_twd": 0.0,
+  "redemption_payable_twd": 0.0,
+  "bond_twd": 0.0,
+  "other_twd": 0.0,
+  "other_items": [],
+  "futures": [],
+  "fx": {},
+  "cash_is_residual": true
+ },
+ "notes": [],
+ "digest": "f218fe0d120c"
+}
