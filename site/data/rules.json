@@ -7,9 +7,9 @@
     "metric": "stock_pct",
     "op": ">=",
     "limit": 70,
-    "value": 84.63,
+    "value": 83.66,
     "status": "符合",
-    "margin": 14.63,
+    "margin": 13.66,
     "note": null
    },
    {
@@ -18,9 +18,9 @@
     "metric": "max_weight",
     "op": "<=",
     "limit": 10,
-    "value": 7.32,
+    "value": 7.56,
     "status": "接近邊界",
-    "margin": 2.68,
+    "margin": 2.44,
     "note": null
    },
    {
@@ -30,9 +30,9 @@
     "op": ">=",
     "limit": 60,
     "approx": true,
-    "value": 73.24,
+    "value": 72.63,
     "status": "符合",
-    "margin": 13.24,
+    "margin": 12.63,
     "note": null
    }
   ],
@@ -279,9 +279,9 @@
     "metric": "stock_pct",
     "op": ">=",
     "limit": 70,
-    "value": 92.25,
+    "value": 90.62,
     "status": "符合",
-    "margin": 22.25,
+    "margin": 20.62,
     "note": null
    },
    {
@@ -290,9 +290,9 @@
     "metric": "max_weight",
     "op": "<=",
     "limit": 10,
-    "value": 4.79,
+    "value": 4.88,
     "status": "符合",
-    "margin": 5.21,
+    "margin": 5.12,
     "note": null
    },
    {
@@ -302,9 +302,9 @@
     "op": ">=",
     "limit": 60,
     "approx": true,
-    "value": 78.99,
+    "value": 77.42,
     "status": "符合",
-    "margin": 18.99,
+    "margin": 17.42,
     "note": null
    }
   ],
