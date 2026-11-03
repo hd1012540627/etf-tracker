@@ -1,5 +1,5 @@
 {
- "n_obs": 4,
+ "n_obs": 5,
  "min_obs": 60,
  "status": "樣本不足",
  "observations": [
@@ -24,8 +24,14 @@
   {
    "date": "2026-11-02",
    "cash_other_pct": 6.0578,
-   "active_net_twd": -2085231644.0,
+   "active_net_twd": -2068541506.0,
    "breadth": -92.6
+  },
+  {
+   "date": "2026-11-03",
+   "cash_other_pct": 11.905,
+   "active_net_twd": 110279418.0,
+   "breadth": -79.3
   }
  ],
  "correlations": {}

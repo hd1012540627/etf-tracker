@@ -10,37 +10,58 @@
       "stock_pct": 83.66
      },
      "end": {
-      "date": "2026-11-02",
-      "cash_other_pct": 16.34,
-      "stock_pct": 83.66
+      "date": "2026-11-03",
+      "cash_other_pct": 14.92,
+      "stock_pct": 85.08
      },
-     "net_active_twd": -17678554.0,
-     "top_buys": [],
-     "top_sells": [
+     "net_active_twd": 88266541.0,
+     "top_buys": [
+      {
+       "name": "南亞",
+       "twd": 60491154.0
+      },
       {
        "name": "台積電",
-       "twd": -1569832.0
+       "twd": 52514085.0
+      },
+      {
+       "name": "台光電子",
+       "twd": 29029531.0
+      },
+      {
+       "name": "南電",
+       "twd": 28167436.0
+      },
+      {
+       "name": "萬潤科技",
+       "twd": 15741591.0
+      }
+     ],
+     "top_sells": [
+      {
+       "name": "Advantest Corp",
+       "twd": -5935285.0
       },
       {
        "name": "創意電子",
-       "twd": -814561.0
-      },
-      {
-       "name": "Advantest Corp",
-       "twd": -776162.0
+       "twd": -5814724.0
       },
       {
        "name": "大立光電",
-       "twd": -739775.0
+       "twd": -5125024.0
       },
       {
        "name": "奇鋐",
-       "twd": -605341.0
+       "twd": -4426431.0
+      },
+      {
+       "name": "健策",
+       "twd": -3827681.0
       }
      ],
      "new": [],
      "exit": [],
-     "cash_other_change_pp": 0.0
+     "cash_other_change_pp": -1.42
     },
     "00981A": {
      "start": {
@@ -109,48 +130,48 @@
       "stock_pct": 90.618
      },
      "end": {
-      "date": "2026-11-02",
-      "cash_other_pct": 9.382,
-      "stock_pct": 90.618
+      "date": "2026-11-03",
+      "cash_other_pct": 9.6983,
+      "stock_pct": 90.3017
      },
-     "net_active_twd": -121254645.0,
+     "net_active_twd": -100230184.0,
      "top_buys": [
       {
        "name": "Crowdstrike控股公司",
-       "twd": 746092.0
+       "twd": 961307.0
       },
       {
        "name": "蘋果公司",
-       "twd": 674809.0
-      },
-      {
-       "name": "魯門特姆控股公司",
-       "twd": 631118.0
+       "twd": 883970.0
       },
       {
        "name": "輝達公司",
-       "twd": 561892.0
+       "twd": 740329.0
       },
       {
-       "name": "Dynatrace公司",
-       "twd": 519120.0
+       "name": "魯門特姆控股公司",
+       "twd": 685585.0
+      },
+      {
+       "name": "欣興",
+       "twd": 672154.0
       }
      ],
      "top_sells": [
       {
        "name": "Marvell Technology Inc",
-       "twd": -134886424.0
+       "twd": -117663990.0
       }
      ],
      "new": [],
      "exit": [],
-     "cash_other_change_pp": 0.0
+     "cash_other_change_pp": 0.32
     }
    },
    "summary": [
-    "00412A：主動淨賣 0.18 億，現金及其他 16.34%（+0.00 個百分點）；減碼最多：台積電、創意電子、Advantest Corp",
+    "00412A：主動淨買 0.88 億，現金及其他 14.92%（-1.42 個百分點）；加碼最多：南亞、台積電、台光電子；減碼最多：Advantest Corp、創意電子、大立光電",
     "00981A：主動淨賣 19.46 億，現金及其他 5.64%（+0.00 個百分點）；加碼最多：日月光投控、台積電、聯發科；減碼最多：台光電、奇鋐、欣興",
-    "00997A：主動淨賣 1.21 億，現金及其他 9.38%（+0.00 個百分點）；加碼最多：Crowdstrike控股公司、蘋果公司、魯門特姆控股公司；減碼最多：Marvell Technology Inc"
+    "00997A：主動淨賣 1.00 億，現金及其他 9.70%（+0.32 個百分點）；加碼最多：Crowdstrike控股公司、蘋果公司、輝達公司；減碼最多：Marvell Technology Inc"
    ]
   },
   {
@@ -369,37 +390,58 @@
       "stock_pct": 83.66
      },
      "end": {
-      "date": "2026-11-02",
-      "cash_other_pct": 16.34,
-      "stock_pct": 83.66
+      "date": "2026-11-03",
+      "cash_other_pct": 14.92,
+      "stock_pct": 85.08
      },
-     "net_active_twd": -17678554.0,
-     "top_buys": [],
-     "top_sells": [
+     "net_active_twd": 88266541.0,
+     "top_buys": [
+      {
+       "name": "南亞",
+       "twd": 60491154.0
+      },
       {
        "name": "台積電",
-       "twd": -1569832.0
+       "twd": 52514085.0
+      },
+      {
+       "name": "台光電子",
+       "twd": 29029531.0
+      },
+      {
+       "name": "南電",
+       "twd": 28167436.0
+      },
+      {
+       "name": "萬潤科技",
+       "twd": 15741591.0
+      }
+     ],
+     "top_sells": [
+      {
+       "name": "Advantest Corp",
+       "twd": -5935285.0
       },
       {
        "name": "創意電子",
-       "twd": -814561.0
-      },
-      {
-       "name": "Advantest Corp",
-       "twd": -776162.0
+       "twd": -5814724.0
       },
       {
        "name": "大立光電",
-       "twd": -739775.0
+       "twd": -5125024.0
       },
       {
        "name": "奇鋐",
-       "twd": -605341.0
+       "twd": -4426431.0
+      },
+      {
+       "name": "健策",
+       "twd": -3827681.0
       }
      ],
      "new": [],
      "exit": [],
-     "cash_other_change_pp": 0.0
+     "cash_other_change_pp": -1.42
     },
     "00981A": {
      "start": {
@@ -468,48 +510,48 @@
       "stock_pct": 90.618
      },
      "end": {
-      "date": "2026-11-02",
-      "cash_other_pct": 9.382,
-      "stock_pct": 90.618
+      "date": "2026-11-03",
+      "cash_other_pct": 9.6983,
+      "stock_pct": 90.3017
      },
-     "net_active_twd": -121254645.0,
+     "net_active_twd": -100230184.0,
      "top_buys": [
       {
        "name": "Crowdstrike控股公司",
-       "twd": 746092.0
+       "twd": 961307.0
       },
       {
        "name": "蘋果公司",
-       "twd": 674809.0
-      },
-      {
-       "name": "魯門特姆控股公司",
-       "twd": 631118.0
+       "twd": 883970.0
       },
       {
        "name": "輝達公司",
-       "twd": 561892.0
+       "twd": 740329.0
       },
       {
-       "name": "Dynatrace公司",
-       "twd": 519120.0
+       "name": "魯門特姆控股公司",
+       "twd": 685585.0
+      },
+      {
+       "name": "欣興",
+       "twd": 672154.0
       }
      ],
      "top_sells": [
       {
        "name": "Marvell Technology Inc",
-       "twd": -134886424.0
+       "twd": -117663990.0
       }
      ],
      "new": [],
      "exit": [],
-     "cash_other_change_pp": 0.0
+     "cash_other_change_pp": 0.32
     }
    },
    "summary": [
-    "00412A：主動淨賣 0.18 億，現金及其他 16.34%（+0.00 個百分點）；減碼最多：台積電、創意電子、Advantest Corp",
+    "00412A：主動淨買 0.88 億，現金及其他 14.92%（-1.42 個百分點）；加碼最多：南亞、台積電、台光電子；減碼最多：Advantest Corp、創意電子、大立光電",
     "00981A：主動淨賣 19.46 億，現金及其他 5.64%（+0.00 個百分點）；加碼最多：日月光投控、台積電、聯發科；減碼最多：台光電、奇鋐、欣興",
-    "00997A：主動淨賣 1.21 億，現金及其他 9.38%（+0.00 個百分點）；加碼最多：Crowdstrike控股公司、蘋果公司、魯門特姆控股公司；減碼最多：Marvell Technology Inc"
+    "00997A：主動淨賣 1.00 億，現金及其他 9.70%（+0.32 個百分點）；加碼最多：Crowdstrike控股公司、蘋果公司、輝達公司；減碼最多：Marvell Technology Inc"
    ]
   },
   {
