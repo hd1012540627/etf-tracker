@@ -279,9 +279,9 @@
     "metric": "stock_pct",
     "op": ">=",
     "limit": 70,
-    "value": 90.3,
+    "value": 87.64,
     "status": "符合",
-    "margin": 20.3,
+    "margin": 17.64,
     "note": null
    },
    {
@@ -290,9 +290,9 @@
     "metric": "max_weight",
     "op": "<=",
     "limit": 10,
-    "value": 4.9,
+    "value": 4.95,
     "status": "符合",
-    "margin": 5.1,
+    "margin": 5.05,
     "note": null
    },
    {
@@ -302,9 +302,9 @@
     "op": ">=",
     "limit": 60,
     "approx": true,
-    "value": 76.66,
+    "value": 75.95,
     "status": "符合",
-    "margin": 16.66,
+    "margin": 15.95,
     "note": null
    }
   ],
