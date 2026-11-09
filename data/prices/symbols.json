@@ -124,5 +124,7 @@
  "US:WDC": "WDC",
  "TW:1802": "1802.TW",
  "US:MPWR": "MPWR",
- "TW:2891": "2891.TW"
+ "TW:2891": "2891.TW",
+ "US:ABBV": "ABBV",
+ "US:U": "U"
 }
