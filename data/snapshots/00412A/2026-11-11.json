@@ -3,7 +3,7 @@
  "name": "主動安聯亞洲半導體",
  "issuer": "安聯投信",
  "source_url": "https://etf.allianzgi.com.tw/etf-info/E0004?tab=4",
- "fetched_at": "2026-11-11T15:29:30+08:00",
+ "fetched_at": "2026-11-11T19:32:41+08:00",
  "position_date": "2026-11-11",
  "pcf_date": "2026-11-12",
  "nav_date": "2026-11-10",
@@ -595,8 +595,12 @@
  "assets": {
   "stock_twd": 5981920432.0,
   "stock_pct_reported": 82.65,
-  "rp_twd": 1200300000.0,
+  "rp_twd": 1300300000.0,
   "rp_items": [
+   {
+    "name": "國巨",
+    "amount_twd": 100000000.0
+   },
    {
     "name": "台灣化纖",
     "amount_twd": 80000000.0
@@ -662,5 +666,5 @@
   "cash_is_residual": true
  },
  "notes": [],
- "digest": "19f90ca1af9c"
+ "digest": "67f0faa537ce"
 }

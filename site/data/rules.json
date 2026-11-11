@@ -138,9 +138,9 @@
     "metric": "stock_pct",
     "op": ">=",
     "limit": 70,
-    "value": 92.22,
+    "value": 93.17,
     "status": "符合",
-    "margin": 22.22,
+    "margin": 23.17,
     "note": null
    },
    {
@@ -149,9 +149,9 @@
     "metric": "max_weight",
     "op": "<=",
     "limit": 10,
-    "value": 14.98,
+    "value": 15.78,
     "status": "超過",
-    "margin": -4.98,
+    "margin": -5.78,
     "note": "單一個股上限通常以買進時點計算，股價上漲造成的被動超過不一定違規；主管機關 2025 年起對部分 ETF 放寬權值股上限。請以投信公告為準。"
    },
    {
