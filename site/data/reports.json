@@ -10,31 +10,31 @@
       "stock_pct": 79.1
      },
      "end": {
-      "date": "2026-11-11",
-      "cash_other_pct": 17.35,
-      "stock_pct": 82.65
+      "date": "2026-11-12",
+      "cash_other_pct": 15.8,
+      "stock_pct": 84.2
      },
-     "net_active_twd": 139057006.0,
+     "net_active_twd": 195649842.0,
      "top_buys": [
       {
        "name": "台光電子",
-       "twd": 96284580.0
+       "twd": 95745021.0
       },
       {
        "name": "南亞",
-       "twd": 36809711.0
-      },
-      {
-       "name": "奇鋐",
-       "twd": 35356811.0
+       "twd": 69474647.0
       },
       {
        "name": "嘉基",
-       "twd": 33105500.0
+       "twd": 54565217.0
+      },
+      {
+       "name": "奇鋐",
+       "twd": 34753866.0
       },
       {
        "name": "台積電",
-       "twd": 28439834.0
+       "twd": 26701131.0
       }
      ],
      "top_sells": [
@@ -44,19 +44,19 @@
       },
       {
        "name": "大立光電",
-       "twd": -1404840.0
+       "twd": -2042147.0
       },
       {
        "name": "Advantest Corp",
-       "twd": -1343797.0
+       "twd": -1952247.0
       },
       {
        "name": "聯發科",
-       "twd": -1017135.0
+       "twd": -1481867.0
       },
       {
        "name": "健策",
-       "twd": -991049.0
+       "twd": -1427066.0
       }
      ],
      "new": [
@@ -65,7 +65,7 @@
      "exit": [
       "Shengyi Technology Co Ltd"
      ],
-     "cash_other_change_pp": -3.55
+     "cash_other_change_pp": -5.1
     },
     "00981A": {
      "start": {
@@ -138,11 +138,11 @@
       "stock_pct": 84.5173
      },
      "end": {
-      "date": "2026-11-11",
-      "cash_other_pct": 5.1866,
-      "stock_pct": 94.8134
+      "date": "2026-11-12",
+      "cash_other_pct": 4.3202,
+      "stock_pct": 95.6798
      },
-     "net_active_twd": 821512666.0,
+     "net_active_twd": 971494702.0,
      "top_buys": [
       {
        "name": "艾伯維公司",
@@ -150,19 +150,19 @@
       },
       {
        "name": "美光科技公司",
-       "twd": 198579215.0
+       "twd": 224959452.0
       },
       {
        "name": "WESTERN DIGITAL CORP",
-       "twd": 151992782.0
+       "twd": 164619167.0
       },
       {
        "name": "希捷科技控股公開有限公司",
-       "twd": 137038751.0
+       "twd": 150665248.0
       },
       {
-       "name": "微軟公司",
-       "twd": 135076643.0
+       "name": "晟碟公司（德拉瓦州）",
+       "twd": 139857171.0
       }
      ],
      "top_sells": [
@@ -171,20 +171,20 @@
        "twd": -273710652.0
       },
       {
+       "name": "那提拉公司",
+       "twd": -144590498.0
+      },
+      {
+       "name": "Palo Alto Networks Inc",
+       "twd": -107078345.0
+      },
+      {
        "name": "魯門特姆控股公司",
        "twd": -94128931.0
       },
       {
        "name": "聯發科",
        "twd": -84504200.0
-      },
-      {
-       "name": "Okta公司",
-       "twd": -77075489.0
-      },
-      {
-       "name": "Snowflake公司",
-       "twd": -57825011.0
       }
      ],
      "new": [
@@ -197,13 +197,13 @@
       "Snowflake公司",
       "聯發科"
      ],
-     "cash_other_change_pp": -10.3
+     "cash_other_change_pp": -11.16
     }
    },
    "summary": [
-    "00412A：主動淨買 1.39 億，現金及其他 17.35%（-3.55 個百分點）；加碼最多：台光電子、南亞、奇鋐；減碼最多：Shengyi Technology Co Ltd、大立光電、Advantest Corp；新增：嘉基；剔除：Shengyi Technology Co Ltd",
+    "00412A：主動淨買 1.96 億，現金及其他 15.80%（-5.10 個百分點）；加碼最多：台光電子、南亞、嘉基；減碼最多：Shengyi Technology Co Ltd、大立光電、Advantest Corp；新增：嘉基；剔除：Shengyi Technology Co Ltd",
     "00981A：主動淨買 22.94 億，現金及其他 6.83%（-1.37 個百分點）；加碼最多：台積電、鴻海、緯創；減碼最多：緯穎、聯發科、台光電；新增：智伸科；剔除：美律",
-    "00997A：主動淨買 8.22 億，現金及其他 5.19%（-10.30 個百分點）；加碼最多：艾伯維公司、美光科技公司、WESTERN DIGITAL CORP；減碼最多：Dynatrace公司、魯門特姆控股公司、聯發科；新增：SharkNinja公司、UNITY、艾伯維公司；剔除：Dynatrace公司、Snowflake公司、聯發科"
+    "00997A：主動淨買 9.71 億，現金及其他 4.32%（-11.16 個百分點）；加碼最多：艾伯維公司、美光科技公司、WESTERN DIGITAL CORP；減碼最多：Dynatrace公司、那提拉公司、Palo Alto Networks Inc；新增：SharkNinja公司、UNITY、艾伯維公司；剔除：Dynatrace公司、Snowflake公司、聯發科"
    ]
   },
   {
@@ -620,31 +620,31 @@
       "stock_pct": 83.66
      },
      "end": {
-      "date": "2026-11-11",
-      "cash_other_pct": 17.35,
-      "stock_pct": 82.65
+      "date": "2026-11-12",
+      "cash_other_pct": 15.8,
+      "stock_pct": 84.2
      },
-     "net_active_twd": 30030036.0,
+     "net_active_twd": 86622872.0,
      "top_buys": [
       {
        "name": "台光電子",
-       "twd": 130100718.0
+       "twd": 129561159.0
       },
       {
        "name": "南亞",
-       "twd": 92789498.0
+       "twd": 125454434.0
       },
       {
        "name": "台積電",
-       "twd": 57997520.0
+       "twd": 56258817.0
       },
       {
        "name": "嘉基",
-       "twd": 33105500.0
+       "twd": 54565217.0
       },
       {
        "name": "奇鋐",
-       "twd": 23874593.0
+       "twd": 23271648.0
       }
      ],
      "top_sells": [
@@ -654,19 +654,19 @@
       },
       {
        "name": "Advantest Corp",
-       "twd": -16746433.0
+       "twd": -17354883.0
       },
       {
        "name": "大立光電",
-       "twd": -15242992.0
+       "twd": -15880299.0
       },
       {
        "name": "健策",
-       "twd": -11561197.0
+       "twd": -11997214.0
       },
       {
        "name": "聯發科",
-       "twd": -10926242.0
+       "twd": -11390974.0
       }
      ],
      "new": [
@@ -675,7 +675,7 @@
      "exit": [
       "Shengyi Technology Co Ltd"
      ],
-     "cash_other_change_pp": 1.01
+     "cash_other_change_pp": -0.54
     },
     "00981A": {
      "start": {
@@ -752,11 +752,11 @@
       "stock_pct": 90.618
      },
      "end": {
-      "date": "2026-11-11",
-      "cash_other_pct": 5.1866,
-      "stock_pct": 94.8134
+      "date": "2026-11-12",
+      "cash_other_pct": 4.3202,
+      "stock_pct": 95.6798
      },
-     "net_active_twd": 364137763.0,
+     "net_active_twd": 514119799.0,
      "top_buys": [
       {
        "name": "艾伯維公司",
@@ -764,19 +764,19 @@
       },
       {
        "name": "美光科技公司",
-       "twd": 200728308.0
+       "twd": 227108545.0
       },
       {
        "name": "WESTERN DIGITAL CORP",
-       "twd": 152885635.0
-      },
-      {
-       "name": "微軟公司",
-       "twd": 138061021.0
+       "twd": 165512020.0
       },
       {
        "name": "希捷科技控股公開有限公司",
-       "twd": 138043762.0
+       "twd": 151670259.0
+      },
+      {
+       "name": "晟碟公司（德拉瓦州）",
+       "twd": 141269981.0
       }
      ],
      "top_sells": [
@@ -793,12 +793,12 @@
        "twd": -160538586.0
       },
       {
-       "name": "Marvell Technology Inc",
-       "twd": -125549013.0
+       "name": "那提拉公司",
+       "twd": -142374763.0
       },
       {
-       "name": "三星電機",
-       "twd": -123545588.0
+       "name": "Marvell Technology Inc",
+       "twd": -125549013.0
       }
      ],
      "new": [
@@ -815,13 +815,13 @@
       "揖斐電有限公司",
       "聯發科"
      ],
-     "cash_other_change_pp": -4.2
+     "cash_other_change_pp": -5.06
     }
    },
    "summary": [
-    "00412A：主動淨買 0.30 億，現金及其他 17.35%（+1.01 個百分點）；加碼最多：台光電子、南亞、台積電；減碼最多：Shengyi Technology Co Ltd、Advantest Corp、大立光電；新增：嘉基；剔除：Shengyi Technology Co Ltd",
+    "00412A：主動淨買 0.87 億，現金及其他 15.80%（-0.54 個百分點）；加碼最多：台光電子、南亞、台積電；減碼最多：Shengyi Technology Co Ltd、Advantest Corp、大立光電；新增：嘉基；剔除：Shengyi Technology Co Ltd",
     "00981A：主動淨賣 46.58 億，現金及其他 6.83%（+1.19 個百分點）；加碼最多：台積電、日月光投控、鴻海；減碼最多：緯穎、台光電、欣興；新增：中信金、台玻、智伸科；剔除：勤誠、環球晶、美律",
-    "00997A：主動淨買 3.64 億，現金及其他 5.19%（-4.20 個百分點）；加碼最多：艾伯維公司、美光科技公司、WESTERN DIGITAL CORP；減碼最多：Dynatrace公司、魯門特姆控股公司、揖斐電有限公司；新增：SharkNinja公司、UNITY、艾伯維公司、芯源系統有限公司；剔除：Dynatrace公司、Snowflake公司、三星電機、愛德萬測試、揖斐電有限公司"
+    "00997A：主動淨買 5.14 億，現金及其他 4.32%（-5.06 個百分點）；加碼最多：艾伯維公司、美光科技公司、WESTERN DIGITAL CORP；減碼最多：Dynatrace公司、魯門特姆控股公司、揖斐電有限公司；新增：SharkNinja公司、UNITY、艾伯維公司、芯源系統有限公司；剔除：Dynatrace公司、Snowflake公司、三星電機、愛德萬測試、揖斐電有限公司"
    ]
   },
   {

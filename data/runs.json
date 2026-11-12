@@ -1108,5 +1108,47 @@
    "櫃買開放資料：13752 檔，資料日 2026-11-11"
   ],
   "end": "2026-11-11T19:33:09+08:00"
+ },
+ {
+  "start": "2026-11-12T15:57:10+08:00",
+  "mode": "full",
+  "browser": false,
+  "trigger": "schedule",
+  "fetch": [
+   {
+    "etf": "00412A",
+    "time": "2026-11-12T15:57:10+08:00",
+    "mode": "requests",
+    "result": "new",
+    "position_date": "2026-11-12",
+    "n_holdings": 58,
+    "ok": true
+   },
+   {
+    "etf": "00981A",
+    "time": "2026-11-12T15:57:11+08:00",
+    "mode": "requests",
+    "result": "same",
+    "position_date": "2026-11-11",
+    "n_holdings": 50,
+    "ok": true
+   },
+   {
+    "etf": "00997A",
+    "time": "2026-11-12T15:57:13+08:00",
+    "mode": "requests",
+    "result": "new",
+    "position_date": "2026-11-12",
+    "n_holdings": 46,
+    "ok": true
+   }
+  ],
+  "price_errors": [],
+  "price_diag": [
+   "TPEx 開放資料：ConnectionError",
+   "證交所開放資料：1390 檔，資料日 2026-11-11",
+   "櫃買開放資料：0 檔，資料日 未標示"
+  ],
+  "end": "2026-11-12T15:58:48+08:00"
  }
 ]
