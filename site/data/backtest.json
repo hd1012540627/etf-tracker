@@ -1,5 +1,5 @@
 {
- "n_obs": 12,
+ "n_obs": 13,
  "min_obs": 60,
  "status": "樣本不足",
  "observations": [
@@ -56,7 +56,8 @@
    "date": "2026-11-06",
    "cash_other_pct": 9.2316,
    "active_net_twd": -1202582547.0,
-   "breadth": -96.4
+   "breadth": -96.4,
+   "fwd5": 10.008
   },
   {
    "date": "2026-11-09",
@@ -79,8 +80,14 @@
   {
    "date": "2026-11-12",
    "cash_other_pct": 7.1015,
-   "active_net_twd": 495240840.0,
+   "active_net_twd": 493265379.0,
    "breadth": -66.2
+  },
+  {
+   "date": "2026-11-13",
+   "cash_other_pct": 9.9214,
+   "active_net_twd": -85372515.0,
+   "breadth": 96.2
   }
  ],
  "correlations": {}

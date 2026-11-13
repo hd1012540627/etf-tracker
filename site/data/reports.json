@@ -10,31 +10,31 @@
       "stock_pct": 79.1
      },
      "end": {
-      "date": "2026-11-12",
-      "cash_other_pct": 15.8,
-      "stock_pct": 84.2
+      "date": "2026-11-13",
+      "cash_other_pct": 16.95,
+      "stock_pct": 83.05
      },
-     "net_active_twd": 195646975.0,
+     "net_active_twd": 143325514.0,
      "top_buys": [
       {
        "name": "台光電子",
-       "twd": 95745021.0
+       "twd": 96518570.0
       },
       {
        "name": "南亞",
-       "twd": 69474647.0
+       "twd": 70246612.0
       },
       {
        "name": "嘉基",
-       "twd": 54565217.0
+       "twd": 68069545.0
       },
       {
        "name": "奇鋐",
-       "twd": 34753866.0
+       "twd": 35676125.0
       },
       {
        "name": "台積電",
-       "twd": 26701131.0
+       "twd": 29139177.0
       }
      ],
      "top_sells": [
@@ -43,29 +43,30 @@
        "twd": -92061091.0
       },
       {
+       "name": "NVIDIA Corp",
+       "twd": -89465804.0
+      },
+      {
        "name": "大立光電",
-       "twd": -2042147.0
+       "twd": -1107416.0
       },
       {
        "name": "Advantest Corp",
-       "twd": -1952844.0
-      },
-      {
-       "name": "聯發科",
-       "twd": -1481867.0
+       "twd": -1092785.0
       },
       {
        "name": "健策",
-       "twd": -1427066.0
+       "twd": -846515.0
       }
      ],
      "new": [
       "嘉基"
      ],
      "exit": [
+      "NVIDIA Corp",
       "Shengyi Technology Co Ltd"
      ],
-     "cash_other_change_pp": -5.1
+     "cash_other_change_pp": -3.95
     },
     "00981A": {
      "start": {
@@ -138,31 +139,31 @@
       "stock_pct": 84.5173
      },
      "end": {
-      "date": "2026-11-12",
-      "cash_other_pct": 4.3202,
-      "stock_pct": 95.6798
+      "date": "2026-11-13",
+      "cash_other_pct": 4.6856,
+      "stock_pct": 95.3144
      },
-     "net_active_twd": 971494702.0,
+     "net_active_twd": 936468187.0,
      "top_buys": [
       {
        "name": "艾伯維公司",
-       "twd": 262980625.0
+       "twd": 264262016.0
       },
       {
        "name": "美光科技公司",
-       "twd": 224959452.0
+       "twd": 227469852.0
       },
       {
        "name": "WESTERN DIGITAL CORP",
-       "twd": 164619167.0
+       "twd": 165995626.0
       },
       {
        "name": "希捷科技控股公開有限公司",
-       "twd": 150665248.0
+       "twd": 152045697.0
       },
       {
        "name": "晟碟公司（德拉瓦州）",
-       "twd": 139857171.0
+       "twd": 141152930.0
       }
      ],
      "top_sells": [
@@ -171,20 +172,20 @@
        "twd": -273710652.0
       },
       {
+       "name": "Okta公司",
+       "twd": -156899783.0
+      },
+      {
        "name": "那提拉公司",
-       "twd": -144590498.0
+       "twd": -145086777.0
       },
       {
        "name": "Palo Alto Networks Inc",
-       "twd": -107078345.0
+       "twd": -102432195.0
       },
       {
        "name": "魯門特姆控股公司",
-       "twd": -94128931.0
-      },
-      {
-       "name": "聯發科",
-       "twd": -84504200.0
+       "twd": -93702418.0
       }
      ],
      "new": [
@@ -197,13 +198,13 @@
       "Snowflake公司",
       "聯發科"
      ],
-     "cash_other_change_pp": -11.16
+     "cash_other_change_pp": -10.8
     }
    },
    "summary": [
-    "00412A：主動淨買 1.96 億，現金及其他 15.80%（-5.10 個百分點）；加碼最多：台光電子、南亞、嘉基；減碼最多：Shengyi Technology Co Ltd、大立光電、Advantest Corp；新增：嘉基；剔除：Shengyi Technology Co Ltd",
+    "00412A：主動淨買 1.43 億，現金及其他 16.95%（-3.95 個百分點）；加碼最多：台光電子、南亞、嘉基；減碼最多：Shengyi Technology Co Ltd、NVIDIA Corp、大立光電；新增：嘉基；剔除：NVIDIA Corp、Shengyi Technology Co Ltd",
     "00981A：主動淨買 26.66 億，現金及其他 6.96%（-1.24 個百分點）；加碼最多：台積電、鴻海、緯創；減碼最多：緯穎、聯電、聯發科；新增：智伸科；剔除：美律",
-    "00997A：主動淨買 9.71 億，現金及其他 4.32%（-11.16 個百分點）；加碼最多：艾伯維公司、美光科技公司、WESTERN DIGITAL CORP；減碼最多：Dynatrace公司、那提拉公司、Palo Alto Networks Inc；新增：SharkNinja公司、UNITY、艾伯維公司；剔除：Dynatrace公司、Snowflake公司、聯發科"
+    "00997A：主動淨買 9.36 億，現金及其他 4.69%（-10.80 個百分點）；加碼最多：艾伯維公司、美光科技公司、WESTERN DIGITAL CORP；減碼最多：Dynatrace公司、Okta公司、那提拉公司；新增：SharkNinja公司、UNITY、艾伯維公司；剔除：Dynatrace公司、Snowflake公司、聯發科"
    ]
   },
   {
@@ -620,31 +621,31 @@
       "stock_pct": 83.66
      },
      "end": {
-      "date": "2026-11-12",
-      "cash_other_pct": 15.8,
-      "stock_pct": 84.2
+      "date": "2026-11-13",
+      "cash_other_pct": 16.95,
+      "stock_pct": 83.05
      },
-     "net_active_twd": 86620005.0,
+     "net_active_twd": 34298544.0,
      "top_buys": [
       {
        "name": "台光電子",
-       "twd": 129561159.0
+       "twd": 130334708.0
       },
       {
        "name": "南亞",
-       "twd": 125454434.0
-      },
-      {
-       "name": "台積電",
-       "twd": 56258817.0
+       "twd": 126226399.0
       },
       {
        "name": "嘉基",
-       "twd": 54565217.0
+       "twd": 68069545.0
+      },
+      {
+       "name": "台積電",
+       "twd": 58696863.0
       },
       {
        "name": "奇鋐",
-       "twd": 23271648.0
+       "twd": 24193907.0
       }
      ],
      "top_sells": [
@@ -653,29 +654,30 @@
        "twd": -98056560.0
       },
       {
+       "name": "NVIDIA Corp",
+       "twd": -95862066.0
+      },
+      {
        "name": "Advantest Corp",
-       "twd": -17355480.0
+       "twd": -16495421.0
       },
       {
        "name": "大立光電",
-       "twd": -15880299.0
+       "twd": -14945568.0
       },
       {
        "name": "健策",
-       "twd": -11997214.0
-      },
-      {
-       "name": "聯發科",
-       "twd": -11390974.0
+       "twd": -11416663.0
       }
      ],
      "new": [
       "嘉基"
      ],
      "exit": [
+      "NVIDIA Corp",
       "Shengyi Technology Co Ltd"
      ],
-     "cash_other_change_pp": -0.54
+     "cash_other_change_pp": 0.61
     },
     "00981A": {
      "start": {
@@ -752,31 +754,31 @@
       "stock_pct": 90.618
      },
      "end": {
-      "date": "2026-11-12",
-      "cash_other_pct": 4.3202,
-      "stock_pct": 95.6798
+      "date": "2026-11-13",
+      "cash_other_pct": 4.6856,
+      "stock_pct": 95.3144
      },
-     "net_active_twd": 514119799.0,
+     "net_active_twd": 479093284.0,
      "top_buys": [
       {
        "name": "艾伯維公司",
-       "twd": 262980625.0
+       "twd": 264262016.0
       },
       {
        "name": "美光科技公司",
-       "twd": 227108545.0
+       "twd": 229618945.0
       },
       {
        "name": "WESTERN DIGITAL CORP",
-       "twd": 165512020.0
+       "twd": 166888479.0
       },
       {
        "name": "希捷科技控股公開有限公司",
-       "twd": 151670259.0
+       "twd": 153050708.0
       },
       {
        "name": "晟碟公司（德拉瓦州）",
-       "twd": 141269981.0
+       "twd": 142565740.0
       }
      ],
      "top_sells": [
@@ -786,19 +788,19 @@
       },
       {
        "name": "魯門特姆控股公司",
-       "twd": -233730596.0
+       "twd": -233304083.0
       },
       {
        "name": "揖斐電有限公司",
        "twd": -160538586.0
       },
       {
-       "name": "那提拉公司",
-       "twd": -142374763.0
+       "name": "Okta公司",
+       "twd": -154763469.0
       },
       {
-       "name": "Marvell Technology Inc",
-       "twd": -125549013.0
+       "name": "那提拉公司",
+       "twd": -142871042.0
       }
      ],
      "new": [
@@ -815,13 +817,13 @@
       "揖斐電有限公司",
       "聯發科"
      ],
-     "cash_other_change_pp": -5.06
+     "cash_other_change_pp": -4.7
     }
    },
    "summary": [
-    "00412A：主動淨買 0.87 億，現金及其他 15.80%（-0.54 個百分點）；加碼最多：台光電子、南亞、台積電；減碼最多：Shengyi Technology Co Ltd、Advantest Corp、大立光電；新增：嘉基；剔除：Shengyi Technology Co Ltd",
+    "00412A：主動淨買 0.34 億，現金及其他 16.95%（+0.61 個百分點）；加碼最多：台光電子、南亞、嘉基；減碼最多：Shengyi Technology Co Ltd、NVIDIA Corp、Advantest Corp；新增：嘉基；剔除：NVIDIA Corp、Shengyi Technology Co Ltd",
     "00981A：主動淨賣 42.85 億，現金及其他 6.96%（+1.32 個百分點）；加碼最多：台積電、日月光投控、鴻海；減碼最多：緯穎、台光電、欣興；新增：中信金、台玻、智伸科；剔除：勤誠、環球晶、美律",
-    "00997A：主動淨買 5.14 億，現金及其他 4.32%（-5.06 個百分點）；加碼最多：艾伯維公司、美光科技公司、WESTERN DIGITAL CORP；減碼最多：Dynatrace公司、魯門特姆控股公司、揖斐電有限公司；新增：SharkNinja公司、UNITY、艾伯維公司、芯源系統有限公司；剔除：Dynatrace公司、Snowflake公司、三星電機、愛德萬測試、揖斐電有限公司"
+    "00997A：主動淨買 4.79 億，現金及其他 4.69%（-4.70 個百分點）；加碼最多：艾伯維公司、美光科技公司、WESTERN DIGITAL CORP；減碼最多：Dynatrace公司、魯門特姆控股公司、揖斐電有限公司；新增：SharkNinja公司、UNITY、艾伯維公司、芯源系統有限公司；剔除：Dynatrace公司、Snowflake公司、三星電機、愛德萬測試、揖斐電有限公司"
    ]
   },
   {
