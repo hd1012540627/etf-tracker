@@ -1236,5 +1236,46 @@
    "Yahoo chart AMD: HTTP 429"
   ],
   "end": "2026-11-13T15:38:22+08:00"
+ },
+ {
+  "start": "2026-11-13T19:41:59+08:00",
+  "mode": "full",
+  "browser": false,
+  "trigger": "schedule",
+  "fetch": [
+   {
+    "etf": "00412A",
+    "time": "2026-11-13T19:41:59+08:00",
+    "mode": "requests",
+    "result": "updated",
+    "position_date": "2026-11-13",
+    "n_holdings": 57,
+    "ok": true
+   },
+   {
+    "etf": "00981A",
+    "time": "2026-11-13T19:42:00+08:00",
+    "mode": "requests",
+    "result": "new",
+    "position_date": "2026-11-13",
+    "n_holdings": 50,
+    "ok": true
+   },
+   {
+    "etf": "00997A",
+    "time": "2026-11-13T19:42:02+08:00",
+    "mode": "requests",
+    "result": "same",
+    "position_date": "2026-11-13",
+    "n_holdings": 46,
+    "ok": true
+   }
+  ],
+  "price_errors": [],
+  "price_diag": [
+   "證交所開放資料：1389 檔，資料日 2026-11-12",
+   "櫃買開放資料：13807 檔，資料日 2026-11-13"
+  ],
+  "end": "2026-11-13T19:42:22+08:00"
  }
 ]
