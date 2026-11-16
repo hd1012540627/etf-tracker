@@ -87,14 +87,14 @@
   {
    "date": "2026-11-13",
    "cash_other_pct": 6.7893,
-   "active_net_twd": 661187217.0,
+   "active_net_twd": 661142826.0,
    "breadth": 94.4
   },
   {
    "date": "2026-11-16",
-   "cash_other_pct": 10.0255,
-   "active_net_twd": -1262855.0,
-   "breadth": 88.3
+   "cash_other_pct": 7.5169,
+   "active_net_twd": -965513165.0,
+   "breadth": 86.5
   }
  ],
  "correlations": {}
