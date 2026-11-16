@@ -1,6 +1,126 @@
 {
  "week": [
   {
+   "period": "2026-W47",
+   "etfs": {
+    "00412A": {
+     "start": {
+      "date": "2026-11-16",
+      "cash_other_pct": 18.22,
+      "stock_pct": 81.78
+     },
+     "end": {
+      "date": "2026-11-16",
+      "cash_other_pct": 18.22,
+      "stock_pct": 81.78
+     },
+     "net_active_twd": -101476692.0,
+     "top_buys": [
+      {
+       "name": "Advanced Micro Devices Inc",
+       "twd": 33413341.0
+      },
+      {
+       "name": "台積電",
+       "twd": 1647591.0
+      },
+      {
+       "name": "創意電子",
+       "twd": 894883.0
+      },
+      {
+       "name": "大立光電",
+       "twd": 603284.0
+      },
+      {
+       "name": "奇鋐",
+       "twd": 595980.0
+      }
+     ],
+     "top_sells": [
+      {
+       "name": "聯電",
+       "twd": -48892854.0
+      },
+      {
+       "name": "雙鴻科技",
+       "twd": -40929794.0
+      },
+      {
+       "name": "欣銓",
+       "twd": -39843719.0
+      },
+      {
+       "name": "印能科技",
+       "twd": -19746831.0
+      }
+     ],
+     "new": [],
+     "exit": [
+      "印能科技",
+      "欣銓",
+      "聯電",
+      "雙鴻科技"
+     ],
+     "cash_other_change_pp": 0.0
+    },
+    "00997A": {
+     "start": {
+      "date": "2026-11-16",
+      "cash_other_pct": 3.7431,
+      "stock_pct": 96.2569
+     },
+     "end": {
+      "date": "2026-11-16",
+      "cash_other_pct": 3.7431,
+      "stock_pct": 96.2569
+     },
+     "net_active_twd": 100213837.0,
+     "top_buys": [
+      {
+       "name": "ADVANCED MICRO DEVICES",
+       "twd": 204991747.0
+      },
+      {
+       "name": "Arista網路公司",
+       "twd": 39347687.0
+      },
+      {
+       "name": "美光科技公司",
+       "twd": 1225164.0
+      },
+      {
+       "name": "微軟公司",
+       "twd": 1199639.0
+      },
+      {
+       "name": "蘋果公司",
+       "twd": 1193399.0
+      }
+     ],
+     "top_sells": [
+      {
+       "name": "Okta公司",
+       "twd": -115995376.0
+      },
+      {
+       "name": "那提拉公司",
+       "twd": -48707032.0
+      }
+     ],
+     "new": [],
+     "exit": [
+      "Okta公司"
+     ],
+     "cash_other_change_pp": 0.0
+    }
+   },
+   "summary": [
+    "00412A：主動淨賣 1.01 億，現金及其他 18.22%（+0.00 個百分點）；加碼最多：Advanced Micro Devices Inc、台積電、創意電子；減碼最多：聯電、雙鴻科技、欣銓；剔除：印能科技、欣銓、聯電、雙鴻科技",
+    "00997A：主動淨買 1.00 億，現金及其他 3.74%（+0.00 個百分點）；加碼最多：ADVANCED MICRO DEVICES、Arista網路公司、美光科技公司；減碼最多：Okta公司、那提拉公司；剔除：Okta公司"
+   ]
+  },
+  {
    "period": "2026-W46",
    "etfs": {
     "00412A": {
@@ -14,7 +134,7 @@
       "cash_other_pct": 16.95,
       "stock_pct": 83.05
      },
-     "net_active_twd": 143330824.0,
+     "net_active_twd": 143230195.0,
      "top_buys": [
       {
        "name": "台光電子",
@@ -52,7 +172,7 @@
       },
       {
        "name": "Advantest Corp",
-       "twd": -1093210.0
+       "twd": -1081726.0
       },
       {
        "name": "健策",
@@ -143,27 +263,27 @@
       "cash_other_pct": 4.6856,
       "stock_pct": 95.3144
      },
-     "net_active_twd": 936550431.0,
+     "net_active_twd": 935462925.0,
      "top_buys": [
       {
        "name": "艾伯維公司",
-       "twd": 264262016.0
+       "twd": 264264540.0
       },
       {
        "name": "美光科技公司",
-       "twd": 227469852.0
+       "twd": 227406561.0
       },
       {
        "name": "WESTERN DIGITAL CORP",
-       "twd": 165995626.0
+       "twd": 165926805.0
       },
       {
        "name": "希捷科技控股公開有限公司",
-       "twd": 152045697.0
+       "twd": 152003028.0
       },
       {
        "name": "晟碟公司（德拉瓦州）",
-       "twd": 141152930.0
+       "twd": 141066216.0
       }
      ],
      "top_sells": [
@@ -173,19 +293,19 @@
       },
       {
        "name": "Okta公司",
-       "twd": -156899783.0
+       "twd": -157041001.0
       },
       {
        "name": "那提拉公司",
-       "twd": -145086777.0
+       "twd": -145092449.0
       },
       {
        "name": "Palo Alto Networks Inc",
-       "twd": -102432195.0
+       "twd": -102433259.0
       },
       {
        "name": "魯門特姆控股公司",
-       "twd": -93702418.0
+       "twd": -93721557.0
       }
      ],
      "new": [
@@ -204,7 +324,7 @@
    "summary": [
     "00412A：主動淨買 1.43 億，現金及其他 16.95%（-3.95 個百分點）；加碼最多：台光電子、南亞、嘉基；減碼最多：Shengyi Technology Co Ltd、NVIDIA Corp、大立光電；新增：嘉基；剔除：NVIDIA Corp、Shengyi Technology Co Ltd",
     "00981A：主動淨買 34.14 億，現金及其他 6.59%（-1.61 個百分點）；加碼最多：台積電、鴻海、緯創；減碼最多：緯穎、聯電、聯發科；新增：智伸科；剔除：美律",
-    "00997A：主動淨買 9.37 億，現金及其他 4.69%（-10.80 個百分點）；加碼最多：艾伯維公司、美光科技公司、WESTERN DIGITAL CORP；減碼最多：Dynatrace公司、Okta公司、那提拉公司；新增：SharkNinja公司、UNITY、艾伯維公司；剔除：Dynatrace公司、Snowflake公司、聯發科"
+    "00997A：主動淨買 9.35 億，現金及其他 4.69%（-10.80 個百分點）；加碼最多：艾伯維公司、美光科技公司、WESTERN DIGITAL CORP；減碼最多：Dynatrace公司、Okta公司、那提拉公司；新增：SharkNinja公司、UNITY、艾伯維公司；剔除：Dynatrace公司、Snowflake公司、聯發科"
    ]
   },
   {
@@ -621,31 +741,31 @@
       "stock_pct": 83.66
      },
      "end": {
-      "date": "2026-11-13",
-      "cash_other_pct": 16.95,
-      "stock_pct": 83.05
+      "date": "2026-11-16",
+      "cash_other_pct": 18.22,
+      "stock_pct": 81.78
      },
-     "net_active_twd": 34303854.0,
+     "net_active_twd": -67273467.0,
      "top_buys": [
       {
        "name": "台光電子",
-       "twd": 130334708.0
+       "twd": 130834057.0
       },
       {
        "name": "南亞",
-       "twd": 126226399.0
+       "twd": 126725256.0
       },
       {
        "name": "嘉基",
-       "twd": 68069545.0
+       "twd": 68230866.0
       },
       {
        "name": "台積電",
-       "twd": 58696863.0
+       "twd": 60344454.0
       },
       {
-       "name": "奇鋐",
-       "twd": 24193907.0
+       "name": "Advanced Micro Devices Inc",
+       "twd": 26844170.0
       }
      ],
      "top_sells": [
@@ -658,16 +778,16 @@
        "twd": -95862066.0
       },
       {
-       "name": "Advantest Corp",
-       "twd": -16495846.0
+       "name": "聯電",
+       "twd": -52108507.0
       },
       {
-       "name": "大立光電",
-       "twd": -14945568.0
+       "name": "雙鴻科技",
+       "twd": -43877776.0
       },
       {
-       "name": "健策",
-       "twd": -11416663.0
+       "name": "欣銓",
+       "twd": -42407193.0
       }
      ],
      "new": [
@@ -675,9 +795,13 @@
      ],
      "exit": [
       "NVIDIA Corp",
-      "Shengyi Technology Co Ltd"
+      "Shengyi Technology Co Ltd",
+      "印能科技",
+      "欣銓",
+      "聯電",
+      "雙鴻科技"
      ],
-     "cash_other_change_pp": 0.61
+     "cash_other_change_pp": 1.88
     },
     "00981A": {
      "start": {
@@ -754,31 +878,31 @@
       "stock_pct": 90.618
      },
      "end": {
-      "date": "2026-11-13",
-      "cash_other_pct": 4.6856,
-      "stock_pct": 95.3144
+      "date": "2026-11-16",
+      "cash_other_pct": 3.7431,
+      "stock_pct": 96.2569
      },
-     "net_active_twd": 479175528.0,
+     "net_active_twd": 578301859.0,
      "top_buys": [
       {
        "name": "艾伯維公司",
-       "twd": 264262016.0
+       "twd": 264907342.0
+      },
+      {
+       "name": "ADVANCED MICRO DEVICES",
+       "twd": 249985605.0
       },
       {
        "name": "美光科技公司",
-       "twd": 229618945.0
+       "twd": 230780818.0
       },
       {
        "name": "WESTERN DIGITAL CORP",
-       "twd": 166888479.0
+       "twd": 167474337.0
       },
       {
        "name": "希捷科技控股公開有限公司",
-       "twd": 153050708.0
-      },
-      {
-       "name": "晟碟公司（德拉瓦州）",
-       "twd": 142565740.0
+       "twd": 153677809.0
       }
      ],
      "top_sells": [
@@ -787,20 +911,20 @@
        "twd": -271351328.0
       },
       {
+       "name": "Okta公司",
+       "twd": -270900063.0
+      },
+      {
        "name": "魯門特姆控股公司",
-       "twd": -233304083.0
+       "twd": -233119267.0
+      },
+      {
+       "name": "那提拉公司",
+       "twd": -191583746.0
       },
       {
        "name": "揖斐電有限公司",
        "twd": -160538586.0
-      },
-      {
-       "name": "Okta公司",
-       "twd": -154763469.0
-      },
-      {
-       "name": "那提拉公司",
-       "twd": -142871042.0
       }
      ],
      "new": [
@@ -811,19 +935,20 @@
      ],
      "exit": [
       "Dynatrace公司",
+      "Okta公司",
       "Snowflake公司",
       "三星電機",
       "愛德萬測試",
       "揖斐電有限公司",
       "聯發科"
      ],
-     "cash_other_change_pp": -4.7
+     "cash_other_change_pp": -5.64
     }
    },
    "summary": [
-    "00412A：主動淨買 0.34 億，現金及其他 16.95%（+0.61 個百分點）；加碼最多：台光電子、南亞、嘉基；減碼最多：Shengyi Technology Co Ltd、NVIDIA Corp、Advantest Corp；新增：嘉基；剔除：NVIDIA Corp、Shengyi Technology Co Ltd",
+    "00412A：主動淨賣 0.67 億，現金及其他 18.22%（+1.88 個百分點）；加碼最多：台光電子、南亞、嘉基；減碼最多：Shengyi Technology Co Ltd、NVIDIA Corp、聯電；新增：嘉基；剔除：NVIDIA Corp、Shengyi Technology Co Ltd、印能科技、欣銓、聯電",
     "00981A：主動淨賣 35.37 億，現金及其他 6.59%（+0.95 個百分點）；加碼最多：台積電、日月光投控、鴻海；減碼最多：緯穎、台光電、聯電；新增：中信金、台玻、智伸科；剔除：勤誠、環球晶、美律",
-    "00997A：主動淨買 4.79 億，現金及其他 4.69%（-4.70 個百分點）；加碼最多：艾伯維公司、美光科技公司、WESTERN DIGITAL CORP；減碼最多：Dynatrace公司、魯門特姆控股公司、揖斐電有限公司；新增：SharkNinja公司、UNITY、艾伯維公司、芯源系統有限公司；剔除：Dynatrace公司、Snowflake公司、三星電機、愛德萬測試、揖斐電有限公司"
+    "00997A：主動淨買 5.78 億，現金及其他 3.74%（-5.64 個百分點）；加碼最多：艾伯維公司、ADVANCED MICRO DEVICES、美光科技公司；減碼最多：Dynatrace公司、Okta公司、魯門特姆控股公司；新增：SharkNinja公司、UNITY、艾伯維公司、芯源系統有限公司；剔除：Dynatrace公司、Okta公司、Snowflake公司、三星電機、愛德萬測試"
    ]
   },
   {
