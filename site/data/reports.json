@@ -14,11 +14,11 @@
       "cash_other_pct": 20.2,
       "stock_pct": 79.8
      },
-     "net_active_twd": -146475700.0,
+     "net_active_twd": -146478993.0,
      "top_buys": [
       {
        "name": "Advanced Micro Devices Inc",
-       "twd": 31233293.0
+       "twd": 31232979.0
       },
       {
        "name": "台積電",
@@ -128,7 +128,7 @@
       "cash_other_pct": 4.4666,
       "stock_pct": 95.5334
      },
-     "net_active_twd": 38061372.0,
+     "net_active_twd": 38060876.0,
      "top_buys": [
       {
        "name": "ADVANCED MICRO DEVICES",
@@ -804,7 +804,7 @@
       "cash_other_pct": 20.2,
       "stock_pct": 79.8
      },
-     "net_active_twd": -112272475.0,
+     "net_active_twd": -112275768.0,
      "top_buys": [
       {
        "name": "台光電子",
@@ -824,7 +824,7 @@
       },
       {
        "name": "Advanced Micro Devices Inc",
-       "twd": 24664122.0
+       "twd": 24663808.0
       }
      ],
      "top_sells": [
@@ -942,7 +942,7 @@
       "cash_other_pct": 4.4666,
       "stock_pct": 95.5334
      },
-     "net_active_twd": 516105003.0,
+     "net_active_twd": 516104507.0,
      "top_buys": [
       {
        "name": "艾伯維公司",
