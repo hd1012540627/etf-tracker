@@ -3,7 +3,7 @@
  "name": "主動安聯亞洲半導體",
  "issuer": "安聯投信",
  "source_url": "https://etf.allianzgi.com.tw/etf-info/E0004?tab=4",
- "fetched_at": "2026-11-18T16:12:48+08:00",
+ "fetched_at": "2026-11-18T20:26:10+08:00",
  "position_date": "2026-11-18",
  "pcf_date": "2026-11-19",
  "nav_date": "2026-11-17",
@@ -535,11 +535,47 @@
  "assets": {
   "stock_twd": 5208511596.0,
   "stock_pct_reported": 78.83,
-  "rp_twd": 600300000.0,
+  "rp_twd": 1170300000.0,
   "rp_items": [
    {
     "name": "台灣化纖",
     "amount_twd": 80000000.0
+   },
+   {
+    "name": "P11台泥1A",
+    "amount_twd": 4300000.0
+   },
+   {
+    "name": "P14南亞1",
+    "amount_twd": 50000000.0
+   },
+   {
+    "name": "P13世界1",
+    "amount_twd": 106100000.0
+   },
+   {
+    "name": "P12中油3B",
+    "amount_twd": 100000000.0
+   },
+   {
+    "name": "P13中油4A",
+    "amount_twd": 4600000.0
+   },
+   {
+    "name": "P11台電4D",
+    "amount_twd": 15400000.0
+   },
+   {
+    "name": "P11台電5C",
+    "amount_twd": 100000000.0
+   },
+   {
+    "name": "P15元大債1A",
+    "amount_twd": 89600000.0
+   },
+   {
+    "name": "P15元大債1A",
+    "amount_twd": 100000000.0
    },
    {
     "name": "P09中控2B",
@@ -566,5 +602,5 @@
   "cash_is_residual": true
  },
  "notes": [],
- "digest": "1ad684c3aff8"
+ "digest": "f0b527578327"
 }
