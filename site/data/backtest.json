@@ -1,5 +1,5 @@
 {
- "n_obs": 17,
+ "n_obs": 18,
  "min_obs": 60,
  "status": "樣本不足",
  "observations": [
@@ -13,28 +13,28 @@
   {
    "date": "2026-10-29",
    "cash_other_pct": 4.59,
-   "active_net_twd": -584858564.0,
+   "active_net_twd": -585075648.0,
    "breadth": -94.3,
    "fwd5": -10.338
   },
   {
    "date": "2026-10-30",
    "cash_other_pct": 5.332,
-   "active_net_twd": -1749838982.0,
+   "active_net_twd": -1749933394.0,
    "breadth": -85.6,
    "fwd5": -12.187
   },
   {
    "date": "2026-11-02",
    "cash_other_pct": 6.0578,
-   "active_net_twd": -2068541506.0,
+   "active_net_twd": -2068806430.0,
    "breadth": -92.6,
    "fwd5": -7.254
   },
   {
    "date": "2026-11-03",
    "cash_other_pct": 5.9699,
-   "active_net_twd": 995007567.0,
+   "active_net_twd": 994914741.0,
    "breadth": -85.3,
    "fwd5": -1.375
   },
@@ -48,74 +48,81 @@
   {
    "date": "2026-11-05",
    "cash_other_pct": 8.3137,
-   "active_net_twd": -5174421144.0,
+   "active_net_twd": -5175090528.0,
    "breadth": -38.0,
    "fwd5": 3.649
   },
   {
    "date": "2026-11-06",
    "cash_other_pct": 9.2316,
-   "active_net_twd": -1202582547.0,
+   "active_net_twd": -1202791622.0,
    "breadth": -96.4,
    "fwd5": 10.008
   },
   {
    "date": "2026-11-09",
    "cash_other_pct": 8.7574,
-   "active_net_twd": 10888941.0,
+   "active_net_twd": 10446871.0,
    "breadth": -8.2,
    "fwd5": -1.492
   },
   {
    "date": "2026-11-10",
    "cash_other_pct": 8.1343,
-   "active_net_twd": 709348684.0,
+   "active_net_twd": 709059860.0,
    "breadth": -75.4,
    "fwd5": -6.134
   },
   {
    "date": "2026-11-11",
    "cash_other_pct": 7.0309,
-   "active_net_twd": 2617815230.0,
+   "active_net_twd": 2501574830.0,
    "breadth": 53.8,
    "fwd5": -9.179
   },
   {
    "date": "2026-11-12",
    "cash_other_pct": 7.1015,
-   "active_net_twd": 493246815.0,
+   "active_net_twd": 488065444.0,
    "breadth": -66.2,
    "fwd5": -10.826
   },
   {
    "date": "2026-11-13",
    "cash_other_pct": 6.7893,
-   "active_net_twd": 661142826.0,
-   "breadth": 94.4
+   "active_net_twd": 659862559.0,
+   "breadth": 94.4,
+   "fwd5": -17.497
   },
   {
    "date": "2026-11-16",
    "cash_other_pct": 7.5169,
-   "active_net_twd": -976948989.0,
+   "active_net_twd": -977534993.0,
    "breadth": 86.5
   },
   {
    "date": "2026-11-17",
    "cash_other_pct": 8.1502,
-   "active_net_twd": -690122842.0,
+   "active_net_twd": -690935311.0,
    "breadth": 83.7
   },
   {
    "date": "2026-11-18",
    "cash_other_pct": 8.5564,
-   "active_net_twd": -1486027187.0,
+   "active_net_twd": -1486480245.0,
    "breadth": -84.9
   },
   {
    "date": "2026-11-19",
    "cash_other_pct": 9.7161,
-   "active_net_twd": -1738334264.0,
+   "active_net_twd": -1743131005.0,
    "breadth": 84.0
+  },
+  {
+   "date": "2026-11-20",
+   "cash_other_pct": 11.3851,
+   "active_net_twd": 183968442.0,
+   "breadth": 91.5
   }
  ],
  "correlations": {}
