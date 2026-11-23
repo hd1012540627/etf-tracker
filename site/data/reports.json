@@ -1,6 +1,129 @@
 {
  "week": [
   {
+   "period": "2026-W48",
+   "etfs": {
+    "00412A": {
+     "start": {
+      "date": "2026-11-23",
+      "cash_other_pct": 22.1,
+      "stock_pct": 77.9
+     },
+     "end": {
+      "date": "2026-11-23",
+      "cash_other_pct": 22.1,
+      "stock_pct": 77.9
+     },
+     "net_active_twd": 6890693.0,
+     "top_buys": [
+      {
+       "name": "Hoya Corp",
+       "twd": 60780272.0
+      },
+      {
+       "name": "Tokyo Electron Ltd",
+       "twd": 58394987.0
+      },
+      {
+       "name": "Fujikura Ltd",
+       "twd": 32665936.0
+      },
+      {
+       "name": "Hua Hong Semiconductor Ltd",
+       "twd": 28103112.0
+      },
+      {
+       "name": "台積電",
+       "twd": 2211998.0
+      }
+     ],
+     "top_sells": [
+      {
+       "name": "Taiyo Yuden Co Ltd",
+       "twd": -75296219.0
+      },
+      {
+       "name": "Sumitomo Electric Industries Ltd",
+       "twd": -46863848.0
+      },
+      {
+       "name": "Disco Corp",
+       "twd": -41723157.0
+      },
+      {
+       "name": "Mitsui Mining & Smelting Co Ltd",
+       "twd": -26061658.0
+      }
+     ],
+     "new": [
+      "Fujikura Ltd",
+      "Hoya Corp",
+      "Hua Hong Semiconductor Ltd",
+      "Tokyo Electron Ltd"
+     ],
+     "exit": [
+      "Disco Corp",
+      "Mitsui Mining & Smelting Co Ltd",
+      "Sumitomo Electric Industries Ltd",
+      "Taiyo Yuden Co Ltd"
+     ],
+     "cash_other_change_pp": 0.0
+    },
+    "00997A": {
+     "start": {
+      "date": "2026-11-23",
+      "cash_other_pct": 4.773,
+      "stock_pct": 95.227
+     },
+     "end": {
+      "date": "2026-11-23",
+      "cash_other_pct": 4.773,
+      "stock_pct": 95.227
+     },
+     "net_active_twd": 222333981.0,
+     "top_buys": [
+      {
+       "name": "晟碟公司（德拉瓦州）",
+       "twd": 188968632.0
+      },
+      {
+       "name": "蘋果公司",
+       "twd": 3032543.0
+      },
+      {
+       "name": "微軟公司",
+       "twd": 2932204.0
+      },
+      {
+       "name": "ADVANCED MICRO DEVICES",
+       "twd": 2697374.0
+      },
+      {
+       "name": "Crowdstrike控股公司",
+       "twd": 2661991.0
+      }
+     ],
+     "top_sells": [
+      {
+       "name": "台光電",
+       "twd": -11545778.0
+      },
+      {
+       "name": "布魯姆能源公司",
+       "twd": -2795287.0
+      }
+     ],
+     "new": [],
+     "exit": [],
+     "cash_other_change_pp": 0.0
+    }
+   },
+   "summary": [
+    "00412A：主動淨買 0.07 億，現金及其他 22.10%（+0.00 個百分點）；加碼最多：Hoya Corp、Tokyo Electron Ltd、Fujikura Ltd；減碼最多：Taiyo Yuden Co Ltd、Sumitomo Electric Industries Ltd、Disco Corp；新增：Fujikura Ltd、Hoya Corp、Hua Hong Semiconductor Ltd、Tokyo Electron Ltd；剔除：Disco Corp、Mitsui Mining & Smelting Co Ltd、Sumitomo Electric Industries Ltd、Taiyo Yuden Co Ltd",
+    "00997A：主動淨買 2.22 億，現金及其他 4.77%（+0.00 個百分點）；加碼最多：晟碟公司（德拉瓦州）、蘋果公司、微軟公司；減碼最多：台光電、布魯姆能源公司"
+   ]
+  },
+  {
    "period": "2026-W47",
    "etfs": {
     "00412A": {
@@ -14,11 +137,11 @@
       "cash_other_pct": 20.67,
       "stock_pct": 79.33
      },
-     "net_active_twd": -74297451.0,
+     "net_active_twd": -79664346.0,
      "top_buys": [
       {
        "name": "Intel Corp",
-       "twd": 67922791.0
+       "twd": 62662781.0
       },
       {
        "name": "聯發科",
@@ -30,7 +153,7 @@
       },
       {
        "name": "Advanced Micro Devices Inc",
-       "twd": 30997015.0
+       "twd": 30968711.0
       },
       {
        "name": "台積電",
@@ -144,27 +267,27 @@
       "cash_other_pct": 4.8104,
       "stock_pct": 95.1896
      },
-     "net_active_twd": -7526081.0,
+     "net_active_twd": -27222512.0,
      "top_buys": [
       {
        "name": "ADVANCED MICRO DEVICES",
-       "twd": 238586002.0
+       "twd": 233098041.0
       },
       {
        "name": "JFrog有限公司",
-       "twd": 93702522.0
+       "twd": 86580718.0
       },
       {
        "name": "Arista網路公司",
-       "twd": 78393154.0
+       "twd": 73636582.0
       },
       {
        "name": "蘋果公司",
-       "twd": 6162238.0
+       "twd": 6139647.0
       },
       {
        "name": "微軟公司",
-       "twd": 6067608.0
+       "twd": 6035606.0
       }
      ],
      "top_sells": [
@@ -182,11 +305,11 @@
       },
       {
        "name": "Palo Alto Networks Inc",
-       "twd": -72166653.0
+       "twd": -72181040.0
       },
       {
        "name": "Crowdstrike控股公司",
-       "twd": -62871469.0
+       "twd": -62933890.0
       }
      ],
      "new": [
@@ -201,9 +324,9 @@
     }
    },
    "summary": [
-    "00412A：主動淨賣 0.74 億，現金及其他 20.67%（+2.45 個百分點）；加碼最多：Intel Corp、聯發科、日月光投控；減碼最多：Lattice Semiconductor Corp、聯電、雙鴻科技；新增：Intel Corp；剔除：Lattice Semiconductor Corp、MaxLinear Inc、Victory Giant Technology Huizhou Co Ltd、印能科技、欣銓",
+    "00412A：主動淨賣 0.80 億，現金及其他 20.67%（+2.45 個百分點）；加碼最多：Intel Corp、聯發科、日月光投控；減碼最多：Lattice Semiconductor Corp、聯電、雙鴻科技；新增：Intel Corp；剔除：Lattice Semiconductor Corp、MaxLinear Inc、Victory Giant Technology Huizhou Co Ltd、印能科技、欣銓",
     "00981A：主動淨賣 38.46 億，現金及其他 9.77%（+2.43 個百分點）；加碼最多：聯發科、貿聯-KY、創意；減碼最多：南電、台光電、台玻",
-    "00997A：主動淨賣 0.08 億，現金及其他 4.81%（+1.07 個百分點）；加碼最多：ADVANCED MICRO DEVICES、JFrog有限公司、Arista網路公司；減碼最多：Okta公司、那提拉公司、魯門特姆控股公司；新增：JFrog有限公司；剔除：Okta公司、那提拉公司、魯門特姆控股公司"
+    "00997A：主動淨賣 0.27 億，現金及其他 4.81%（+1.07 個百分點）；加碼最多：ADVANCED MICRO DEVICES、JFrog有限公司、Arista網路公司；減碼最多：Okta公司、那提拉公司、魯門特姆控股公司；新增：JFrog有限公司；剔除：Okta公司、那提拉公司、魯門特姆控股公司"
    ]
   },
   {
@@ -827,31 +950,31 @@
       "stock_pct": 83.66
      },
      "end": {
-      "date": "2026-11-20",
-      "cash_other_pct": 20.67,
-      "stock_pct": 79.33
+      "date": "2026-11-23",
+      "cash_other_pct": 22.1,
+      "stock_pct": 77.9
      },
-     "net_active_twd": -40094226.0,
+     "net_active_twd": -38570428.0,
      "top_buys": [
       {
        "name": "台光電子",
-       "twd": 130255159.0
+       "twd": 130824071.0
       },
       {
        "name": "南亞",
-       "twd": 126136682.0
+       "twd": 126713699.0
       },
       {
        "name": "台積電",
-       "twd": 85697390.0
+       "twd": 87909388.0
       },
       {
        "name": "嘉基",
-       "twd": 68059206.0
+       "twd": 68213636.0
       },
       {
        "name": "Intel Corp",
-       "twd": 67922791.0
+       "twd": 62897053.0
       }
      ],
      "top_sells": [
@@ -864,34 +987,42 @@
        "twd": -95862066.0
       },
       {
+       "name": "Taiyo Yuden Co Ltd",
+       "twd": -81357222.0
+      },
+      {
        "name": "Lattice Semiconductor Corp",
        "twd": -58608526.0
       },
       {
        "name": "聯電",
        "twd": -52108507.0
-      },
-      {
-       "name": "雙鴻科技",
-       "twd": -43877776.0
       }
      ],
      "new": [
+      "Fujikura Ltd",
+      "Hoya Corp",
+      "Hua Hong Semiconductor Ltd",
       "Intel Corp",
+      "Tokyo Electron Ltd",
       "嘉基"
      ],
      "exit": [
+      "Disco Corp",
       "Lattice Semiconductor Corp",
       "MaxLinear Inc",
+      "Mitsui Mining & Smelting Co Ltd",
       "NVIDIA Corp",
       "Shengyi Technology Co Ltd",
+      "Sumitomo Electric Industries Ltd",
+      "Taiyo Yuden Co Ltd",
       "Victory Giant Technology Huizhou Co Ltd",
       "印能科技",
       "欣銓",
       "聯電",
       "雙鴻科技"
      ],
-     "cash_other_change_pp": 4.33
+     "cash_other_change_pp": 5.76
     },
     "00981A": {
      "start": {
@@ -968,31 +1099,31 @@
       "stock_pct": 90.618
      },
      "end": {
-      "date": "2026-11-20",
-      "cash_other_pct": 4.8104,
-      "stock_pct": 95.1896
+      "date": "2026-11-23",
+      "cash_other_pct": 4.773,
+      "stock_pct": 95.227
      },
-     "net_active_twd": 345848409.0,
+     "net_active_twd": 548485959.0,
      "top_buys": [
       {
        "name": "ADVANCED MICRO DEVICES",
-       "twd": 283579860.0
+       "twd": 280789273.0
       },
       {
        "name": "艾伯維公司",
-       "twd": 267558056.0
+       "twd": 269211885.0
+      },
+      {
+       "name": "晟碟公司（德拉瓦州）",
+       "twd": 207188630.0
       },
       {
        "name": "美光科技公司",
-       "twd": 182729758.0
+       "twd": 184783085.0
       },
       {
        "name": "WESTERN DIGITAL CORP",
-       "twd": 170170569.0
-      },
-      {
-       "name": "希捷科技控股公開有限公司",
-       "twd": 156407102.0
+       "twd": 171618514.0
       }
      ],
      "top_sells": [
@@ -1014,7 +1145,7 @@
       },
       {
        "name": "Palo Alto Networks Inc",
-       "twd": -172375900.0
+       "twd": -171691150.0
       }
      ],
      "new": [
@@ -1035,13 +1166,13 @@
       "那提拉公司",
       "魯門特姆控股公司"
      ],
-     "cash_other_change_pp": -4.57
+     "cash_other_change_pp": -4.61
     }
    },
    "summary": [
-    "00412A：主動淨賣 0.40 億，現金及其他 20.67%（+4.33 個百分點）；加碼最多：台光電子、南亞、台積電；減碼最多：Shengyi Technology Co Ltd、NVIDIA Corp、Lattice Semiconductor Corp；新增：Intel Corp、嘉基；剔除：Lattice Semiconductor Corp、MaxLinear Inc、NVIDIA Corp、Shengyi Technology Co Ltd、Victory Giant Technology Huizhou Co Ltd",
+    "00412A：主動淨賣 0.39 億，現金及其他 22.10%（+5.76 個百分點）；加碼最多：台光電子、南亞、台積電；減碼最多：Shengyi Technology Co Ltd、NVIDIA Corp、Taiyo Yuden Co Ltd；新增：Fujikura Ltd、Hoya Corp、Hua Hong Semiconductor Ltd、Intel Corp、Tokyo Electron Ltd；剔除：Disco Corp、Lattice Semiconductor Corp、MaxLinear Inc、Mitsui Mining & Smelting Co Ltd、NVIDIA Corp",
     "00981A：主動淨賣 73.83 億，現金及其他 9.77%（+4.13 個百分點）；加碼最多：台積電、日月光投控、鴻海；減碼最多：台光電、聯電、南電；新增：中信金、台玻、智伸科；剔除：勤誠、環球晶、美律",
-    "00997A：主動淨買 3.46 億，現金及其他 4.81%（-4.57 個百分點）；加碼最多：ADVANCED MICRO DEVICES、艾伯維公司、美光科技公司；減碼最多：魯門特姆控股公司、Dynatrace公司、Okta公司；新增：JFrog有限公司、SharkNinja公司、UNITY、艾伯維公司、芯源系統有限公司；剔除：Dynatrace公司、Okta公司、Snowflake公司、三星電機、愛德萬測試"
+    "00997A：主動淨買 5.48 億，現金及其他 4.77%（-4.61 個百分點）；加碼最多：ADVANCED MICRO DEVICES、艾伯維公司、晟碟公司（德拉瓦州）；減碼最多：魯門特姆控股公司、Dynatrace公司、Okta公司；新增：JFrog有限公司、SharkNinja公司、UNITY、艾伯維公司、芯源系統有限公司；剔除：Dynatrace公司、Okta公司、Snowflake公司、三星電機、愛德萬測試"
    ]
   },
   {
