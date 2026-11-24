@@ -14,23 +14,23 @@
       "cash_other_pct": 21.44,
       "stock_pct": 78.56
      },
-     "net_active_twd": 11211317.0,
+     "net_active_twd": 11217672.0,
      "top_buys": [
       {
        "name": "Hoya Corp",
-       "twd": 61783346.0
+       "twd": 61783180.0
       },
       {
        "name": "Tokyo Electron Ltd",
-       "twd": 59356223.0
+       "twd": 59356058.0
       },
       {
        "name": "Hua Hong Semiconductor Ltd",
-       "twd": 57672363.0
+       "twd": 57681488.0
       },
       {
        "name": "Fujikura Ltd",
-       "twd": 33203751.0
+       "twd": 33203659.0
       },
       {
        "name": "川湖",
@@ -1021,7 +1021,7 @@
       "cash_other_pct": 21.44,
       "stock_pct": 78.56
      },
-     "net_active_twd": -34249804.0,
+     "net_active_twd": -34243449.0,
      "top_buys": [
       {
        "name": "台光電子",
@@ -1041,7 +1041,7 @@
       },
       {
        "name": "Intel Corp",
-       "twd": 62857778.0
+       "twd": 62857733.0
       }
      ],
      "top_sells": [
