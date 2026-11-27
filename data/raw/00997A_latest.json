@@ -4,14 +4,14 @@
   "pcf": {
    "fundName": "群益美國增長主動式ETF基金",
    "fundNamek": "",
-   "date1": "2026-11-27",
-   "date2": "2026-11-25",
+   "date1": "2026-11-30",
+   "date2": "2026-11-26",
    "nav": 8455092593.0,
    "navFormat": "8,455,092,593",
    "totUnit": 1001877000.0,
    "totUnitFormat": "1,001,877,000",
-   "disUnit": -3500000.0,
-   "disUnitFormat": "-3,500,000",
+   "disUnit": 0.0,
+   "disUnitFormat": "0",
    "pUnit": 8.44,
    "pUnitFormat": "8",
    "totUnitk": 0.0,
@@ -39,7 +39,7 @@
    "totETF": "0.000000",
    "remark": "",
    "exchangeDesc": " 匯率：1 EUR = 1.0936 USD ,1 USD = 159.2800 JPY ,1 USD = 1341.5700 KRW ,1 USD = 33.1710 TWD (2026/11/25)",
-   "date3": "2026-11-26",
+   "date3": "2026-11-27",
    "totUnita": 1001877000.0,
    "totUnitaFormat": "1,001,877,000",
    "yymmPeople": "2026-10-31",
@@ -53,7 +53,7 @@
   },
   "stocks": [
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "AAPL US",
     "stocName": "蘋果公司",
     "weight": 5.8272,
@@ -65,7 +65,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "MSFT US",
     "stocName": "微軟公司",
     "weight": 5.4887,
@@ -77,7 +77,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "AMD US",
     "stocName": "ADVANCED MICRO DEVICES",
     "weight": 4.7773,
@@ -89,7 +89,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "MU US",
     "stocName": "美光科技公司",
     "weight": 4.0979,
@@ -101,7 +101,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "CRWD US",
     "stocName": "Crowdstrike控股公司",
     "weight": 3.7122,
@@ -113,7 +113,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "SPCX US",
     "stocName": "太空探索科技公司",
     "weight": 3.6467,
@@ -125,7 +125,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "NVDA US",
     "stocName": "輝達公司",
     "weight": 3.4309,
@@ -137,7 +137,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "2330",
     "stocName": "台積電",
     "weight": 3.3565,
@@ -149,7 +149,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "ABBV US",
     "stocName": "艾伯維公司",
     "weight": 3.1389,
@@ -161,7 +161,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "WDC US",
     "stocName": "WESTERN DIGITAL CORP",
     "weight": 2.9515,
@@ -173,7 +173,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "STX US",
     "stocName": "希捷科技控股公開有限公司",
     "weight": 2.9296,
@@ -185,7 +185,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "GOOGL US",
     "stocName": "ALPHABET INC-CL A",
     "weight": 2.8824,
@@ -197,7 +197,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "CRL US",
     "stocName": "查爾斯河實驗室國際公司",
     "weight": 2.7648,
@@ -209,7 +209,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "ANET US",
     "stocName": "Arista網路公司",
     "weight": 2.6939,
@@ -221,7 +221,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "FTNT US",
     "stocName": "防特網公司",
     "weight": 2.4889,
@@ -233,7 +233,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "SNDK US",
     "stocName": "晟碟公司（德拉瓦州）",
     "weight": 2.3846,
@@ -245,7 +245,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "AMAT US",
     "stocName": "應用材料",
     "weight": 2.238,
@@ -257,7 +257,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "DELL US",
     "stocName": "戴爾科技公司",
     "weight": 1.9812,
@@ -269,7 +269,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "INTC US",
     "stocName": "英特爾",
     "weight": 1.962,
@@ -281,7 +281,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "LRCX US",
     "stocName": "科林研發股份有限公司",
     "weight": 1.8879,
@@ -293,7 +293,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "TXN US",
     "stocName": "德州儀器公司",
     "weight": 1.8831,
@@ -305,7 +305,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "CSCO US",
     "stocName": "CISCO SYSTEMS INC",
     "weight": 1.7253,
@@ -317,7 +317,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "SN US",
     "stocName": "SharkNinja公司",
     "weight": 1.6298,
@@ -329,7 +329,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "PLTR US",
     "stocName": "帕蘭提爾科技公司",
     "weight": 1.5118,
@@ -341,7 +341,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "APH US",
     "stocName": "安費諾",
     "weight": 1.5056,
@@ -353,7 +353,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "GE US",
     "stocName": "奇異公司",
     "weight": 1.3598,
@@ -365,7 +365,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "PANW US",
     "stocName": "Palo Alto Networks Inc",
     "weight": 1.3425,
@@ -377,7 +377,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "AVGO US",
     "stocName": "博通公司",
     "weight": 1.3003,
@@ -389,7 +389,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "KLAC US",
     "stocName": "KLA CORP",
     "weight": 1.2935,
@@ -401,7 +401,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "U US",
     "stocName": "UNITY",
     "weight": 1.264,
@@ -413,7 +413,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "HWM US",
     "stocName": "Howmet航太公司",
     "weight": 1.2542,
@@ -425,7 +425,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "VEEV US",
     "stocName": "Veeva系統公司",
     "weight": 1.152,
@@ -437,7 +437,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "LMT US",
     "stocName": "洛克希德馬丁",
     "weight": 1.1411,
@@ -449,7 +449,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "ADI US",
     "stocName": "亞德諾公司",
     "weight": 1.125,
@@ -461,7 +461,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "FROG US",
     "stocName": "JFrog有限公司",
     "weight": 1.0695,
@@ -473,7 +473,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "MRVL US",
     "stocName": "Marvell Technology Inc",
     "weight": 1.0447,
@@ -485,7 +485,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "CDNS US",
     "stocName": "Cadence設計系統公司",
     "weight": 0.9109,
@@ -497,7 +497,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "VRT US",
     "stocName": "維諦控股公司",
     "weight": 0.8254,
@@ -509,7 +509,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "DDOG US",
     "stocName": "數據狗公司",
     "weight": 0.7378,
@@ -521,7 +521,7 @@
     "smallStatus": null
    },
    {
-    "date1": "2026/11/27 上午 12:00:00",
+    "date1": "2026/11/30 上午 12:00:00",
     "stocNo": "ARM US",
     "stocName": "安謀控股公開有限公司",
     "weight": 0.6596,
