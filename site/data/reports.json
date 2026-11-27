@@ -14,27 +14,27 @@
       "cash_other_pct": 12.87,
       "stock_pct": 87.13
      },
-     "net_active_twd": 476991623.0,
+     "net_active_twd": 477001698.0,
      "top_buys": [
       {
        "name": "NVIDIA Corp",
-       "twd": 110384447.0
+       "twd": 110385203.0
       },
       {
        "name": "Hua Hong Semiconductor Ltd",
-       "twd": 106339265.0
+       "twd": 106340163.0
       },
       {
        "name": "Marvell Technology Inc",
-       "twd": 82477594.0
+       "twd": 82478159.0
       },
       {
        "name": "Advantest Corp",
-       "twd": 80071913.0
+       "twd": 80072954.0
       },
       {
        "name": "Renesas Electronics Corp",
-       "twd": 71719527.0
+       "twd": 71719794.0
       }
      ],
      "top_sells": [
@@ -1045,7 +1045,7 @@
       "cash_other_pct": 12.87,
       "stock_pct": 87.13
      },
-     "net_active_twd": 431530502.0,
+     "net_active_twd": 431540577.0,
      "top_buys": [
       {
        "name": "台光電子",
@@ -1057,15 +1057,15 @@
       },
       {
        "name": "Intel Corp",
-       "twd": 114815271.0
+       "twd": 114816109.0
       },
       {
        "name": "Hua Hong Semiconductor Ltd",
-       "twd": 106339265.0
+       "twd": 106340163.0
       },
       {
        "name": "Marvell Technology Inc",
-       "twd": 82477594.0
+       "twd": 82478159.0
       }
      ],
      "top_sells": [
